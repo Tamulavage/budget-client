@@ -1,0 +1,7 @@
+<pre *ngIf="auth.userProfile$ | async as profile">
+    <!-- <code >{{ profile | json }}</code> -->
+    <!-- {{profile.nickname}} -->
+    <div *ngIf="authorizedUser">
+        username: {{ authorizedUser.userName  }}
+    </div>
+</pre>
