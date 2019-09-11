@@ -24,8 +24,6 @@ export class AuthorizeService {
     return this.http.get<AuthorizedUser[]>(url)
       .pipe(
         tap(_ => console.log('User Data', _))
-        // ,
-        // catchError(this.handleError<AuthorizedUser[]>('Authorized', []))
        )
       ;
   }
