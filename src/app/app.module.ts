@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AccountsComponent } from './accounts/accounts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CallbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,

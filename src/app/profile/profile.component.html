@@ -1,7 +1,18 @@
-<pre *ngIf="auth.userProfile$ | async as profile">
-    <!-- <code >{{ profile | json }}</code> -->
-    <!-- {{profile.nickname}} -->
-    <div *ngIf="authorizedUser">
-        username: {{ authorizedUser.userName  }}
+<div *ngIf="auth.userProfile$ | async as profile">
+    <div *ngIf="authorizedUsers">
+        Welcome: {{ authorizedUsers.userName  }} 
     </div>
-</pre>
+    <div class="row" >
+        <div class="col-sm-3">
+            <div *ngIf="authorizedUsers.id">
+                <app-accounts [user]="authorizedUsers.id"></app-accounts>
+            </div>
+        </div>
+        <div class="col-sm-3">
+              placeholder for transaction list
+        </div>
+        <div class="col-sm-3">
+              placeholder for transaction changes
+        </div>
+     </div>
+</div>
