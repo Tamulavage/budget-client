@@ -22,8 +22,6 @@ export class AccountsComponent implements OnInit {
   }
 
   getAccounts(): void {
-    console.log('user id', this.user);
-    // console.log(this.user.shift());
     this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
  }
 }

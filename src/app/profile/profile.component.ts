@@ -47,24 +47,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  // getAuthorizedUsers(): void {
-  //   this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser[]) => {
-  //    this.authorizedUsers = user;
-  //    console.log(this.authorizedUsers);
-  //   });
-  // }
-
   getAuthorizedUser() {
     let temp2 = JSON.parse(this.profileJson);
     let str = '';
     this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser[]) => {
      this.authorizedUsers = user;
-    //  console.log(this.authorizedUsers);
-     console.log(user);
      str = JSON.stringify(user, null, 2);
      temp2 = JSON.parse(str);
     });
-    console.log(temp2);
   }
 
 }
