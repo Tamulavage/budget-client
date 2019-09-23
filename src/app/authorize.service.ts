@@ -17,15 +17,13 @@ export class AuthorizeService {
 
   constructor(private http: HttpClient) { }
 
-  getAuthorizedUser(username: string): Observable<AuthorizedUser[]> {
+  getAuthorizeUser(username: string): Observable<AuthorizedUser[]> {
     const url = `${this.userUrl}/find/${username}`;
-    console.log(url);
-    console.log(this.http.get<AuthorizedUser[]>(url));
+    // console.log(url);
+    // console.log(this.http.get<AuthorizedUser[]>(url));
     return this.http.get<AuthorizedUser[]>(url)
       .pipe(
-        tap(_ => console.log('User Data', _))
-        // ,
-        // catchError(this.handleError<AuthorizedUser[]>('Authorized', []))
+        // tap(_ => console.log('User Data', _))
        )
       ;
   }

@@ -1,0 +1,7 @@
+<div *ngFor="let account of accounts">
+    <td> 
+      <span > {{account.institutionName}}: </span>
+      <span > {{account.name}} </span>
+      <span > ${{account.balance.toFixed(2) }}</span>
+    </td>
+</div>
