@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {AccountService} from '../account.service';
 import {Account} from '../account';
-import { AuthorizedUser } from '../authorizedUser';
 
 @Component({
   selector: 'app-accounts',
@@ -9,7 +8,6 @@ import { AuthorizedUser } from '../authorizedUser';
   styleUrls: ['./accounts.component.css']
 })
 export class AccountsComponent implements OnInit {
-  // @Input() user: string;
   @Input() user: number;
   userid: number;
   accounts: Account[];

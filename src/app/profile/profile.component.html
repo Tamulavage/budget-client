@@ -1,20 +1,22 @@
 <div *ngIf="auth.userProfile$ | async as profile">
     <div *ngIf="authorizedUsers.userName">
-        Welcome: {{ authorizedUsers.userName }} 
+        Welcome: {{ authorizedUsers.userName }}
     </div>
     <div class="table">
-    <div class="row" >
-        <div class="col">
-            <div *ngIf="authorizedUsers.id">
-                <app-accounts [user]="authorizedUsers.id"></app-accounts>
+        <div class="row">
+            <div class="col">
+                <div *ngIf="authorizedUsers.id">
+                    <app-accounts [user]="authorizedUsers.id"></app-accounts>
+                </div>
+            </div>
+            <div class="col">
+                <div *ngIf="authorizedUsers.id">
+                    <app-tansaction-history [user]="authorizedUsers.id"></app-tansaction-history>
+                </div>
+            </div>
+            <div class="col">
+                placeholder for transaction changes
             </div>
         </div>
-        <div class="col">
-             placeholder for transaction list
-        </div>
-        <div class="col">
-             placeholder for transaction changes
-        </div>
-    </div>
     </div>
 </div>

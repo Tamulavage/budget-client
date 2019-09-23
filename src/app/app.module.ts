@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { TansactionHistoryComponent } from './tansaction-history/tansaction-history.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { AccountsComponent } from './accounts/accounts.component';
     NavbarComponent,
     CallbackComponent,
     ProfileComponent,
-    AccountsComponent
+    AccountsComponent,
+    TansactionHistoryComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
