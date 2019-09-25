@@ -1,1 +1,23 @@
-<p>transaction works!</p>
+<p></p>
+<button (click)="enableDeposit()"> Deposit</button>
+
+<div id="toAccount" hidden="true" class="text-center pt-2 pb-2 ">
+    <div class="dropdown" role="group">
+        <button class="dropbtn" type="button" #newTransactionToAccount value="{{toAccountId}}">
+            {{toAccountName}}
+        </button>
+        <div class="dropdown-content">
+            <a *ngFor="let account of accountsTo" [class.selected]="account === selectToAccount"
+                (click)="onSelectToAccount(account)">{{account.id}}: {{account.name}}</a>
+        </div>
+    </div>
+</div>
+
+<p></p>
+
+<input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
+<p></p>
+<button (click)="addDeposit(newTransactionAmount.value,  newTransactionToAccount.value)">
+    OK</button>
+<button id="cancelTransaction"  (click)="cancelTransaction()">
+    Cancel</button>
