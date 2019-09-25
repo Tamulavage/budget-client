@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Transaction} from './transaction';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
+import {Account} from './account';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,6 +18,7 @@ export class TransactionService {
 
   private baseURI = 'http://localhost:8080/budget/';
   private transactionUrl = `${this.baseURI}transaction/`;
+  private accountUrl = `${this.baseURI}account`;
 
   getLatestTransactionsByUser(userId: number): Observable<Transaction[]> {
     const url = `${this.transactionUrl}${userId}`;
@@ -24,5 +26,13 @@ export class TransactionService {
     return this.http.get<Transaction[]>(url);
   }
 
+  getAccountByUserID(userId: number): Observable<Account[]> {
+    const url = `${this.accountUrl}/?userId=${userId}`;
+    return this.http.get<Account[]>(url);
+  }
+
+  addTransaction(transaction: Transaction) {
+    return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
+  }
 
 }
