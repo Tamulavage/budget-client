@@ -1,7 +1,9 @@
 <p></p>
 <button (click)="enableDeposit()"> Deposit</button>
+<button (click)="enableTransfer()"> Transfer</button>
+<button (click)="enableWithdraw()"> Withdraw</button>
 
-<div id="toAccount" hidden="true" class="text-center pt-2 pb-2 ">
+<div id="toAccount" hidden="true">
     <div class="dropdown" role="group">
         <button class="dropbtn" type="button" #newTransactionToAccount value="{{toAccountId}}">
             {{toAccountName}}
@@ -13,11 +15,28 @@
     </div>
 </div>
 
+<div id="fromAccount" hidden="true">
+    <div class="dropdown" role="group">
+        <button class="dropbtn" type="button" #newTransactionToAccount value="{{fromAccountId}}">
+            {{fromAccountName}}
+        </button>
+        <div class="dropdown-content">
+            <a *ngFor="let account of accountsFrom" [class.selected]="account === selectFromAccount"
+                (click)="onSelectFromAccount(account)">{{account.id}}: {{account.name}}</a>
+        </div>
+    </div>
+</div>
+
+
 <p></p>
+
+<div id="memo" hidden="true" class="text-center pt-1 pb-1">
+    <input placeholder="Memo*" #newTransactionMemo/>
+</div>
 
 <input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
 <p></p>
 <button (click)="addDeposit(newTransactionAmount.value,  newTransactionToAccount.value)">
     OK</button>
 <button id="cancelTransaction"  (click)="cancelTransaction()">
-    Cancel</button>
+    Cancel</button>  
