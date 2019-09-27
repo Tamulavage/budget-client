@@ -35,22 +35,28 @@ export class TransactionComponent implements OnInit {
   }
 
   enableDeposit() {
+    this.clearFields();
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
+    (document.getElementById('memo') as HTMLInputElement).hidden = false;
   }
 
   enableTransfer() {
+    this.clearFields();
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
+    (document.getElementById('memo') as HTMLInputElement).hidden = false;
   }
 
   enableWithdraw() {
+    this.clearFields();
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
+    (document.getElementById('memo') as HTMLInputElement).hidden = false;
 }
 
   onSelectToAccount(account: Account) {
@@ -97,5 +103,8 @@ export class TransactionComponent implements OnInit {
   private clearFields() {
     this.toAccountName = resetToForm;
     this.toAccountId = null;
+
+    this.fromAccountName = resetFromForm;
+    this.fromAccountId = null;
 }
 }

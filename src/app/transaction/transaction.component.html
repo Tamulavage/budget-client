@@ -30,6 +30,10 @@
 
 <p></p>
 
+<div id="memo" hidden="true" class="text-center pt-1 pb-1">
+    <input placeholder="Memo*" #newTransactionMemo/>
+</div>
+
 <input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
 <p></p>
 <button (click)="addDeposit(newTransactionAmount.value,  newTransactionToAccount.value)">
