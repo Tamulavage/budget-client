@@ -14,7 +14,7 @@ const resetToForm = 'Select To :';
 export class TransactionComponent implements OnInit {
   @Input() user: number;
 
-  constructor(private transactionService: TransactionService) { 
+  constructor(private transactionService: TransactionService) {
     this.toAccountName = resetToForm;
     this.fromAccountName = resetFromForm;
   }
@@ -39,16 +39,29 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
+
+    this.hideInitialButtons();
   }
+
 
   enableTransfer() {
     this.clearFields();
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
+    (document.getElementById('deposit') as HTMLInputElement).hidden = false;
+
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
+
+    this.hideInitialButtons();
   }
 
   enableWithdraw() {
@@ -56,7 +69,12 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
+
+    this.hideInitialButtons();
 }
 
   onSelectToAccount(account: Account) {
@@ -71,16 +89,21 @@ export class TransactionComponent implements OnInit {
     this.fromAccountId = this.selectFromAccount.id;
   }
 
-  addDeposit(amount: number, toAccountId: number): void {
-    let memo: 'test';
-    let fromAccountId: null;
-    let transactionType: 1;
+  addDeposit(amount: number, memo: string, fromAccountId: number, toAccountId: number): void {
+    let transactionType: 12;
 
-    console.log('Amount', amount);
-    console.log('to Account ID', toAccountId);
+    // console.log('Memo', memo);
+    // console.log('Amount', amount);
+    // console.log('to Account ID', toAccountId);
+    // console.log('from Account ID', fromAccountId);
 
     if (!amount) {
-        return;
+      console.log('Amount must not be null');
+      return;
+    }
+    if(fromAccountId === toAccountId) {
+      console.log('Cannot transfer to same account');
+      return;
     }
     const transactionDt = new Date().toJSON();
     this.transactionService.addTransaction({
@@ -92,12 +115,18 @@ export class TransactionComponent implements OnInit {
         transactionDt
       } as unknown as Transaction)
         .subscribe(transaction => this.transaction = transaction);
+
+    this.showInitialBUttons();
    }
 
   cancelTransaction() {
     this.clearFields();
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = true;
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = true;
+    this.showInitialBUttons();
   }
 
   private clearFields() {
@@ -106,5 +135,17 @@ export class TransactionComponent implements OnInit {
 
     this.fromAccountName = resetFromForm;
     this.fromAccountId = null;
+}
+
+private hideInitialButtons() {
+  (document.getElementById('deposit') as HTMLInputElement).hidden = true;
+  (document.getElementById('transfer') as HTMLInputElement).hidden = true;
+  (document.getElementById('withdrwaw') as HTMLInputElement).hidden = true;
+}
+
+private showInitialBUttons() {
+  (document.getElementById('deposit') as HTMLInputElement).hidden = false;
+  (document.getElementById('transfer') as HTMLInputElement).hidden = false;
+  (document.getElementById('withdrwaw') as HTMLInputElement).hidden = false;
 }
 }

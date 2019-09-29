@@ -3,7 +3,7 @@
     display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-content  {
     display: none;
     position: absolute;
     background-color:  lightblue;
@@ -17,10 +17,25 @@
     display: block;
 }
 
-.show {
-    display: block;
-}
- 
 .dropdown-content a:hover {background-color: rgb(110, 111, 112);}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: gray;}
+
+/* DivTable.com */
+.table{
+	display: table;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row {
+    display: table-row;
+}
+
+.col {
+    display: table-cell;
+}
+
+.col {
+    display: table-cell;
+}
