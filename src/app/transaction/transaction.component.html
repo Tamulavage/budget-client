@@ -30,13 +30,19 @@
 
 <p></p>
 
-<div id="memo" hidden="true" class="text-center pt-1 pb-1">
-    <input placeholder="Memo*" #newTransactionMemo/>
+<div id="inputFields" hidden="true">
+    <div id="memo" class="text-center pt-1 pb-1">
+        <input placeholder="Memo*" #newTransactionMemo />
+    </div>
+
+    <input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
+
 </div>
 
-<input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
 <p></p>
-<button (click)="addDeposit(newTransactionAmount.value,  newTransactionToAccount.value)">
-    OK</button>
-<button id="cancelTransaction"  (click)="cancelTransaction()">
-    Cancel</button>  
+<div id="submitButtons" hidden="true">
+    <button (click)="addDeposit(newTransactionAmount.value,  newTransactionMemo.value, newTransactionToAccount.value)">
+        OK</button>
+    <button (click)="cancelTransaction()">
+        Cancel</button>
+</div>

@@ -14,7 +14,7 @@ const resetToForm = 'Select To :';
 export class TransactionComponent implements OnInit {
   @Input() user: number;
 
-  constructor(private transactionService: TransactionService) { 
+  constructor(private transactionService: TransactionService) {
     this.toAccountName = resetToForm;
     this.fromAccountName = resetFromForm;
   }
@@ -39,8 +39,12 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
   }
+
 
   enableTransfer() {
     this.clearFields();
@@ -48,7 +52,10 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
   }
 
   enableWithdraw() {
@@ -56,7 +63,10 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
-    (document.getElementById('memo') as HTMLInputElement).hidden = false;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
+    
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
 }
 
   onSelectToAccount(account: Account) {
@@ -71,11 +81,11 @@ export class TransactionComponent implements OnInit {
     this.fromAccountId = this.selectFromAccount.id;
   }
 
-  addDeposit(amount: number, toAccountId: number): void {
-    let memo: 'test';
+  addDeposit(amount: number, memo: string, toAccountId: number): void {
     let fromAccountId: null;
     let transactionType: 1;
 
+    console.log('Memo', memo);
     console.log('Amount', amount);
     console.log('to Account ID', toAccountId);
 
@@ -98,6 +108,9 @@ export class TransactionComponent implements OnInit {
     this.clearFields();
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = true;
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = true;
   }
 
   private clearFields() {
