@@ -1,47 +1,57 @@
 <p></p>
-<button (click)="enableDeposit()"> Deposit</button>
-<button (click)="enableTransfer()"> Transfer</button>
-<button (click)="enableWithdraw()"> Withdraw</button>
+<button id="deposit" (click)="enableDeposit()"> Deposit</button>
+<button id="transfer" (click)="enableTransfer()"> Transfer</button>
+<button id="withdrwaw" (click)="enableWithdraw()"> Withdraw</button>
 
-<div id="toAccount" hidden="true">
-    <div class="dropdown" role="group">
-        <button class="dropbtn" type="button" #newTransactionToAccount value="{{toAccountId}}">
-            {{toAccountName}}
-        </button>
-        <div class="dropdown-content">
-            <a *ngFor="let account of accountsTo" [class.selected]="account === selectToAccount"
-                (click)="onSelectToAccount(account)">{{account.id}}: {{account.name}}</a>
+<div class="table">
+    <div class="row">
+        <div class="col">
+            <div id="fromAccount" hidden="true">
+                <div class="dropdown" role="group">
+                    <button class="dropbtn" type="button" #newTransactionFromAccount value="{{fromAccountId}}">
+                        {{fromAccountName}}
+                    </button>
+                    <div class="dropdown-content">
+                        <a *ngFor="let account of accountsFrom" [class.selected]="account === selectFromAccount"
+                            (click)="onSelectFromAccount(account)">{{account.id}}: {{account.name}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <div id="toAccount" hidden="true">
+                <div class="dropdown" role="group">
+                    <button aria-haspopup="true" aria-expanded="false" class="dropbtn" type="button" #newTransactionToAccount value="{{toAccountId}}">
+                        {{toAccountName}}
+                    </button>
+                    <div class="dropdown-content">
+                        <a *ngFor="let account of accountsTo" [class.selected]="account === selectToAccount"
+                            (click)="onSelectToAccount(account)">{{account.id}}: {{account.name}}</a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
-
-<div id="fromAccount" hidden="true">
-    <div class="dropdown" role="group">
-        <button class="dropbtn" type="button" #newTransactionToAccount value="{{fromAccountId}}">
-            {{fromAccountName}}
-        </button>
-        <div class="dropdown-content">
-            <a *ngFor="let account of accountsFrom" [class.selected]="account === selectFromAccount"
-                (click)="onSelectFromAccount(account)">{{account.id}}: {{account.name}}</a>
-        </div>
-    </div>
-</div>
-
 
 <p></p>
 
 <div id="inputFields" hidden="true">
     <div id="memo" class="text-center pt-1 pb-1">
-        <input placeholder="Memo*" #newTransactionMemo />
+        <input placeholder="Memo" #newTransactionMemo />
     </div>
 
-    <input placeholder="$ Amount*" id="amountValue " type="number" #newTransactionAmount />
+    <input placeholder="$ Amount" id="amountValue " type="number" #newTransactionAmount />
 
 </div>
 
 <p></p>
 <div id="submitButtons" hidden="true">
-    <button (click)="addDeposit(newTransactionAmount.value,  newTransactionMemo.value, newTransactionToAccount.value)">
+    <button
+        (click)="addDeposit(newTransactionAmount.value,  newTransactionMemo.value, newTransactionFromAccount.value, newTransactionToAccount.value)">
         OK</button>
     <button (click)="cancelTransaction()">
         Cancel</button>
