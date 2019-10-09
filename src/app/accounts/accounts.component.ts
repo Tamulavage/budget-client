@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import {AccountService} from '../account.service';
 import {Account} from '../account';
 
@@ -9,7 +9,7 @@ import {Account} from '../account';
 })
 export class AccountsComponent implements OnInit {
   @Input() user: number;
-  userid: number;
+  selectedUser: number;
   accounts: Account[];
   account: Account;
 
@@ -22,4 +22,5 @@ export class AccountsComponent implements OnInit {
   getAccounts(): void {
     this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
  }
+
 }

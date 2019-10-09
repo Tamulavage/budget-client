@@ -1,0 +1,30 @@
+<div>
+    <h4> Account Maintenance</h4>
+    <div id="mainMaintenance">
+        <button (click)="newAccount()">New</button>
+        <button (click)="delete()">Delete</button>
+    </div>
+
+    <div id="newAccountDiv" hidden="true">
+            <label>Bank : </label>
+            <input placeholder="bank" id="bank" type="string" #bank />    
+            <br>
+            <label>Name : </label>
+            <input placeholder="name" id="nameOnAccount" type="string" #nameOnAccount />
+            <br>
+            <label>Inital Amount : </label>
+            <input placeholder="$$$.$$" id="initialAmount" type="number" #initialAmount />
+            <br>
+            <label>Nickname : </label>
+            <input placeholder="Nickname" id="nickname" type="string" #bank />
+            <br>
+            <label>type : </label>
+            <input placeholder="Account Type" id="typeOfAccount" type="string" #bank />            
+    </div>
+
+    <p></p>
+    <div id="verify" hidden = "true">
+            <button (click)="confirm()">Confirm</button>
+            <button (click)="cancel()">Cancel</button>
+    </div>
+</div>

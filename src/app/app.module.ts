@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { TansactionHistoryComponent } from './tansaction-history/tansaction-history.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { AccountMaintenanceComponent } from './account-maintenance/account-maintenance.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TransactionComponent } from './transaction/transaction.component';
     ProfileComponent,
     AccountsComponent,
     TansactionHistoryComponent,
-    TransactionComponent
+    TransactionComponent,
+    AccountMaintenanceComponent
   ],
   imports: [
     BrowserModule,

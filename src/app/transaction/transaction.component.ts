@@ -101,7 +101,7 @@ export class TransactionComponent implements OnInit {
       console.log('Amount must not be null');
       return;
     }
-    if(fromAccountId === toAccountId) {
+    if (fromAccountId === toAccountId) {
       console.log('Cannot transfer to same account');
       return;
     }
