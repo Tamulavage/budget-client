@@ -22,7 +22,6 @@ export class AccountService {
   getAccounts(userId: number): Observable<Account[]> {
     // Should this stil be the path?
     const url = `${this.accountUrl}/?userId=${userId}`;
-    // console.log(url);
     return this.http.get<Account[]>(url)
     .pipe(
       //  tap(_ => console.log('Data', _))

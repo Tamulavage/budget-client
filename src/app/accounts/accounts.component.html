@@ -5,3 +5,7 @@
       <span > ${{account.balance.toFixed(2) }}</span>
     </td>
 </div>
+<p></p>
+<div *ngIf="user">
+    <app-account-maintenance [user]="user"></app-account-maintenance>
+</div>

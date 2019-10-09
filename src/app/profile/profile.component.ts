@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
       if (temp) {
         timedOutCount = 1001;
         this.nickname = temp.nickname;
-        this.nickname = 'tamulavage';
+        // this.nickname = 'tamulavage';
         this.getAuthorizedUser();
         // console.log(this.id);
       } else {

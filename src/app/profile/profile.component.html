@@ -1,6 +1,8 @@
 <div *ngIf="auth.userProfile$ | async as profile">
     <div *ngIf="authorizedUsers.userName">
+        <h3>
         Welcome: {{ authorizedUsers.userName }}
+        </h3>
     </div>
     <div class="table"  *ngIf="authorizedUsers.id">
         <div class="row">
