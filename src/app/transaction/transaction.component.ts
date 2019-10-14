@@ -39,6 +39,7 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
+    (document.getElementById('depositHeader') as HTMLInputElement).hidden = false;
 
     (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
 
@@ -53,6 +54,7 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsTo = account);
     (document.getElementById('deposit') as HTMLInputElement).hidden = false;
+    (document.getElementById('transferHeader') as HTMLInputElement).hidden = false;
 
     (document.getElementById('toAccount') as HTMLInputElement).hidden = false;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
@@ -69,6 +71,7 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getAccountByUserID(this.user).subscribe(account => this.accountsFrom = account);
     (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
     (document.getElementById('fromAccount') as HTMLInputElement).hidden = false;
+    (document.getElementById('withdrawHeader') as HTMLInputElement).hidden = false;
 
     (document.getElementById('inputFields') as HTMLInputElement).hidden = false;
 
@@ -90,12 +93,8 @@ export class TransactionComponent implements OnInit {
   }
 
   addDeposit(amount: number, memo: string, fromAccountId: number, toAccountId: number): void {
+    // TODO: pull transaction type from service
     let transactionType: 12;
-
-    // console.log('Memo', memo);
-    // console.log('Amount', amount);
-    // console.log('to Account ID', toAccountId);
-    // console.log('from Account ID', fromAccountId);
 
     if (!amount) {
       console.log('Amount must not be null');
@@ -126,6 +125,7 @@ export class TransactionComponent implements OnInit {
 
     (document.getElementById('inputFields') as HTMLInputElement).hidden = true;
     (document.getElementById('submitButtons') as HTMLInputElement).hidden = true;
+
     this.showInitialBUttons();
   }
 
@@ -141,11 +141,19 @@ private hideInitialButtons() {
   (document.getElementById('deposit') as HTMLInputElement).hidden = true;
   (document.getElementById('transfer') as HTMLInputElement).hidden = true;
   (document.getElementById('withdrwaw') as HTMLInputElement).hidden = true;
+
 }
 
 private showInitialBUttons() {
   (document.getElementById('deposit') as HTMLInputElement).hidden = false;
   (document.getElementById('transfer') as HTMLInputElement).hidden = false;
   (document.getElementById('withdrwaw') as HTMLInputElement).hidden = false;
+
+  (document.getElementById('withdrawHeader') as HTMLInputElement).hidden = true;
+  (document.getElementById('transferHeader') as HTMLInputElement).hidden = true;
+  (document.getElementById('depositHeader') as HTMLInputElement).hidden = true;
+
+  (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
+  (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
 }
 }
