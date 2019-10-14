@@ -27,4 +27,12 @@ export class AccountService {
       //  tap(_ => console.log('Data', _))
      );
   }
+
+  addAccount(account: Account): Observable<Account> {
+    return this.http.post<Account>(this.accountUrl, account, httpOptions)
+    .pipe(
+        // tap((newAccount: Account) => this.log(`added account`)),
+        // catchError(this.handleError<Account>('addAccount'))
+        );
+}
 }

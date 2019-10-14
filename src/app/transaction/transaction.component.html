@@ -1,4 +1,13 @@
 <p></p>
+<h3>
+    <div id="mainTransactionHeader"> Transactions: </div>
+</h3>
+<h4>
+    <div id="depositHeader" hidden="true"> Deposit </div>
+    <div id="transferHeader" hidden="true"> Transfer </div>
+    <div id="withdrawHeader" hidden="true"> Withdraw </div>
+</h4>
+
 <button id="deposit" (click)="enableDeposit()"> Deposit</button>
 <button id="transfer" (click)="enableTransfer()"> Transfer</button>
 <button id="withdrwaw" (click)="enableWithdraw()"> Withdraw</button>
@@ -22,7 +31,8 @@
         <div class="col">
             <div id="toAccount" hidden="true">
                 <div class="dropdown" role="group">
-                    <button aria-haspopup="true" aria-expanded="false" class="dropbtn" type="button" #newTransactionToAccount value="{{toAccountId}}">
+                    <button aria-haspopup="true" aria-expanded="false" class="dropbtn" type="button"
+                        #newTransactionToAccount value="{{toAccountId}}">
                         {{toAccountName}}
                     </button>
                     <div class="dropdown-content">
