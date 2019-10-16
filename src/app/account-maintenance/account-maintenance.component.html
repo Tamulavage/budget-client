@@ -18,13 +18,22 @@
             <label>Nickname : </label>
             <input placeholder="Nickname" id="nickname" type="string" #nickName />
             <br>
-            <label>Type : </label>
-            <input placeholder="Account Type" id="typeOfAccount" type="string" #accountType />            
+
     </div>
 
     <p></p>
     <div id="verify" hidden = "true">
-            <button (click)="createAccount(bank.value, nameOnAccount.value, initialAmount.value, nickName.value, accountType.value )">Create Account</button>
+                    <div class="dropdown text-muted pt-2 animate3 slideIn drpdwn">
+                        <button id="btnGroupDrop" type="button" class="btn text-muted dropdown-toggle plus" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" #newAccountType value="{{AccountTypeID}}">
+                            {{accountTypeName}}
+                        </button>
+                        <div class="dropdown-menu dropdown-content plus text-light dropright" aria-labelledby="accountTypebtn" id="accountTypedrp">
+                            <a *ngFor="let accountType of accountTypes" [class.selected]="accountType === selectedAccountType"
+                               (click)="onSelectAccountType(accountType)" class="dropdown-item ">{{accountType.description}}</a>
+                        </div>
+                    </div>
+            <button (click)="createAccount(bank.value, nameOnAccount.value, initialAmount.value, nickName.value )">Create Account</button>
             <button (click)="cancel()">Cancel</button>
     </div>
 </div>

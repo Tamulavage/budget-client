@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AccountService } from '../account.service';
-import {Account} from '../account';
+import { Account } from '../account';
+import { Accounttype } from '../accounttype';
 
 const resetInitialBalance = 0.00;
+const resetInitialAccountType = 'Account Type';
 
 @Component({
   selector: 'app-account-maintenance',
@@ -16,11 +18,17 @@ export class AccountMaintenanceComponent implements OnInit {
 
   accounts: Account[];
 
+  accountTypes: Accounttype[];
+  selectedAccountType: Accounttype;
+  accountTypeName: string;
+  accountTypeId: number;
+
   constructor(private accountService: AccountService) {
   }
 
   ngOnInit() {
     this.resetInitialFields();
+    this.accountService.getAccountTypes().subscribe(accountType => this.accountTypes = accountType);
   }
 
   newAccountButton(): void {
@@ -33,7 +41,7 @@ export class AccountMaintenanceComponent implements OnInit {
     // TODO: Need to add
   }
 
-  createAccount(institutionName: string, name: string, balance: number, nickname: string, accountType: string): void {
+  createAccount(institutionName: string, name: string, balance: number, nickname: string): void {
 
     console.log('starting createAccount');
     if (!this.validDeposit(name, balance)) {
@@ -41,14 +49,12 @@ export class AccountMaintenanceComponent implements OnInit {
     }
 
     const userId = this.user;
+    const accountTypeId = this.accountTypeId;
 
-    // TODO: Change Account type to pull from service
-    const accountTypeId = 2;
-
-    this.accountService.addAccount({ name, balance, accountTypeId, userId, nickname , institutionName}  as Account)
-        .subscribe(
-            // TODO: push new account to parent obeject
-        );
+    this.accountService.addAccount({ name, balance, accountTypeId, userId, nickname, institutionName } as Account)
+      .subscribe(
+        // TODO: push new account to parent obeject
+      );
 
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
     (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
@@ -59,9 +65,21 @@ export class AccountMaintenanceComponent implements OnInit {
 
   resetInitialFields(): void {
     this.InitialBalance = resetInitialBalance;
+
+    this.accountTypeName = resetInitialAccountType;
+    this.accountTypeId = null;
+    this.selectedAccountType = null;
   }
 
+  onSelectAccountType(accountType: Accounttype) {
+    this.selectedAccountType = accountType;
+    this.accountTypeName = this.selectedAccountType.description;
+    this.accountTypeId = this.selectedAccountType.id;
+}
+
   cancel(): void {
+    this.resetInitialFields();
+
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
     (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
     (document.getElementById('verify') as HTMLInputElement).hidden = true;
@@ -69,12 +87,20 @@ export class AccountMaintenanceComponent implements OnInit {
 
   private validDeposit(name: string, balance: number) {
     console.log('starting validation');
+    if (!this.user) {
+      console.log('Null User Id');
+      return false;
+    }
     if (!name) {
       console.log('invalid name');
       return false;
     }
     if (!balance || balance < 0) {
       console.log('invalid initial balance');
+      return false;
+    }
+    if (!this.accountTypeId) {
+      console.log('invalid Account Type');
       return false;
     }
     // TODO: add more validation here
