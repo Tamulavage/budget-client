@@ -1,10 +1,10 @@
 <div *ngFor="let transaction of allTransactions">
-        <td>
-            <!-- <span> {{transaction.transactionId}}: </span> -->
-            <span> {{transaction.transactionDt }} </span>
-            <span> {{transaction.fromAccountId}} </span>
-            <span> {{transaction.toAccountId}} </span>
-            <span> {{transaction.memo}} </span>            
-            <span> ${{transaction.amount.toFixed(2) }} </span>
-        </td>
-    </div>
+    <td>
+        <!-- <span> {{transaction.transactionId}}: </span> -->
+        <span> {{transaction.transactionDt }} </span>
+        <span> {{transaction.fromAccountId}} </span>
+        <span> {{transaction.toAccountId}} </span>
+        <span> {{transaction.memo}} </span>
+        <span> ${{transaction.amount.toFixed(2) }} </span>
+    </td>
+</div>

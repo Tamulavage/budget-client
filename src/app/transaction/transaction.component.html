@@ -13,9 +13,9 @@
 <button id="withdraw" (click)="enableWithdraw()"> Withdraw</button>
 
 <div id="inputFields" hidden="true">
-        <input placeholder="Memo" #newTransactionMemo />
-        <br>
-         <input placeholder="$ Amount" id="amountValue " type="number" #newTransactionAmount />
+    <input placeholder="Memo" #newTransactionMemo />
+    <br>
+    <input placeholder="$ Amount" id="amountValue " type="number" #newTransactionAmount />
 </div>
 
 <p></p>
@@ -32,7 +32,7 @@
                     <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
                         <a *ngFor="let account of accountsFrom" class="dropdown-item"
                             (click)="onSelectFromAccount(account)" [class.selected]="account === selectFromAccount">
-                             {{account.name}} / {{account.nickname}}</a>
+                             {{account.name}}/{{account.nickname}}</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <div class="dropdown-content">
                         <a *ngFor="let account of accountsTo" [class.selected]="account === selectToAccount"
                             (click)="onSelectToAccount(account)">
-                            {{account.name}} / {{account.nickname}}</a>
+                            {{account.name}}/{{account.nickname}}</a>
                     </div>
                 </div>
             </div>
