@@ -78,7 +78,7 @@ export class TransactionComponent implements OnInit {
     (document.getElementById('submitButtons') as HTMLInputElement).hidden = false;
 
     this.hideInitialButtons();
-}
+  }
 
   onSelectToAccount(account: Account) {
     this.selectToAccount = account;
@@ -90,6 +90,8 @@ export class TransactionComponent implements OnInit {
     this.selectFromAccount = account;
     this.fromAccountName = this.selectFromAccount.name;
     this.fromAccountId = this.selectFromAccount.id;
+
+    (document.getElementById('fromAccountdrp') as HTMLInputElement).hidden = true;
   }
 
   addDeposit(amount: number, memo: string, fromAccountId: number, toAccountId: number): void {
@@ -106,17 +108,18 @@ export class TransactionComponent implements OnInit {
     }
     const transactionDt = new Date().toJSON();
     this.transactionService.addTransaction({
-        amount,
-        memo,
-        fromAccountId,
-        toAccountId,
-        transactionType,
-        transactionDt
-      } as unknown as Transaction)
-        .subscribe(transaction => this.transaction = transaction);
+      amount,
+      memo,
+      fromAccountId,
+      toAccountId,
+      transactionType,
+      transactionDt
+    } as unknown as Transaction)
+      .subscribe(transaction => this.transaction = transaction);
 
+    this.clearFields();
     this.showInitialBUttons();
-   }
+  }
 
   cancelTransaction() {
     this.clearFields();
@@ -135,25 +138,28 @@ export class TransactionComponent implements OnInit {
 
     this.fromAccountName = resetFromForm;
     this.fromAccountId = null;
-}
+  }
 
-private hideInitialButtons() {
-  (document.getElementById('deposit') as HTMLInputElement).hidden = true;
-  (document.getElementById('transfer') as HTMLInputElement).hidden = true;
-  (document.getElementById('withdrwaw') as HTMLInputElement).hidden = true;
+  private hideInitialButtons() {
+    (document.getElementById('deposit') as HTMLInputElement).hidden = true;
+    (document.getElementById('transfer') as HTMLInputElement).hidden = true;
+    (document.getElementById('withdraw') as HTMLInputElement).hidden = true;
 
-}
+  }
 
-private showInitialBUttons() {
-  (document.getElementById('deposit') as HTMLInputElement).hidden = false;
-  (document.getElementById('transfer') as HTMLInputElement).hidden = false;
-  (document.getElementById('withdrwaw') as HTMLInputElement).hidden = false;
+  private showInitialBUttons() {
+    (document.getElementById('deposit') as HTMLInputElement).hidden = false;
+    (document.getElementById('transfer') as HTMLInputElement).hidden = false;
+    (document.getElementById('withdraw') as HTMLInputElement).hidden = false;
 
-  (document.getElementById('withdrawHeader') as HTMLInputElement).hidden = true;
-  (document.getElementById('transferHeader') as HTMLInputElement).hidden = true;
-  (document.getElementById('depositHeader') as HTMLInputElement).hidden = true;
+    (document.getElementById('withdrawHeader') as HTMLInputElement).hidden = true;
+    (document.getElementById('transferHeader') as HTMLInputElement).hidden = true;
+    (document.getElementById('depositHeader') as HTMLInputElement).hidden = true;
 
-  (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
-  (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
-}
+    (document.getElementById('toAccount') as HTMLInputElement).hidden = true;
+    (document.getElementById('fromAccount') as HTMLInputElement).hidden = true;
+
+    (document.getElementById('inputFields') as HTMLInputElement).hidden = true;
+    (document.getElementById('submitButtons') as HTMLInputElement).hidden = true;
+  }
 }
