@@ -41,17 +41,17 @@ export class AccountMaintenanceComponent implements OnInit {
     // TODO: Need to add
   }
 
-  createAccount(institutionName: string, name: string, balance: number, nickname: string): void {
+  createAccount(institutionName: string, balance: number, nickname: string): void {
 
     console.log('starting createAccount');
-    if (!this.validDeposit(name, balance)) {
+    if (!this.validDeposit(nickname, balance)) {
       return;
     }
 
     const userId = this.user;
     const accountTypeId = this.accountTypeId;
 
-    this.accountService.addAccount({ name, balance, accountTypeId, userId, nickname, institutionName } as Account)
+    this.accountService.addAccount({ balance, accountTypeId, nickname, institutionName } as Account, userId)
       .subscribe(
         // TODO: push new account to parent obeject
       );
@@ -85,13 +85,13 @@ export class AccountMaintenanceComponent implements OnInit {
     (document.getElementById('verify') as HTMLInputElement).hidden = true;
   }
 
-  private validDeposit(name: string, balance: number) {
+  private validDeposit(nickname: string, balance: number) {
     console.log('starting validation');
     if (!this.user) {
       console.log('Null User Id');
       return false;
     }
-    if (!name) {
+    if (!nickname) {
       console.log('invalid name');
       return false;
     }
