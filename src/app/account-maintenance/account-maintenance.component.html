@@ -7,18 +7,14 @@
 
     <div id="newAccountDiv" hidden="true">
             <label>Bank : </label>
-            <input placeholder="Bank" id="bank" type="string" #bank />    
-            <br>
-            <label>Name : </label>
-            <input placeholder="Name" id="nameOnAccount" type="string" #nameOnAccount />
+            <input placeholder="Bank" id="bank" type="string" #bank />  
+            <br>  
+            <label>Nickname : </label>
+            <input placeholder="Nickname" id="nickname" type="string" #nickName />
             <br>
             <label>Initial Amount : </label>
             <input id="initialAmount" type="number" #initialAmount value={{InitialBalance}}/>
             <br>
-            <label>Nickname : </label>
-            <input placeholder="Nickname" id="nickname" type="string" #nickName />
-            <br>
-
     </div>
 
     <p></p>
@@ -33,7 +29,7 @@
                                (click)="onSelectAccountType(accountType)" class="dropdown-item ">{{accountType.description}}</a>
                         </div>
                     </div>
-            <button (click)="createAccount(bank.value, nameOnAccount.value, initialAmount.value, nickName.value )">Create Account</button>
+            <button (click)="createAccount(bank.value, initialAmount.value, nickName.value )">Create Account</button>
             <button (click)="cancel()">Cancel</button>
     </div>
 </div>

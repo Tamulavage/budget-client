@@ -16,7 +16,7 @@ export class AccountService {
 
   private baseUri = 'http://localhost:8080/budget/';
 
-  private accountUrl = `${this.baseUri}/account`;
+  private accountUrl = `${this.baseUri}account`;
 
   constructor(private http: HttpClient) { }
 
@@ -29,8 +29,17 @@ export class AccountService {
       );
   }
 
-  addAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.accountUrl, account, httpOptions)
+  // addAccount(account: Account): Observable<Account> {
+  //   return this.http.post<Account>(this.accountUrl, account, httpOptions)
+  //     .pipe(
+  //       // tap((newAccount: Account) => this.log(`added account`)),
+  //       // catchError(this.handleError<Account>('addAccount'))
+  //     );
+  // }
+
+  addAccount(account: Account, userId: number): Observable<Account> {
+    const url = `${this.accountUrl}/?userId=${userId}`;
+    return this.http.post<Account>(url, account, httpOptions)
       .pipe(
         // tap((newAccount: Account) => this.log(`added account`)),
         // catchError(this.handleError<Account>('addAccount'))
@@ -39,9 +48,6 @@ export class AccountService {
 
   getAccountTypes(): Observable<Accounttype[]> {
     const url = `${this.baseUri}/accounttype`;
-    // this.http.get(url).subscribe(data => {
-    //     console.log(data);
-    // });
     return this.http.get<Accounttype[]>(url);
 }
 }

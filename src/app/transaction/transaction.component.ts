@@ -82,13 +82,13 @@ export class TransactionComponent implements OnInit {
 
   onSelectToAccount(account: Account) {
     this.selectToAccount = account;
-    this.toAccountName = this.selectToAccount.name;
+    this.toAccountName = this.selectToAccount.nickname;
     this.toAccountId = this.selectToAccount.id;
   }
 
   onSelectFromAccount(account: Account) {
     this.selectFromAccount = account;
-    this.fromAccountName = this.selectFromAccount.name;
+    this.fromAccountName = this.selectFromAccount.nickname;
     this.fromAccountId = this.selectFromAccount.id;
 
     (document.getElementById('fromAccountdrp') as HTMLInputElement).hidden = true;
