@@ -16,5 +16,9 @@
                     <app-transaction [user]="authorizedUsers.id"></app-transaction>
             </div>
         </div>
+            
+    </div>
+    <div  *ngIf="authorizedUsers.id">
+      <app-budget-matrix></app-budget-matrix>
     </div>
 </div>
