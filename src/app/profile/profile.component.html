@@ -19,6 +19,6 @@
             
     </div>
     <div  *ngIf="authorizedUsers.id">
-      <app-budget-matrix></app-budget-matrix>
+      <app-budget-matrix [user]="authorizedUsers.id"></app-budget-matrix>
     </div>
 </div>
