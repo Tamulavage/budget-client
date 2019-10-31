@@ -22,19 +22,6 @@ export class BudgetMatrixComponent implements OnInit {
   outgoingSum: BudgetMatrix[] = [];
   differenceSum: BudgetMatrix[] = [];
 
-  janOutgoingTotal: number;
-  febOutgoingTotal: number;
-  marchOutgoingTotal: number;
-  aprilOutgoingTotal: number;
-  mayOutgoingTotal: number;
-  juneOutgoingTotal: number;
-  julyOutgoingTotal: number;
-  augOutgoingTotal: number;
-  septOutgoingTotal: number;
-  octOutgoingTotal: number;
-  novOutgoingTotal: number;
-  decOutgoingTotal: number;
-
   ngOnInit() {
     this.populateMatrix();
   }
