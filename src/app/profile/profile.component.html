@@ -3,22 +3,32 @@
         <h3>
         Welcome: {{ authorizedUsers.userName }}
         </h3>
+        <button (click)="toggleAccount()" *ngIf="!showAccount">Show Account Info</button>
+        <button (click)="toggleAccount()" *ngIf="showAccount">Hide Account Info</button>
+        <button (click)="toggleBudget()" *ngIf="!showBudget">Show budget Info</button>
+        <button (click)="toggleBudget()" *ngIf="showBudget">Hide budget Info</button>        
+        <button (click)="toggleTransction()" *ngIf="!showTranscation">Show transction Info</button> 
+        <button (click)="toggleTransction()" *ngIf="showTranscation">Hide transction Info</button> 
     </div>
+    <p></p>
     <div class="table"  *ngIf="authorizedUsers.id">
         <div class="row">
-            <div class="col">
+            <div class="col accountWidth" *ngIf="showAccount">
                     <app-accounts [user]="authorizedUsers.id"></app-accounts>
             </div>
-            <div class="col">
+            <div class="col" *ngIf="showTranscation">
                     <app-tansaction-history [user]="authorizedUsers.id"></app-tansaction-history>
             </div>
-            <div class="col">
+            <div class="col transactionWidth" *ngIf="showTranscation">
                     <app-transaction [user]="authorizedUsers.id"></app-transaction>
+            </div>
+            <div class="col" *ngIf="authorizedUsers.id && showBudget &&!showTranscation">
+                    <app-budget-matrix [user]="authorizedUsers.id"></app-budget-matrix>
             </div>
         </div>
             
     </div>
-    <div  *ngIf="authorizedUsers.id">
+    <div *ngIf="authorizedUsers.id && showBudget &&showTranscation">
       <app-budget-matrix [user]="authorizedUsers.id"></app-budget-matrix>
     </div>
 </div>

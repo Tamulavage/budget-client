@@ -3,8 +3,8 @@ import { AuthService } from '../auth.service';
 import { AuthorizeService } from '../authorize.service';
 import { AuthorizedUser } from '../authorizedUser';
 import { Authenticate } from '../authenticate';
-import { from, of, Observable, BehaviorSubject, combineLatest, throwError, Subject } from 'rxjs';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+// import { from, of, Observable, BehaviorSubject, combineLatest, throwError, Subject } from 'rxjs';
+// import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +19,10 @@ export class ProfileComponent implements OnInit {
   profileJson: string = null;
   id: number[];
 
+  showAccount: boolean;
+  showBudget: boolean;
+  showTranscation: boolean;
+
   constructor(
       public auth: AuthService,
       public authorize: AuthorizeService) { }
@@ -28,19 +32,22 @@ export class ProfileComponent implements OnInit {
     let temp = JSON.parse(this.profileJson);
     let timedOutCount = 0;
 
+    this.showAccount = true;
+    this.showBudget = true;
+    this.showTranscation = true;
+
     this.auth.userProfile$.subscribe((user: any[]) => {
       this.profileJson = JSON.stringify(user, null, 2);
       temp = JSON.parse(this.profileJson);
     }
    );
 
+   // TODO: revist this section
     while (timedOutCount < 500) {
       if (temp) {
         timedOutCount = 1001;
         this.nickname = temp.nickname;
-        // this.nickname = 'tamulavage';
         this.getAuthorizedUser();
-        // console.log(this.id);
       } else {
         timedOutCount++;
       }
@@ -48,13 +55,37 @@ export class ProfileComponent implements OnInit {
   }
 
   getAuthorizedUser() {
-    let temp2 = JSON.parse(this.profileJson);
-    let str = '';
+    // let temp2 = JSON.parse(this.profileJson);
+    // let str = '';
     this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser[]) => {
      this.authorizedUsers = user;
-     str = JSON.stringify(user, null, 2);
-     temp2 = JSON.parse(str);
+    //  str = JSON.stringify(user, null, 2);
+    //  temp2 = JSON.parse(str);
     });
+  }
+
+  toggleAccount() {
+    if ( this.showAccount) {
+      this.showAccount = false;
+    } else {
+      this.showAccount = true;
+    }
+  }
+
+  toggleBudget() {
+    if ( this.showBudget) {
+      this.showBudget = false;
+    } else {
+      this.showBudget = true;
+    }
+  }
+
+  toggleTransction() {
+    if ( this.showTranscation) {
+      this.showTranscation = false;
+    } else {
+      this.showTranscation = true;
+    }
   }
 
 }

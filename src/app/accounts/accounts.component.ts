@@ -12,15 +12,26 @@ export class AccountsComponent implements OnInit {
   selectedUser: number;
   accounts: Account[];
   account: Account;
+  showMaintenance: boolean;
 
   constructor(private accountService: AccountService) { }
 
   ngOnInit() {
     this.getAccounts();
+    this.showMaintenance = false;
   }
 
   getAccounts(): void {
     this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
+ }
+
+ toggleMaintenaces() {
+   if ( this.showMaintenance) {
+     this.showMaintenance = false;
+     this.getAccounts();
+   } else {
+     this.showMaintenance = true;
+   }
  }
 
 }

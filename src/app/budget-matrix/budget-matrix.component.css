@@ -16,3 +16,11 @@
 .red {
 	color: #ff0000;
 }
+
+.header {
+	font-weight: bold;
+}
+
+.footer {
+	font-weight: bold;
+}

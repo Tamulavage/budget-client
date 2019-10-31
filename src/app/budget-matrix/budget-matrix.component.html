@@ -1,42 +1,42 @@
 <h2> Future Budget </h2>
 <div class="table">
     <div class="row">
-        <div class="col">
+        <div class="col ">
         </div>
-        <div class="col">
+        <div class="col header">
             JAN
         </div>
-        <div class="col">
+        <div class="col header">
             FEB
         </div>
-        <div class="col">
+        <div class="col header">
             MAR
         </div>
-        <div class="col">
+        <div class="col header">
             APR
         </div>
-        <div class="col">
+        <div class="col header">
             MAY
         </div>
-        <div class="col">
+        <div class="col header">
             JUNE
         </div>
-        <div class="col">
+        <div class="col header">
             JULY
         </div>
-        <div class="col">
+        <div class="col header">
             AUG
         </div>
-        <div class="col">
+        <div class="col header">
             SEPT
         </div>
-        <div class="col">
+        <div class="col header">
             OCT
         </div>
-        <div class="col">
+        <div class="col header">
             NOV
         </div>
-        <div class="col">
+        <div class="col header">
             DEC
         </div>
     </div>
@@ -82,57 +82,44 @@
         </div>
     </div>
     <div class="row" *ngFor="let incoming of incomingSum">
-        <div class="col">
-            <b> Incoming: </b>
+        <div class="col footer">
+            Incoming:
         </div>
-        <div class="col">
-            <b>
-                {{ incoming.januaryAmount | currency }}
-            </b>
+        <div class="col footer">
+            {{ incoming.januaryAmount | currency }}
         </div>
-        <div class="col"> <b>
-                {{incoming.februaryAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.februaryAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.marchAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.marchAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.aprilAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.aprilAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.mayAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.mayAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.juneAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.juneAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.julyAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.julyAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.augustAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.augustAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.septemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.septemberAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.octoberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.octoberAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.novemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.novemberAmount | currency}}
         </div>
-        <div class="col"> <b>
-                {{incoming.decemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{incoming.decemberAmount | currency}}
         </div>
     </div>
     <p></p>
@@ -178,135 +165,92 @@
         </div>
     </div>
     <div class="row" *ngFor="let outgoing of outgoingSum">
-        <div class="col">
-            <b> Outgoing: </b>
+        <div class="col footer">
+            Outgoing:
         </div>
-        <div class="col">
-            <b>
-                {{ outgoing.januaryAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{ outgoing.januaryAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{ outgoing.februaryAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{ outgoing.februaryAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.marchAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.marchAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.aprilAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.aprilAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.mayAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.mayAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.juneAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.juneAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.julyAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.julyAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.augustAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.augustAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.septemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.septemberAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.octoberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.octoberAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.novemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.novemberAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{outgoing.decemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{outgoing.decemberAmount | currency}}
         </div>
     </div>
     <p></p>
 
     <div class="row" *ngFor="let diff of differenceSum">
-        <div class="col">
-            <b> Difference: </b>
+        <div class="col footer">
+            Difference:
         </div>
-        <div class="col">
-            <b>
-                {{ diff.januaryAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{ diff.januaryAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{ diff.februaryAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{ diff.februaryAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.marchAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.marchAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.aprilAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.aprilAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.mayAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.mayAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.juneAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.juneAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.julyAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.julyAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.augustAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.augustAmount | currency}}
         </div>
-        <div class="col">
-            <b>
+        <div class="col footer" *ngIf="diff.septemberAmount > 0; else redSep">
+            {{diff.septemberAmount | currency}}
+        </div>
+        <ng-template #redSep>
+            <div class="col red footer">
                 {{diff.septemberAmount | currency}}
-            </b>
+            </div>
+        </ng-template>
+        <div class="col footer">
+            {{diff.octoberAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.octoberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.novemberAmount | currency}}
         </div>
-        <div class="col">
-            <b>
-                {{diff.novemberAmount | currency}}
-            </b>
-        </div>
-        <div class="col">
-            <b>
-                {{diff.decemberAmount | currency}}
-            </b>
+        <div class="col footer">
+            {{diff.decemberAmount | currency}}
         </div>
     </div>
 </div>
