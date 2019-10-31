@@ -11,6 +11,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { TansactionHistoryComponent } from './tansaction-history/tansaction-history.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { AccountMaintenanceComponent } from './account-maintenance/account-maintenance.component';
+import { BudgetMatrixComponent } from './budget-matrix/budget-matrix.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AccountMaintenanceComponent } from './account-maintenance/account-maint
     AccountsComponent,
     TansactionHistoryComponent,
     TransactionComponent,
-    AccountMaintenanceComponent
+    AccountMaintenanceComponent,
+    BudgetMatrixComponent
   ],
   imports: [
     BrowserModule,

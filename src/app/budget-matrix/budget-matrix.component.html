@@ -1,0 +1,312 @@
+<h2> Future Budget </h2>
+<div class="table">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            JAN
+        </div>
+        <div class="col">
+            FEB
+        </div>
+        <div class="col">
+            MAR
+        </div>
+        <div class="col">
+            APR
+        </div>
+        <div class="col">
+            MAY
+        </div>
+        <div class="col">
+            JUNE
+        </div>
+        <div class="col">
+            JULY
+        </div>
+        <div class="col">
+            AUG
+        </div>
+        <div class="col">
+            SEPT
+        </div>
+        <div class="col">
+            OCT
+        </div>
+        <div class="col">
+            NOV
+        </div>
+        <div class="col">
+            DEC
+        </div>
+    </div>
+    <div class="row" *ngFor="let budgetRow of budgetInRows">
+        <div class="col">
+            {{budgetRow.orgName}}
+        </div>
+        <div class="col">
+            {{budgetRow.januaryAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.februaryAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.marchAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.aprilAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.mayAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.juneAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.julyAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.augustAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.septemberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.octoberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.novemberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.decemberAmount | currency}}
+        </div>
+    </div>
+    <div class="row" *ngFor="let incoming of incomingSum">
+        <div class="col">
+            <b> Incoming: </b>
+        </div>
+        <div class="col">
+            <b>
+                {{ incoming.januaryAmount | currency }}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.februaryAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.marchAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.aprilAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.mayAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.juneAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.julyAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.augustAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.septemberAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.octoberAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.novemberAmount | currency}}
+            </b>
+        </div>
+        <div class="col"> <b>
+                {{incoming.decemberAmount | currency}}
+            </b>
+        </div>
+    </div>
+    <p></p>
+    <div class="row" *ngFor="let budgetRow of budgetOutRows">
+        <div class="col">
+            {{budgetRow.orgName}}
+        </div>
+        <div class="col">
+            {{budgetRow.januaryAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.februaryAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.marchAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.aprilAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.mayAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.juneAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.julyAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.augustAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.septemberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.octoberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.novemberAmount | currency}}
+        </div>
+        <div class="col">
+            {{budgetRow.decemberAmount | currency}}
+        </div>
+    </div>
+    <div class="row" *ngFor="let outgoing of outgoingSum">
+            <div class="col">
+                <b> Outgoing: </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{ outgoing.januaryAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{ outgoing.februaryAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.marchAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.aprilAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.mayAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.juneAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.julyAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.augustAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.septemberAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.octoberAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.novemberAmount | currency}}
+                </b>
+            </div>
+            <div class="col">
+                <b>
+                    {{outgoing.decemberAmount | currency}}
+                </b>
+            </div>
+        </div>
+    <p></p>
+
+    <div class="row" *ngFor="let diff of differenceSum">
+        <div class="col">
+            <b> Difference: </b>
+        </div>
+        <div class="col">
+            <b>
+                {{ diff.januaryAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{ diff.februaryAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.marchAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.aprilAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.mayAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.juneAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.julyAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.augustAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.septemberAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.octoberAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.novemberAmount | currency}}
+            </b>
+        </div>
+        <div class="col">
+            <b>
+                {{diff.decemberAmount | currency}}
+            </b>
+        </div>
+    </div>
+</div>
