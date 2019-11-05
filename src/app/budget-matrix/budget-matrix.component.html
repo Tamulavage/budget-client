@@ -1,4 +1,6 @@
 <h2> Future Budget </h2>
+<app-budget-matrix-maintenance  [userId]="user"> </app-budget-matrix-maintenance>
+<p></p>
 <div class="table">
     <div class="row">
         <div class="col ">
@@ -211,30 +213,70 @@
         <div class="col footer">
             Difference:
         </div>
-        <div class="col footer">
+        <div class="col footer"  *ngIf="diff.januaryAmount > 0; else redJan">
             {{ diff.januaryAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redJan>
+            <div class="col red footer">
+                {{diff.januaryAmount | currency}}
+            </div>
+        </ng-template>
+        <div class="col footer" *ngIf="diff.februaryAmount > 0; else redFeb">
             {{ diff.februaryAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redFeb>
+            <div class="col red footer">
+                {{diff.februaryAmount | currency}}
+            </div>
+        </ng-template>
+        <div class="col footer" *ngIf="diff.marchAmount > 0; else redMar">
             {{diff.marchAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redMar>
+            <div class="col red footer">
+                {{diff.marchAmount | currency}}
+            </div>
+        </ng-template>
+        <div class="col footer"  *ngIf="diff.aprilAmount > 0; else redApr">
             {{diff.aprilAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redApr>
+            <div class="col red footer">
+                {{diff.aprilAmount | currency}}
+            </div>
+        </ng-template>        
+        <div class="col footer" *ngIf="diff.mayAmount > 0; else redMay">
             {{diff.mayAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redMay>
+            <div class="col red footer">
+                {{diff.mayAmount | currency}}
+            </div>
+        </ng-template>         
+        <div class="col footer"  *ngIf="diff.juneAmount > 0; else redJune">
             {{diff.juneAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redJune>
+            <div class="col red footer">
+                {{diff.juneAmount | currency}}
+            </div>
+        </ng-template>        
+        <div class="col footer" *ngIf="diff.julyAmount > 0; else redJuly">
             {{diff.julyAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redJuly>
+            <div class="col red footer">
+                {{diff.julyAmount | currency}}
+            </div>
+        </ng-template>          
+        <div class="col footer"  *ngIf="diff.augustAmount > 0; else redAug">
             {{diff.augustAmount | currency}}
         </div>
+        <ng-template #redAug>
+            <div class="col red footer">
+                {{diff.augustAmount | currency}}
+            </div>
+        </ng-template>          
         <div class="col footer" *ngIf="diff.septemberAmount > 0; else redSep">
             {{diff.septemberAmount | currency}}
         </div>
@@ -243,14 +285,29 @@
                 {{diff.septemberAmount | currency}}
             </div>
         </ng-template>
-        <div class="col footer">
+        <div class="col footer" *ngIf="diff.octoberAmount > 0; else redOct">
             {{diff.octoberAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redOct>
+            <div class="col red footer">
+                {{diff.octoberAmount | currency}}
+            </div>
+        </ng-template>
+        <div class="col footer"  *ngIf="diff.novemberAmount > 0; else redNov">
             {{diff.novemberAmount | currency}}
         </div>
-        <div class="col footer">
+        <ng-template #redNov>
+            <div class="col red footer">
+                {{diff.novemberAmount | currency}}
+            </div>
+        </ng-template>        
+        <div class="col footer" *ngIf="diff.decemberAmount > 0; else redDec">
             {{diff.decemberAmount | currency}}
         </div>
+        <ng-template #redDec>
+            <div class="col red footer">
+                {{diff.decemberAmount | currency}}
+            </div>
+        </ng-template>          
     </div>
 </div>

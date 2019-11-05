@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import {Transaction} from '../transaction';
 import {TransactionService} from '../transaction.service';
+import { TransactionAccount } from '../transactionAccount';
 
 @Component({
   selector: 'app-tansaction-history',
@@ -14,15 +15,17 @@ export class TansactionHistoryComponent implements OnInit {
   constructor(private transactionService: TransactionService) { }
 
   allTransactions: Transaction[] = [];
+  allTransactionsWithAccount: TransactionAccount[] = [];
 
   ngOnInit() {
-    this.getLatestTransactionsByUser();
+    this.getTransactionsByUser();
   }
 
-  getLatestTransactionsByUser(): void {
-    this.transactionService.getLatestTransactionsByUser(this.user)
+
+  getTransactionsByUser(): void {
+    this.transactionService.getTransactionsByUser(this.user)
       .subscribe(transactions => {
-          this.allTransactions = transactions;
+          this.allTransactionsWithAccount = transactions;
         }
       );
   }

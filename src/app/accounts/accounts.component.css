@@ -11,6 +11,7 @@
 	border: 1px solid #999999;
 	display: table-cell;
 	padding: 1px 10px;
+	text-align: left;
 }
 
 .bold {

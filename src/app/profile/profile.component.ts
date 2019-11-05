@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   showAccount: boolean;
   showBudget: boolean;
   showTranscation: boolean;
+  showCheckbook: boolean;
 
   constructor(
       public auth: AuthService,
@@ -34,7 +35,8 @@ export class ProfileComponent implements OnInit {
 
     this.showAccount = true;
     this.showBudget = true;
-    this.showTranscation = true;
+    this.showTranscation = false;
+    this.showCheckbook = false;
 
     this.auth.userProfile$.subscribe((user: any[]) => {
       this.profileJson = JSON.stringify(user, null, 2);
@@ -85,6 +87,14 @@ export class ProfileComponent implements OnInit {
       this.showTranscation = false;
     } else {
       this.showTranscation = true;
+    }
+  }
+
+  toggleCheckbook() {
+    if ( this.showCheckbook) {
+      this.showCheckbook = false;
+    } else {
+      this.showCheckbook = true;
     }
   }
 

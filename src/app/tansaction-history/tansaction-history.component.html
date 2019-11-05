@@ -1,10 +1,37 @@
-<div *ngFor="let transaction of allTransactions">
-    <td>
-        <!-- <span> {{transaction.transactionId}}: </span> -->
-        <span> {{transaction.transactionDt }} </span>
-        <span> {{transaction.fromAccountId}} </span>
-        <span> {{transaction.toAccountId}} </span>
-        <span> {{transaction.memo}} </span>
-        <span> ${{transaction.amount.toFixed(2) }} </span>
-    </td>
+<h2> Checkbook </h2>
+<div class="table">
+    <div class="row header">
+        <div class="col ">
+            Date:
+        </div>
+        <div class="col ">
+            Memo:
+        </div>
+        <div class="col ">
+            Amount:
+        </div>
+        <div class="col ">
+            From:
+        </div>
+        <div class="col ">
+            To:
+        </div>
+    </div>
+    <div class="row" *ngFor="let transaction of allTransactionsWithAccount">
+        <div class="col">
+            {{transaction.transactionDt }}
+        </div>
+        <div class="col">
+            {{transaction.memo}}
+        </div>
+        <div class="col">
+            {{transaction.amount | currency }}
+        </div>
+        <div class="col ">
+            {{transaction.fromAccountName}}
+        </div>
+        <div class="col ">
+            {{transaction.toAccountName}}
+        </div>
+    </div>
 </div>

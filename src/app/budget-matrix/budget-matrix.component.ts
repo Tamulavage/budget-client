@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { BudgetMatrix } from '../budgetMatrix';
 import { BudgetMatrixService } from '../budget-matrix.service';
@@ -10,6 +10,7 @@ import { BudgetMatrixService } from '../budget-matrix.service';
 })
 export class BudgetMatrixComponent implements OnInit {
   @Input() user: number;
+  @Output() userId: number;
 
   constructor(private budgetMatrixService: BudgetMatrixService) { }
 
@@ -24,6 +25,7 @@ export class BudgetMatrixComponent implements OnInit {
 
   ngOnInit() {
     this.populateMatrix();
+    this.userId = this.user;
   }
 
   populateMatrix(): void {

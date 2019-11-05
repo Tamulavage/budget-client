@@ -112,7 +112,7 @@ export class TransactionComponent implements OnInit {
       memo,
       fromAccountId,
       toAccountId,
-      transactionType,
+      // transactionType,
       transactionDt
     } as unknown as Transaction)
       .subscribe(transaction => this.transaction = transaction);

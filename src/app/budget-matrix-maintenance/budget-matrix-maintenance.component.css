@@ -1,0 +1,15 @@
+/* DivTable.com */
+.table{
+    border: 1px solid #999999;
+	display: table;
+	width: 50%;
+}
+.row {
+	display: table-row;
+}
+
+.col {
+	/* border: 1px solid #999999; */
+	display: table-cell;
+	padding: 3px 10px;
+}
