@@ -1,0 +1,122 @@
+<button (click)="toggleShowMaintenance()" *ngIf="!showMaintenance">Change Line Items</button>
+
+<button (click)="showAddNewLineItem()" *ngIf="showMaintenance">Add Line Item</button>
+<button (click)="showRemoveLineItem()" *ngIf="showMaintenance">Remove Line Item</button>
+
+<div class="table" *ngIf="showAddMaintenance">
+    <div class="row">
+        <div class="col ">
+            Org Name:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.orgName" />
+        </div>
+        <div class="col ">
+            January Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.januaryAmount" />
+        </div>
+        <div class="col ">
+            May Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.mayAmount" />
+        </div>
+        <div class="col ">
+            September Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.septemberAmount" />
+        </div>
+        <div  class="col">
+            <button (click)="addLineItem()">Add</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col ">
+            Direction:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.direction" />
+        </div>
+        <div class="col ">
+            February Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.februaryAmount" />
+        </div>
+        <div class="col ">
+            June Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.juneAmount" />
+        </div>
+        <div class="col ">
+            October Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.octoberAmount" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col ">
+            Freq Per Month:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.frequencyPerMonth" />
+        </div>
+        <div class="col ">
+            March Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.marchAmount" />
+        </div>
+        <div class="col ">
+            July Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.julyAmount" />
+        </div>
+        <div class="col ">
+            November Amount:
+        </div>
+        <div class="col">
+            <input [(ngModel)]="singleLineItem.novemberAmount" />
+        </div>
+        <div  class="col">
+                <button (click)="cancel()" >cancel</button>
+        </div>        
+    </div>
+
+    <div class="row">
+            <div class="col ">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col ">
+                April Amount:
+            </div>
+            <div class="col">
+                <input [(ngModel)]="singleLineItem.aprilAmount" />
+            </div>
+            <div class="col ">
+                August Amount:
+            </div>
+            <div class="col">
+                <input [(ngModel)]="singleLineItem.augustAmount" />
+            </div>
+            <div class="col ">
+                December Amount:
+            </div>
+            <div class="col">
+                <input [(ngModel)]="singleLineItem.decemberAmount" />
+            </div>
+        </div>    
+
+</div>
+
+<p></p>
+

@@ -4,6 +4,7 @@ import {Transaction} from './transaction';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Account} from './account';
+import { TransactionAccount } from './transactionAccount';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,13 +27,22 @@ export class TransactionService {
     return this.http.get<Transaction[]>(url);
   }
 
+  getTransactionsByUser(userId: number): Observable<TransactionAccount[]> {
+    const url = `${this.transactionUrl}${userId}`;
+    console.log(url);
+    return this.http.get<TransactionAccount[]>(url);
+  }
+
   getAccountByUserID(userId: number): Observable<Account[]> {
     const url = `${this.accountUrl}/?userId=${userId}`;
     return this.http.get<Account[]>(url);
   }
 
+
   addTransaction(transaction: Transaction) {
+    // console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
   }
+
 
 }

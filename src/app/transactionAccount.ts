@@ -1,4 +1,4 @@
-export class Transaction {
+export class TransactionAccount {
     transactionId: number;
     fromAccountId: number;
     toAccountId: number;
@@ -6,4 +6,6 @@ export class Transaction {
     // transactionType: string;
     transactionDt: string;
     amount: number;
+    fromAccountName: string;
+    toAccountName: string;
   }

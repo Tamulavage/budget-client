@@ -16,3 +16,19 @@
 .red {
 	color: #ff0000;
 }
+
+.header {
+	font-weight: bold;
+}
+
+.footer {
+	font-weight: bold;
+}
+
+.title {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}

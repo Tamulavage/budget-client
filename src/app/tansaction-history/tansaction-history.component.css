@@ -1,0 +1,18 @@
+.table{
+	display: table;
+	width: 100%;
+}
+.row {
+	display: table-row;
+}
+
+.col {
+	border: 1px solid #999999;
+	display: table-cell;
+    padding: 3px 10px;
+    text-align: left;
+}
+
+.header {
+	font-weight: bold;
+}
