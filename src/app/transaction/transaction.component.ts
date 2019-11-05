@@ -95,8 +95,6 @@ export class TransactionComponent implements OnInit {
   }
 
   addDeposit(amount: number, memo: string, fromAccountId: number, toAccountId: number): void {
-    // TODO: pull transaction type from service
-    let transactionType: 12;
 
     if (!amount) {
       console.log('Amount must not be null');

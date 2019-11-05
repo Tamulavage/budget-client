@@ -9,7 +9,7 @@ import { BudgetMatrix } from '../budgetMatrix';
 })
 export class BudgetMatrixMaintenanceComponent implements OnInit {
   @Input() userId: number;
-  
+
   singleLineItem: BudgetMatrix = {
     orgId: null,
     orgName: null,
@@ -30,11 +30,13 @@ export class BudgetMatrixMaintenanceComponent implements OnInit {
   };
 
   showMaintenance: boolean;
+  showAddMaintenance: boolean;
 
   constructor(private budgetMatrixService: BudgetMatrixService) { }
 
   ngOnInit() {
     this.showMaintenance = false;
+    this.showAddMaintenance = false;
   }
 
   addLineItem() {
@@ -42,15 +44,37 @@ export class BudgetMatrixMaintenanceComponent implements OnInit {
     this.budgetMatrixService.addNewLineItemByUserID(this.userId, this.singleLineItem).subscribe();
   }
 
-  cancel() {
+  showAddNewLineItem() {
+    this.toggleShowAddMaintenance();
     this.toggleShowMaintenance();
   }
 
+  showRemoveLineItem() {
+    // TODO: implement remove
+    this.toggleShowMaintenance();
+  }
+
+  cancel() {
+    this.toggleShowMaintenance();
+    this.toggleShowAddMaintenance();
+  }
+
+  // TODO: change to 1 and pass var name to update
   toggleShowMaintenance() {
     if (this.showMaintenance) {
       this.showMaintenance = false;
     } else {
       this.showMaintenance = true;
+    }
+  }
+
+
+
+  toggleShowAddMaintenance() {
+    if (this.showAddMaintenance) {
+      this.showAddMaintenance = false;
+    } else {
+      this.showAddMaintenance = true;
     }
   }
 

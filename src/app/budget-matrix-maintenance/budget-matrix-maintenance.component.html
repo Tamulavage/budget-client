@@ -1,6 +1,9 @@
 <button (click)="toggleShowMaintenance()" *ngIf="!showMaintenance">Change Line Items</button>
 
-<div class="table" *ngIf="showMaintenance">
+<button (click)="showAddNewLineItem()" *ngIf="showMaintenance">Add Line Item</button>
+<button (click)="showRemoveLineItem()" *ngIf="showMaintenance">Remove Line Item</button>
+
+<div class="table" *ngIf="showAddMaintenance">
     <div class="row">
         <div class="col ">
             Org Name:

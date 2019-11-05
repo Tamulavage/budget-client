@@ -24,3 +24,11 @@
 .footer {
 	font-weight: bold;
 }
+
+.title {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
