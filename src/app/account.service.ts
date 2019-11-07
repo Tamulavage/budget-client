@@ -37,9 +37,10 @@ export class AccountService {
   //     );
   // }
 
-  addAccount(account: Account, userId: number): Observable<Account> {
+//  addAccount(account: Account, userId: number): Observable<Account> {
+  addAccount(account: Account, userId: number): Observable<Account[]> {
     const url = `${this.accountUrl}/?userId=${userId}`;
-    return this.http.post<Account>(url, account, httpOptions)
+    return this.http.post<Account[]>(url, account, httpOptions)
       .pipe(
         // tap((newAccount: Account) => this.log(`added account`)),
         // catchError(this.handleError<Account>('addAccount'))

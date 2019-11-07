@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
     this.showBudget = true;
     this.showTranscation = false;
     this.showCheckbook = false;
-
     this.auth.userProfile$.subscribe((user: any[]) => {
       this.profileJson = JSON.stringify(user, null, 2);
       temp = JSON.parse(this.profileJson);
