@@ -54,6 +54,7 @@ export class AccountMaintenanceComponent implements OnInit {
     this.accountService.addAccount({ balance, accountTypeId, nickname, institutionName } as Account, userId)
       .subscribe(
         // TODO: push new account to parent obeject
+        newAccount => this.accounts = newAccount
       );
 
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;

@@ -5,6 +5,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Authenticate } from './authenticate';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,7 @@ export class AuthService {
   localAuthSetup() {
     // This should only be called on app initialization
     // Set up local authentication streams
+
     const checkAuth$ = this.isAuthenticated$.pipe(
       concatMap((loggedIn: boolean) => {
         if (loggedIn) {
@@ -63,6 +65,7 @@ export class AuthService {
         return of(loggedIn);
       })
     );
+
     checkAuth$.subscribe((response: { [key: string]: any } | boolean) => {
       // If authenticated, response will be user object
       // If not authenticated, response will be 'false'
@@ -119,4 +122,5 @@ export class AuthService {
       });
     });
   }
+
 }

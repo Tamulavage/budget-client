@@ -31,6 +31,7 @@ export class BudgetMatrixMaintenanceComponent implements OnInit {
 
   showMaintenance: boolean;
   showAddMaintenance: boolean;
+  showMaintenanceChoice: boolean;
 
   constructor(private budgetMatrixService: BudgetMatrixService) { }
 
@@ -46,7 +47,6 @@ export class BudgetMatrixMaintenanceComponent implements OnInit {
 
   showAddNewLineItem() {
     this.toggleShowAddMaintenance();
-    this.toggleShowMaintenance();
   }
 
   showRemoveLineItem() {
@@ -67,8 +67,6 @@ export class BudgetMatrixMaintenanceComponent implements OnInit {
       this.showMaintenance = true;
     }
   }
-
-
 
   toggleShowAddMaintenance() {
     if (this.showAddMaintenance) {
