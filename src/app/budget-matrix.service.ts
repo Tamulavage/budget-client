@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BudgetMatrix } from './budgetMatrix';
+import { BudgetMatrix } from './models/budgetMatrix';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
@@ -58,8 +58,19 @@ export class BudgetMatrixService {
 
   addNewLineItemByUserID(userId: number, lineItem: BudgetMatrix): Observable<BudgetMatrix[]> {
     const url = `${this.futureUrl}/lineitem/${userId}`;
-
+    // console.log(url);
     return this.http.post<BudgetMatrix[]>(url, lineItem, httpOptions);
+  }
+
+  removeLineItemByUserID(userId: number, lineItem: BudgetMatrix): Observable<BudgetMatrix[]> {
+    const url = `${this.futureUrl}/lineitem/${userId}`;
+
+    const httpOptionsForDelete = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body:  lineItem
+    };
+    console.log(url);
+    return this.http.delete<BudgetMatrix[]>(url, httpOptionsForDelete);
   }
 
 }

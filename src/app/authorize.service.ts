@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import { AuthorizedUser } from './authorizedUser';
+import { AuthorizedUser } from './models/authorizedUser';
 
 const   httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application/jspn' })

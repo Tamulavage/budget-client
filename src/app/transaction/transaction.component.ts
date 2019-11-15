@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransactionService } from '../transaction.service';
-import { Account } from '../account';
-import { Transaction } from '../transaction';
+import { Account } from '../models/account';
+import { Transaction } from '../models/transaction';
 
 const resetFromForm = 'Select From :';
 const resetToForm = 'Select To :';

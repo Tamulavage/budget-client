@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {Transaction} from '../transaction';
+import {Transaction} from '../models/transaction';
 import {TransactionService} from '../transaction.service';
-import { TransactionAccount } from '../transactionAccount';
+import { TransactionAccount } from '../models/transactionAccount';
 
 @Component({
   selector: 'app-tansaction-history',
