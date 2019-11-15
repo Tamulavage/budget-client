@@ -1,313 +1,304 @@
-<h2> Future Budget </h2>
-<app-budget-matrix-maintenance  [userId]="user"> </app-budget-matrix-maintenance>
-<p></p>
-<div class="table">
-    <div class="row">
-        <div class="col ">
-        </div>
-        <div class="col header">
-            JAN
-        </div>
-        <div class="col header">
-            FEB
-        </div>
-        <div class="col header">
-            MAR
-        </div>
-        <div class="col header">
-            APR
-        </div>
-        <div class="col header">
-            MAY
-        </div>
-        <div class="col header">
-            JUNE
-        </div>
-        <div class="col header">
-            JULY
-        </div>
-        <div class="col header">
-            AUG
-        </div>
-        <div class="col header">
-            SEPT
-        </div>
-        <div class="col header">
-            OCT
-        </div>
-        <div class="col header">
-            NOV
-        </div>
-        <div class="col header">
-            DEC
-        </div>
-    </div>
-    <div class="row" *ngFor="let budgetRow of budgetInRows">
-        <div class="col title">
-            {{budgetRow.orgName}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.januaryAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.februaryAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.marchAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.aprilAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.mayAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.juneAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.julyAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.augustAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.septemberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.octoberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.novemberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.decemberAmount | currency}}
-        </div>
-    </div>
-    <div class="row" *ngFor="let incoming of incomingSum">
-        <div class="col title footer">
-            Incoming:
-        </div>
-        <div class="col footer align-right">
-            {{ incoming.januaryAmount | currency }}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.februaryAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.marchAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.aprilAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.mayAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.juneAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.julyAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.augustAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.septemberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.octoberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.novemberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{incoming.decemberAmount | currency}}
-        </div>
-    </div>
-    <p></p>
-    <div class="row" *ngFor="let budgetRow of budgetOutRows">
-        <div class="col title">
-            {{budgetRow.orgName}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.januaryAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.februaryAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.marchAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.aprilAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.mayAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.juneAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.julyAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.augustAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.septemberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.octoberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.novemberAmount | currency}}
-        </div>
-        <div class="col align-right">
-            {{budgetRow.decemberAmount | currency}}
-        </div>
-    </div>
-    <div class="row" *ngFor="let outgoing of outgoingSum">
-        <div class="col title footer">
-            Outgoing:
-        </div>
-        <div class="col footer align-right">
-            {{ outgoing.januaryAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{ outgoing.februaryAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.marchAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.aprilAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.mayAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.juneAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.julyAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.augustAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.septemberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.octoberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.novemberAmount | currency}}
-        </div>
-        <div class="col footer align-right">
-            {{outgoing.decemberAmount | currency}}
-        </div>
-    </div>
+<div *ngIf="budgetInRows">
+
+    <!-- https://github.com/marinantonio/angular-mat-table-crud/tree/master/src/app -->
+
+
     <p></p>
 
-    <div class="row" *ngFor="let diff of differenceSum">
-        <div class="col title footer">
-            Difference:
-        </div>
-        <div class="col footer  align-right"  *ngIf="diff.januaryAmount > 0; else redJan">
-            {{ diff.januaryAmount | currency}}
-        </div>
-        <ng-template #redJan>
-            <div class="col red footer  align-right">
-                {{diff.januaryAmount | currency}}
-            </div>
-        </ng-template>
-        <div class="col footer  align-right" *ngIf="diff.februaryAmount > 0; else redFeb">
-            {{ diff.februaryAmount | currency}}
-        </div>
-        <ng-template #redFeb>
-            <div class="col red footer  align-right">
-                {{diff.februaryAmount | currency}}
-            </div>
-        </ng-template>
-        <div class="col footer  align-right" *ngIf="diff.marchAmount > 0; else redMar">
-            {{diff.marchAmount | currency}}
-        </div>
-        <ng-template #redMar>
-            <div class="col red footer  align-right">
-                {{diff.marchAmount | currency}}
-            </div>
-        </ng-template>
-        <div class="col footer  align-right"  *ngIf="diff.aprilAmount > 0; else redApr">
-            {{diff.aprilAmount | currency}}
-        </div>
-        <ng-template #redApr>
-            <div class="col red footer  align-right">
-                {{diff.aprilAmount | currency}}
-            </div>
-        </ng-template>        
-        <div class="col footer  align-right" *ngIf="diff.mayAmount > 0; else redMay">
-            {{diff.mayAmount | currency}}
-        </div>
-        <ng-template #redMay>
-            <div class="col red footer  align-right">
-                {{diff.mayAmount | currency}}
-            </div>
-        </ng-template>         
-        <div class="col footer  align-right"  *ngIf="diff.juneAmount > 0; else redJune">
-            {{diff.juneAmount | currency}}
-        </div>
-        <ng-template #redJune>
-            <div class="col red footer  align-right">
-                {{diff.juneAmount | currency}}
-            </div>
-        </ng-template>        
-        <div class="col footer  align-right" *ngIf="diff.julyAmount > 0; else redJuly">
-            {{diff.julyAmount | currency}}
-        </div>
-        <ng-template #redJuly>
-            <div class="col red footer  align-right">
-                {{diff.julyAmount | currency}}
-            </div>
-        </ng-template>          
-        <div class="col footer  align-right" *ngIf="diff.augustAmount > 0; else redAug">
-            {{diff.augustAmount | currency}}
-        </div>
-        <ng-template #redAug>
-            <div class="col red footer  align-right">
-                {{diff.augustAmount | currency}}
-            </div>
-        </ng-template>          
-        <div class="col footer  align-right " *ngIf="diff.septemberAmount > 0; else redSep">
-            {{diff.septemberAmount | currency}}
-        </div>
-        <ng-template #redSep>
-            <div class="col red footer  align-right">
-                {{diff.septemberAmount | currency}}
-            </div>
-        </ng-template>
-        <div class="col footer  align-right" *ngIf="diff.octoberAmount > 0; else redOct">
-            {{diff.octoberAmount | currency}}
-        </div>
-        <ng-template #redOct>
-            <div class="col red footer  align-right">
-                {{diff.octoberAmount | currency}}
-            </div>
-        </ng-template>
-        <div class="col footer  align-right"  *ngIf="diff.novemberAmount > 0; else redNov">
-            {{diff.novemberAmount | currency}}
-        </div>
-        <ng-template #redNov>
-            <div class="col red footer  align-right">
-                {{diff.novemberAmount | currency}}
-            </div>
-        </ng-template>        
-        <div class="col footer  align-right" *ngIf="diff.decemberAmount > 0; else redDec">
-            {{diff.decemberAmount | currency}}
-        </div>
-        <ng-template #redDec>
-            <div class="col red footer align-right">
-                {{diff.decemberAmount | currency}}
-            </div>
-        </ng-template>          
+    <table mat-table [dataSource]="budgetInRows">
+
+        <ng-container matColumnDef="orgName">
+            <th mat-header-cell *matHeaderCellDef> Incoming </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.orgName}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total: </td>
+        </ng-container>
+
+        <ng-container matColumnDef="januaryAmount">
+            <th mat-header-cell *matHeaderCellDef> January </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.januaryAmount | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ janIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="februaryAmount">
+            <th mat-header-cell *matHeaderCellDef> February </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ febIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marchAmount">
+            <th mat-header-cell *matHeaderCellDef> March </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ marIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="aprilAmount">
+            <th mat-header-cell *matHeaderCellDef> April </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ aprIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mayAmount">
+            <th mat-header-cell *matHeaderCellDef> May </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ mayIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="juneAmount">
+            <th mat-header-cell *matHeaderCellDef> June </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ junIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="julyAmount">
+            <th mat-header-cell *matHeaderCellDef> July </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ julIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="augustAmount">
+            <th mat-header-cell *matHeaderCellDef> August </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ augIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="septemberAmount">
+            <th mat-header-cell *matHeaderCellDef> September </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ sepIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="octoberAmount">
+            <th mat-header-cell *matHeaderCellDef> October </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ octIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="novemberAmount">
+            <th mat-header-cell *matHeaderCellDef> November </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ novOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="decemberAmount">
+            <th mat-header-cell *matHeaderCellDef> December </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ decIncomingAmount | currency}} </td>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+                <button mat-icon color="primary" (click)="addNew('I')">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+            </th>
+
+            <td mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent" (click)="editRow(row.orgName, 'I', row.januaryAmount, row.februaryAmount , row.marchAmount ,
+                                         row.aprilAmount, row.mayAmount , row.juneAmount, 
+                                         row.julyAmount, row.augustAmount , row.septemberAmount,
+                                         row.octoberAmount, row.novemberAmount , row.decemberAmount)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="deleteRow(row.orgName, 'I')">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsWithActions"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsWithActions;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+
+    <p></p>
+
+    <table mat-table [dataSource]="budgetOutRows">
+
+        <ng-container matColumnDef="orgName">
+            <th mat-header-cell *matHeaderCellDef> Outgoing </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.orgName}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total: </td>
+        </ng-container>
+
+        <ng-container matColumnDef="januaryAmount">
+            <th mat-header-cell *matHeaderCellDef> January </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{ budgetRow.januaryAmount | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ janOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="februaryAmount">
+            <th mat-header-cell *matHeaderCellDef> February </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ febOutgoingAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marchAmount">
+            <th mat-header-cell *matHeaderCellDef> March </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ marOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="aprilAmount">
+            <th mat-header-cell *matHeaderCellDef> April </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ aprOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mayAmount">
+            <th mat-header-cell *matHeaderCellDef> May </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ mayOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="juneAmount">
+            <th mat-header-cell *matHeaderCellDef> June </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ junOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="julyAmount">
+            <th mat-header-cell *matHeaderCellDef> July </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ julOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="augustAmount">
+            <th mat-header-cell *matHeaderCellDef> August </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ augOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="septemberAmount">
+            <th mat-header-cell *matHeaderCellDef> September </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ sepOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="octoberAmount">
+            <th mat-header-cell *matHeaderCellDef> October </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ octOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="novemberAmount">
+            <th mat-header-cell *matHeaderCellDef> November </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ novOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="decemberAmount">
+            <th mat-header-cell *matHeaderCellDef> December </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef> {{ decOutgoingAmount | currency}} </td>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+                <button mat-icon color="primary" (click)="addNew('O')">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+            </th>
+
+            <td mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent" (click)="editRow(row.orgName, 'O', row.januaryAmount, row.februaryAmount , row.marchAmount ,
+                                     row.aprilAmount, row.mayAmount , row.juneAmount, 
+                                     row.julyAmount, row.augustAmount , row.septemberAmount,
+                                     row.octoberAmount, row.novemberAmount , row.decemberAmount)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="deleteRow(row.orgName, 'O')">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsWithActions"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsWithActions;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+
+    <p></p>
+
+    <table mat-table [dataSource]="differenceSum">
+        <ng-container matColumnDef="orgName">
+            <th mat-header-cell *matHeaderCellDef> difference </th>
+            <td mat-cell class="bold" *matCellDef="let budgetRow"> Difference: </td>
+        </ng-container>
+
+        <ng-container matColumnDef="januaryAmount">
+            <th mat-header-cell *matHeaderCellDef> January </th>
+            <td mat-cell bold *matCellDef="let budgetRow"> {{budgetRow.januaryAmount | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="februaryAmount">
+            <th mat-header-cell *matHeaderCellDef> February </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="marchAmount">
+            <th mat-header-cell *matHeaderCellDef> March </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="aprilAmount">
+            <th mat-header-cell *matHeaderCellDef> April </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mayAmount">
+            <th mat-header-cell *matHeaderCellDef> May </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="juneAmount">
+            <th mat-header-cell *matHeaderCellDef> June </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="julyAmount">
+            <th mat-header-cell *matHeaderCellDef> July </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="augustAmount">
+            <th mat-header-cell *matHeaderCellDef> August </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="septemberAmount">
+            <th mat-header-cell *matHeaderCellDef> September </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="octoberAmount">
+            <th mat-header-cell *matHeaderCellDef> October </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="novemberAmount">
+            <th mat-header-cell *matHeaderCellDef> November </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="decemberAmount">
+            <th mat-header-cell *matHeaderCellDef> December </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+        </ng-container>
+
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumnsX"></tr> -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <p></p>
+
+    <div class="algin-right">
+        <button *ngIf="!showMaintenceColumn" (click)="showMaintenanceColumn()">show Maintenance column</button>
+        <button *ngIf="showMaintenceColumn" (click)="hideMaintenanceColumn()">hide Maintenance column</button>
     </div>
+
+    <p></p>
+
 </div>

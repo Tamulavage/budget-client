@@ -1,34 +1,37 @@
-/* DivTable.com */
-.table{
-	display: table;
+ table {
 	width: 100%;
-}
-.row {
-	display: table-row;
-}
+  }
 
-.col {
+.mat-header-cell   {
 	border: 1px solid #999999;
-	display: table-cell;
+	text-align: left;
+	max-width: 20px;
 	padding: 3px 10px;
 }
-
-.red {
-	color: #ff0000;
+  
+.mat-cell   {
+	border: 1px solid #999999;
+	text-align: left;
+	padding: 3px 10px;
+	max-width: 20px;
 }
-
-.header {
+  
+.mat-footer-cell   {
+	border: 1px solid #999999;
+	text-align: left;
+	max-width: 20px;
+	padding: 3px 10px;
 	font-weight: bold;
 }
 
-.footer {
+.bold   {
+	border: 1px solid #999999;
+	text-align: left;
+	padding: 3px 10px;
+	max-width: 20px;
 	font-weight: bold;
-}
+} 
 
-.title {
-    text-align: left;
-}
-
-.align-right {
-    text-align: right;
+.algin-right {
+	float: right;
 }

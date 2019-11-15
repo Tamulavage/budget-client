@@ -1,0 +1,127 @@
+<div class="container">
+  <h3 mat-dialog-title>Add/Edit row</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Org Name" [(ngModel)]="data.orgName" name="orgName"
+          required>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="!showRemove">
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="Direction" [(ngModel)]="data.direction"
+            name="direction" maxlength="1" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" type="number" placeholder="Frequency Per Month"
+            [(ngModel)]="data.frequencyPerMonth" maxlength="2" name="frequencyPerMonth" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" type="number" placeholder="January Amount"
+            [(ngModel)]="data.januaryAmount" name="januaryAmount">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="February Amount" [(ngModel)]="data.februaryAmount"
+            name="februaryAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="March Amount" [(ngModel)]="data.marchAmount"
+            name="marchAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="April Amount" [(ngModel)]="data.aprilAmount"
+            name="aprilAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="May Amount" [(ngModel)]="data.mayAmount"
+            name="mayAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="June Amount" [(ngModel)]="data.juneAmount"
+            name="juneAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="July Amount" [(ngModel)]="data.julyAmount"
+            name="julyAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="August Amount" [(ngModel)]="data.augustAmount"
+            name="augustAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="September Amount" [(ngModel)]="data.septemberAmount"
+            name="septemberAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="October Amount" [(ngModel)]="data.octoberAmount"
+            name="octoberAmount" type="number">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput #input class="form-control" type="number" placeholder="November Amount"
+              [(ngModel)]="data.novemberAmount" name="novemberAmount ">
+          </mat-form-field>
+        </div>
+        
+        <div class="form">
+            <mat-form-field color="accent">
+              <input matInput #input class="form-control" type="number" placeholder="December Amount"
+                [(ngModel)]="data.decemberAmount" name="decemberAmount">
+            </mat-form-field>
+          </div>        
+
+    </div>
+
+    <div mat-dialog-actions>
+      <div *ngIf="!showRemove">
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="confirmAdd()">Save</button>
+      </div>
+      <div *ngIf="showRemove">
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="confirmDelete()">Delete</button>
+      </div>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -8,7 +8,8 @@ const routes: Routes = [
    {path: 'callback',  component: CallbackComponent},
    {path: '',  component: ProfileComponent},
    {path: 'profile', component: ProfileComponent
-    , canActivate: [AuthGuard]}
+    , canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

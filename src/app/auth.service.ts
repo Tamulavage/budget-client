@@ -5,7 +5,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Authenticate } from './authenticate';
+import { Authenticate } from './models/authenticate';
 
 @Injectable({
   providedIn: 'root'
