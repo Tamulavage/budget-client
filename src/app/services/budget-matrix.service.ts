@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BudgetMatrix } from './models/budgetMatrix';
+import { BudgetMatrix } from '../models/budgetMatrix';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';

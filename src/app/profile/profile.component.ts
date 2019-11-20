@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { AuthorizeService } from '../authorize.service';
+import { AuthService } from '../services/auth.service';
+import { AuthorizeService } from '../services/authorize.service';
 import { AuthorizedUser } from '../models/authorizedUser';
 import { Authenticate } from '../models/authenticate';
 // import { from, of, Observable, BehaviorSubject, combineLatest, throwError, Subject } from 'rxjs';

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Transaction} from './models/transaction';
+import {Transaction} from '../models/transaction';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {Account} from './models/account';
-import { TransactionAccount } from './models/transactionAccount';
+import {Account} from '../models/account';
+import { TransactionAccount } from '../models/transactionAccount';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
