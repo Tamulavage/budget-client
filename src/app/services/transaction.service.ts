@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Account} from '../models/account';
 import { TransactionAccount } from '../models/transactionAccount';
+import { Checkbook } from '../models/checkbook';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,6 +20,7 @@ export class TransactionService {
 
   private baseURI = 'http://localhost:8080/budget/';
   private transactionUrl = `${this.baseURI}transaction/`;
+  private transactionsUrl = `${this.baseURI}transactions/`;
   private accountUrl = `${this.baseURI}account`;
 
   getLatestTransactionsByUser(userId: number): Observable<Transaction[]> {
@@ -31,6 +33,12 @@ export class TransactionService {
     const url = `${this.transactionUrl}${userId}`;
     console.log(url);
     return this.http.get<TransactionAccount[]>(url);
+  }
+
+  getTransactionsAndAccountInfo(userId: number): Observable<Checkbook[]> {
+    const url = `${this.transactionsUrl}${userId}`;
+    console.log(url);
+    return this.http.get<Checkbook[]>(url);
   }
 
   getAccountByUserID(userId: number): Observable<Account[]> {
