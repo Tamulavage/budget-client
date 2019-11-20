@@ -24,7 +24,7 @@ export class BudgetMatrixComponent implements OnInit {
     'decemberAmount'];
 
   constructor(private budgetMatrixService: BudgetMatrixService,
-    public dialog: MatDialog) { }
+              public dialog: MatDialog) { }
 
   budgetRow: BudgetMatrix;
   budgetOutRows: BudgetMatrix[] = [];
@@ -173,10 +173,10 @@ export class BudgetMatrixComponent implements OnInit {
         if (x === 1) {
           if (direction === 'O') {
             const index = this.budgetOutRows.findIndex(item => item.orgName === orgName);
-            this.budgetOutRows[index]= this.budgetMatrixService.getDialogData();
+            this.budgetOutRows[index] = this.budgetMatrixService.getDialogData();
           } else if (direction === 'I') {
             const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
-            this.budgetInRows[index]= this.budgetMatrixService.getDialogData();
+            this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
           }
           this.hideMaintenanceColumn();
         }
@@ -193,7 +193,6 @@ export class BudgetMatrixComponent implements OnInit {
       data: { orgName, direction, frequencyPerMonth, userId, showRemoved }
     });
 
-    // tslint:disable-next-line: deprecation
     dialogRef.afterClosed().subscribe(
       x => {
         if (x === 1) {
@@ -209,6 +208,5 @@ export class BudgetMatrixComponent implements OnInit {
       }
     );
   }
-
 
 }
