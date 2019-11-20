@@ -25,21 +25,20 @@ export class AccountService {
     const url = `${this.accountUrl}/?userId=${userId}`;
     return this.http.get<Account[]>(url)
       .pipe(
-        //  tap(_ => console.log('Data', _))
       );
   }
 
-  // addAccount(account: Account): Observable<Account> {
-  //   return this.http.post<Account>(this.accountUrl, account, httpOptions)
-  //     .pipe(
-  //       // tap((newAccount: Account) => this.log(`added account`)),
-  //       // catchError(this.handleError<Account>('addAccount'))
-  //     );
-  // }
-
-//  addAccount(account: Account, userId: number): Observable<Account> {
   addAccount(account: Account, userId: number): Observable<Account[]> {
     const url = `${this.accountUrl}/?userId=${userId}`;
+    return this.http.post<Account[]>(url, account, httpOptions)
+      .pipe(
+        // tap((newAccount: Account) => this.log(`added account`)),
+        // catchError(this.handleError<Account>('addAccount'))
+      );
+  }
+
+  deleteAccount(account: Account): Observable<Account[]> {
+    const url = `${this.accountUrl}/inactive`;
     return this.http.post<Account[]>(url, account, httpOptions)
       .pipe(
         // tap((newAccount: Account) => this.log(`added account`)),

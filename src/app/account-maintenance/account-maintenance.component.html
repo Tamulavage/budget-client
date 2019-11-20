@@ -5,30 +5,49 @@
     </div>
 
     <div id="newAccountDiv" hidden="true">
-            <label>Bank : </label>
-            <input placeholder="Bank" id="bank" type="string" #bank />  
-            <br>  
-            <label>Nickname : </label>
-            <input placeholder="Nickname" id="nickname" type="string" #nickName />
-            <br>
-            <label>Initial Amount : </label>
-            <input id="initialAmount" type="number" #initialAmount value={{InitialBalance}}/>
-            <br>
+        <label>Bank : </label>
+        <input placeholder="Bank" id="bank" type="string" #bank />
+        <br>
+        <label>Nickname : </label>
+        <input placeholder="Nickname" id="nickname" type="string" #nickName />
+        <br>
+        <label>Initial Amount : </label>
+        <input id="initialAmount" type="number" #initialAmount value={{InitialBalance}} />
+        <br>
     </div>
 
     <p></p>
-    <div id="verify" hidden = "true">
-                    <div class="dropdown text-muted pt-2 animate3 slideIn drpdwn">
-                        <button id="btnGroupDrop" type="button" class="btn text-muted dropdown-toggle plus" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" #newAccountType value="{{AccountTypeID}}">
-                            {{accountTypeName}}
-                        </button>
-                        <div class="dropdown-menu dropdown-content plus text-light dropright" aria-labelledby="accountTypebtn" id="accountTypedrp">
-                            <a *ngFor="let accountType of accountTypes" [class.selected]="accountType === selectedAccountType"
-                               (click)="onSelectAccountType(accountType)" class="dropdown-item ">{{accountType.description}}</a>
-                        </div>
-                    </div>
-            <button (click)="createAccount(bank.value, initialAmount.value, nickName.value )">Create Account</button>
-            <button (click)="cancel()">Cancel</button>
+
+
+    <div class="table">
+        <div class="row" *ngFor="let account of accounts" (click)="deleteAccount(account)">
+            <div class="col">
+                {{account.institutionName}}
+            </div>
+            <div class="col">
+                {{account.nickname}}
+            </div>
+        </div>
+    </div>
+    <div id="deleteDivButton" hidden="true">
+        <p></p>
+        <button (click)="cancel()">Cancel</button>
+    </div>
+
+    <p></p>
+    <div id="newButtonDiv" hidden="true">
+        <div class="dropdown text-muted pt-2 animate3 slideIn drpdwn">
+            <button id="btnGroupDrop" type="button" class="btn text-muted dropdown-toggle plus" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" #newAccountType value="{{AccountTypeID}}">
+                {{accountTypeName}}
+            </button>
+            <div class="dropdown-menu dropdown-content plus text-light dropright" aria-labelledby="accountTypebtn"
+                id="accountTypedrp">
+                <a *ngFor="let accountType of accountTypes" [class.selected]="accountType === selectedAccountType"
+                    (click)="onSelectAccountType(accountType)" class="dropdown-item ">{{accountType.description}}</a>
+            </div>
+        </div>
+        <button (click)="createAccount(bank.value, initialAmount.value, nickName.value )">Create Account</button>
+        <button (click)="cancel()">Cancel</button>
     </div>
 </div>

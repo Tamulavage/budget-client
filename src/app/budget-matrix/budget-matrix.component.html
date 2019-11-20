@@ -1,11 +1,13 @@
 <div *ngIf="budgetInRows">
 
     <!-- https://github.com/marinantonio/angular-mat-table-crud/tree/master/src/app -->
+    <div class="algin-right">
+        <button *ngIf="!showMaintenceColumn" (click)="showMaintenanceColumn()">Show Maintenance column</button>
+        <button *ngIf="showMaintenceColumn" (click)="hideMaintenanceColumn()">Hide Maintenance column</button>
+        <p></p>
+    </div>
 
-
-    <p></p>
-
-    <table mat-table [dataSource]="budgetInRows">
+    <table mat-table [(dataSource)]="budgetInRows">
 
         <ng-container matColumnDef="orgName">
             <th mat-header-cell *matHeaderCellDef> Incoming </th>
@@ -294,11 +296,6 @@
     </table>
     <p></p>
 
-    <div class="algin-right">
-        <button *ngIf="!showMaintenceColumn" (click)="showMaintenanceColumn()">show Maintenance column</button>
-        <button *ngIf="showMaintenceColumn" (click)="hideMaintenanceColumn()">hide Maintenance column</button>
-    </div>
 
-    <p></p>
 
 </div>
