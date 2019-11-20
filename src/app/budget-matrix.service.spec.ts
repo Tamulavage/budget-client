@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BudgetMatrixService } from './budget-matrix.service';
+import { BudgetMatrixService } from './services/budget-matrix.service';
 
 describe('BudgetMatrixService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { BudgetMatrix } from '../models/budgetMatrix';
-import { BudgetMatrixService } from '../budget-matrix.service';
+import { BudgetMatrixService } from '../services/budget-matrix.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatrixMaintenanceComponent } from '../matrix-maintenance/matrix-maintenance.component';
 
@@ -20,13 +20,11 @@ export class BudgetMatrixComponent implements OnInit {
     , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount', 'decemberAmount'];
 
   displayedColumnsWithActions: string[] = ['orgName', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
-  'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
-  'decemberAmount'];
+    'mayAmount', 'juneAmount', 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
+    'decemberAmount'];
 
   constructor(private budgetMatrixService: BudgetMatrixService,
               public dialog: MatDialog) { }
-
-
 
   budgetRow: BudgetMatrix;
   budgetOutRows: BudgetMatrix[] = [];
@@ -135,35 +133,80 @@ export class BudgetMatrixComponent implements OnInit {
     this.showMaintenceColumn = false;
   }
 
-  addNew( direction: string) {
-    const userId = this.userId ;
+  addNew(direction: string) {
+    const userId = this.userId;
     const frequencyPerMonth = 1;
     const dialogRef = this.dialog.open(MatrixMaintenanceComponent, {
-      data: {  direction , frequencyPerMonth,  userId }
+      data: { direction, frequencyPerMonth, userId }
     });
+
+    dialogRef.afterClosed().subscribe(
+      x => {
+        if (x === 1) {
+          if (direction === 'O') {
+            this.budgetOutRows.push(this.budgetMatrixService.getDialogData());
+          } else if (direction === 'I') {
+            this.budgetInRows.push(this.budgetMatrixService.getDialogData());
+          }
+          this.hideMaintenanceColumn();
+        }
+      }
+    );
   }
 
-  editRow(orgName: string, direction: string, januaryAmount: number, februaryAmount: number,  marchAmount: number,
+  editRow(orgName: string, direction: string, januaryAmount: number, februaryAmount: number, marchAmount: number,
           aprilAmount: number, mayAmount: number, juneAmount: number, julyAmount: number, augustAmount: number,
           septemberAmount: number, octoberAmount: number, novemberAmount: number, decemberAmount: number) {
-    const userId = this.userId ;
+
+    const userId = this.userId;
     const frequencyPerMonth = 1;
     const dialogRef = this.dialog.open(MatrixMaintenanceComponent, {
-      data: {orgName, direction, frequencyPerMonth, userId, januaryAmount , februaryAmount, marchAmount,
-            aprilAmount, mayAmount, juneAmount, julyAmount, augustAmount,
-            septemberAmount, octoberAmount, novemberAmount, decemberAmount
-        }
+      data: {
+        orgName, direction, frequencyPerMonth, userId, januaryAmount, februaryAmount, marchAmount,
+        aprilAmount, mayAmount, juneAmount, julyAmount, augustAmount,
+        septemberAmount, octoberAmount, novemberAmount, decemberAmount
+      }
     });
+
+    dialogRef.afterClosed().subscribe(
+      x => {
+        if (x === 1) {
+          if (direction === 'O') {
+            const index = this.budgetOutRows.findIndex(item => item.orgName === orgName);
+            this.budgetOutRows[index] = this.budgetMatrixService.getDialogData();
+          } else if (direction === 'I') {
+            const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
+            this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
+          }
+          this.hideMaintenanceColumn();
+        }
+      }
+    );
+
   }
 
   deleteRow(orgName: string, direction: string) {
-    const userId = this.userId ;
+    const userId = this.userId;
     const showRemoved = true;
     const frequencyPerMonth = 0;
     const dialogRef = this.dialog.open(MatrixMaintenanceComponent, {
-      data: {orgName, direction , frequencyPerMonth,  userId, showRemoved}
+      data: { orgName, direction, frequencyPerMonth, userId, showRemoved }
     });
-  }
 
+    dialogRef.afterClosed().subscribe(
+      x => {
+        if (x === 1) {
+          if (direction === 'O') {
+            const index = this.budgetOutRows.findIndex(item => item.orgName === orgName);
+            this.budgetOutRows.splice(index, 1);
+          } else if (direction === 'I') {
+            const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
+            this.budgetInRows.splice(index, 1);
+          }
+          this.hideMaintenanceColumn();
+        }
+      }
+    );
+  }
 
 }

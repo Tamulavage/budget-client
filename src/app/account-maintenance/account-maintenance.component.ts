@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AccountService } from '../account.service';
+import { AccountService } from '../services/account.service';
 import { Account } from '../models/account';
 import { Accounttype } from '../models/accounttype';
 
@@ -28,22 +28,23 @@ export class AccountMaintenanceComponent implements OnInit {
 
   ngOnInit() {
     this.resetInitialFields();
-    this.accountService.getAccountTypes().subscribe(accountType => this.accountTypes = accountType);
   }
 
   newAccountButton(): void {
+    this.accountService.getAccountTypes().subscribe(accountType => this.accountTypes = accountType);
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = false;
     (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = true;
-    (document.getElementById('verify') as HTMLInputElement).hidden = false;
+    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = false;
   }
 
   delete(): void {
-    // TODO: Need to add
+    (document.getElementById('deleteDivButton') as HTMLInputElement).hidden = false;
+    (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = true;
+    this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
   }
 
   createAccount(institutionName: string, balance: number, nickname: string): void {
 
-    console.log('starting createAccount');
     if (!this.validDeposit(nickname, balance)) {
       return;
     }
@@ -59,7 +60,7 @@ export class AccountMaintenanceComponent implements OnInit {
 
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
     (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
-    (document.getElementById('verify') as HTMLInputElement).hidden = true;
+    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = true;
 
     this.resetInitialFields();
   }
@@ -70,20 +71,33 @@ export class AccountMaintenanceComponent implements OnInit {
     this.accountTypeName = resetInitialAccountType;
     this.accountTypeId = null;
     this.selectedAccountType = null;
+    this.accounts = [];
   }
 
   onSelectAccountType(accountType: Accounttype) {
     this.selectedAccountType = accountType;
     this.accountTypeName = this.selectedAccountType.description;
     this.accountTypeId = this.selectedAccountType.id;
-}
+  }
 
   cancel(): void {
     this.resetInitialFields();
 
     (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
     (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
-    (document.getElementById('verify') as HTMLInputElement).hidden = true;
+    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = true;
+    (document.getElementById('deleteDivButton') as HTMLInputElement).hidden = true;
+  }
+
+  getAccounts(): void {
+    this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
+  }
+
+  deleteAccount(account: Account) {
+    const tempid = account.id;
+    this.accountService.deleteAccount(account).subscribe();
+    const index = this.accounts.findIndex(item => item.id === tempid);
+    this.accounts.splice(index, 1);
   }
 
   private validDeposit(nickname: string, balance: number) {

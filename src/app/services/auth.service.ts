@@ -5,7 +5,7 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Authenticate } from './models/authenticate';
+import { Authenticate } from '../models/authenticate';
 
 @Injectable({
   providedIn: 'root'
@@ -80,7 +80,8 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}/callback`,
+        // redirect_uri: `${window.location.origin}/callback`,
+        redirect_uri: `${window.location.origin}/profile`,
         appState: { target: redirectPath }
       });
     });
@@ -94,7 +95,7 @@ export class AuthService {
       // Have client, now call method to handle auth callback redirect
       tap(cbRes => {
         // Get and set target redirect route from callback results
-        targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
+        targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/profile';
       }),
       concatMap(() => {
         // Redirect callback complete; get user and login status

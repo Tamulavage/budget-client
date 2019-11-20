@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BudgetMatrix } from './models/budgetMatrix';
+import { BudgetMatrix } from '../models/budgetMatrix';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
@@ -19,6 +19,8 @@ export class BudgetMatrixService {
   private baseURI = 'http://localhost:8080/budget/';
   private futureUrl = `${this.baseURI}future`;
 
+  dialogData: any;
+
   getFutureOutputBudgetByUserID(userId: number): Observable<BudgetMatrix[]> {
     const url = `${this.futureUrl}/output/${userId}`;
     // console.log(url);
@@ -33,7 +35,6 @@ export class BudgetMatrixService {
     // console.log(url);
     return this.http.get<BudgetMatrix[]>(url)
     .pipe(
-      //  tap(_ => console.log('Data', _))
     );
   }
 
@@ -56,7 +57,12 @@ export class BudgetMatrixService {
     };
   }
 
+  getDialogData() {
+    return this.dialogData;
+  }
+
   addNewLineItemByUserID(userId: number, lineItem: BudgetMatrix): Observable<BudgetMatrix[]> {
+    this.dialogData = lineItem;
     const url = `${this.futureUrl}/lineitem/${userId}`;
     // console.log(url);
     return this.http.post<BudgetMatrix[]>(url, lineItem, httpOptions);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +13,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.auth.localAuthSetup();
+    // this.auth.handleAuthCallback();
   }
 }

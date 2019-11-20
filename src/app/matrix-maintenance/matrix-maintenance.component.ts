@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-import { BudgetMatrixService } from '../budget-matrix.service';
+import { BudgetMatrixService } from '../services/budget-matrix.service';
 import { BudgetMatrix } from '../models/budgetMatrix';
 import { BudgetMaintenanceSetting } from '../models/budgetMaintenanceSetting';
 

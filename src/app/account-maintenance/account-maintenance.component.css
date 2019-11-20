@@ -26,3 +26,23 @@
 
 
 .dropdown:hover .dropdown-content {display: block;}
+
+.table{
+    display: table;
+    align-content: center;
+	/* width: 35%; */
+}
+.row {
+	display: table-row;
+}
+
+.col {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 1px 10px;
+	text-align: left;
+}
+
+.bold {
+	font-weight: bold;
+}

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Transaction} from './models/transaction';
+import {Transaction} from '../models/transaction';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
-import {Account} from './models/account';
-import { TransactionAccount } from './models/transactionAccount';
+import {Account} from '../models/account';
+import { TransactionAccount } from '../models/transactionAccount';
+import { Checkbook } from '../models/checkbook';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,6 +20,7 @@ export class TransactionService {
 
   private baseURI = 'http://localhost:8080/budget/';
   private transactionUrl = `${this.baseURI}transaction/`;
+  private transactionsUrl = `${this.baseURI}transactions/`;
   private accountUrl = `${this.baseURI}account`;
 
   getLatestTransactionsByUser(userId: number): Observable<Transaction[]> {
@@ -33,6 +35,12 @@ export class TransactionService {
     return this.http.get<TransactionAccount[]>(url);
   }
 
+  getTransactionsAndAccountInfo(userId: number): Observable<Checkbook[]> {
+    const url = `${this.transactionsUrl}${userId}`;
+    console.log(url);
+    return this.http.get<Checkbook[]>(url);
+  }
+
   getAccountByUserID(userId: number): Observable<Account[]> {
     const url = `${this.accountUrl}/?userId=${userId}`;
     return this.http.get<Account[]>(url);
@@ -40,7 +48,6 @@ export class TransactionService {
 
 
   addTransaction(transaction: Transaction) {
-    // console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
   }
 
