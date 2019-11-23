@@ -21,6 +21,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { AccountMaintenanceComponent } from './account-maintenance/account-maintenance.component';
 import { BudgetMatrixComponent } from './budget-matrix/budget-matrix.component';
 import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintenance.component';
+import { TransactionAddComponent } from './transaction-add/transaction-add.component';
 
 
 
@@ -35,7 +36,8 @@ import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintena
     TransactionComponent,
     AccountMaintenanceComponent,
     BudgetMatrixComponent,
-    MatrixMaintenanceComponent
+    MatrixMaintenanceComponent,
+    TransactionAddComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintena
     BrowserAnimationsModule
   ],
   entryComponents: [
-    MatrixMaintenanceComponent
+    MatrixMaintenanceComponent,
+    TransactionAddComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
