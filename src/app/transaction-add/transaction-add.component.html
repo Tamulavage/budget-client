@@ -1,0 +1,51 @@
+<div class="container">
+    <h3 mat-dialog-title>Add new Transaction</h3>
+
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput #input class="form-control" placeholder="Memo" [(ngModel)]="transaction.Memo"
+                    name="Memo" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="accent">
+                <input matInput #input class="form-control" type="number" placeholder="Amount"
+                    [(ngModel)]="transaction.Amount" name="Amount" required>
+            </mat-form-field>
+        </div>
+
+        <div class="dropdown" role="group">
+            <button class="dropbtn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" value="{{fromAccountId}}">
+                {{fromAccountName}}
+            </button>
+            <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
+                <a *ngFor="let account of accountsFrom" class="dropdown-item" (click)="onSelectFromAccount(account)"
+                    [class.selected]="account === selectFromAccount">
+                    {{account.institutionName}} / {{account.nickname}}</a>
+            </div>
+        </div>
+
+        <div class="dropdown" role="group">
+            <button class="dropbtn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" value="{{toAccountId}}">
+                {{toAccountName}}
+            </button>
+            <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
+                <a *ngFor="let account of accountsTo" class="dropdown-item" (click)="onSelectToAccount(account)"
+                    [class.selected]="account === selectToAccount">
+                    {{account.institutionName}} / {{account.nickname}}</a>
+            </div>
+        </div>
+
+
+        <div mat-dialog-actions>
+            <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+                (click)="confirmAdd(transaction.Memo,transaction.Amount)">Save</button>
+            <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        </div>
+    </form>
+</div>

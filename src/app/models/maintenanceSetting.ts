@@ -1,4 +1,4 @@
-export class BudgetMaintenanceSetting {
+export class MaintenanceSetting {
     userId: number;
     showRemoved: boolean;
 }

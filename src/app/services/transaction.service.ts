@@ -48,6 +48,7 @@ export class TransactionService {
 
 
   addTransaction(transaction: Transaction) {
+    console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
   }
 

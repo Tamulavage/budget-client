@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { BudgetMatrixService } from '../services/budget-matrix.service';
 import { BudgetMatrix } from '../models/budgetMatrix';
-import { BudgetMaintenanceSetting } from '../models/budgetMaintenanceSetting';
+import { MaintenanceSetting } from '../models/maintenanceSetting';
 
 @Component({
   selector: 'app-matrix-maintenance',
@@ -16,7 +16,7 @@ export class MatrixMaintenanceComponent {
 
   constructor(public dialogRef: MatDialogRef<MatrixMaintenanceComponent>,
               @Inject(MAT_DIALOG_DATA) public data: BudgetMatrix,
-              @Inject(MAT_DIALOG_DATA) public budgetMaintenanceSetting: BudgetMaintenanceSetting,
+              @Inject(MAT_DIALOG_DATA) public budgetMaintenanceSetting: MaintenanceSetting,
               private budgetMatrixService: BudgetMatrixService) {
 
     this.showRemove = budgetMaintenanceSetting.showRemoved;

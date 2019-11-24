@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.auth.localAuthSetup();
-    // this.auth.handleAuthCallback();
+    this.auth.handleAuthCallback();
   }
 }
