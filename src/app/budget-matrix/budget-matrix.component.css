@@ -42,8 +42,8 @@
   }
   
 .form {
-	min-height: 56px;
-	max-height: 56px;
+	/* min-height: 56px;
+	max-height: 56px; */
 	display: flex;
 	align-items: center;
 	padding: 8px 24px 0;

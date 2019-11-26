@@ -26,12 +26,23 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.container > * {
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 175px;
+  }
+  
+  .container > * {
     width: 100%;
     height: 100%;
   }
-
+  
   .form {
     display: flex;
     padding-top: 6px;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    flex-grow: 1;
   }
