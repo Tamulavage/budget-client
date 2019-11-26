@@ -4,7 +4,6 @@ import { Transaction } from '../models/transaction';
 import { TransactionService } from '../services/transaction.service';
 import { TransactionAccount } from '../models/transactionAccount';
 import { Checkbook } from '../models/checkbook';
-import { Account } from '../models/account';
 import { TransactionAddComponent } from '../transaction-add/transaction-add.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -24,22 +23,16 @@ export class TansactionHistoryComponent implements OnInit {
   accountNickName: string[] = [];
   accountBank: string[] = [];
 
-  displayedColumns: string[] = ['dateOfTransaction', 'memoTransaction', 'amountTransaction',
-    'fromAccountName', 'toAccountName'
+  displayedColumns: string[] = [
+    'dateOfTransaction',
+    'memoTransaction',
+    'amountTransaction',
+    'fromAccountName',
+    'toAccountName'
     ];
 
   ngOnInit() {
-    // this.getTransactionsByUser();
     this.getCheckbook();
-  }
-
-
-  getTransactionsByUser(): void {
-    this.transactionService.getTransactionsByUser(this.user)
-      .subscribe(transactions => {
-        this.allTransactionsWithAccount = transactions;
-      }
-      );
   }
 
   getCheckbook(): void {
@@ -58,7 +51,7 @@ export class TansactionHistoryComponent implements OnInit {
         const accountName = 'account'; // used to add dynanically to matrix
         const maxShow = 7;
 
-        for (let x = 0; x < leng && x < maxShow; x++){
+        for (let x = 0; x < leng && x < maxShow; x++) {
           this.displayedColumns.push(accountName + x);
           this.accountNickName[x] = transactions.map(t => t.accounts[x].nickname).reduce((a, b) => a);
           this.accountBank[x] = transactions.map(t => t.accounts[x].institutionName).reduce((a, b) => a);
@@ -66,7 +59,7 @@ export class TansactionHistoryComponent implements OnInit {
   }
 
   addNewTransaction(): void {
-    // TODO: create new modalDialog and call here
+    // TODO: Add data from Model dialog back to main dataset
     const userId = this.user;
     const dialogRef = this.dialog.open(TransactionAddComponent, {
       data: {transaction: Transaction,  userId}

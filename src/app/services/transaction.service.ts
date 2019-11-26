@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Transaction} from '../models/transaction';
 import {Observable, of} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
 import {Account} from '../models/account';
 import { TransactionAccount } from '../models/transactionAccount';
 import { Checkbook } from '../models/checkbook';
@@ -47,11 +46,9 @@ export class TransactionService {
     return this.http.get<Account[]>(url);
   }
 
-
   addTransaction(transaction: Transaction) {
     // console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
   }
-
 
 }
