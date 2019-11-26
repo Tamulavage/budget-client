@@ -19,25 +19,26 @@ export class TransactionService {
   constructor(private http: HttpClient) {}
 
   private baseURI = 'http://localhost:8080/budget/';
+  // private baseURI = 'https://budgetappserver.herokuapp.com/budget/';
   private transactionUrl = `${this.baseURI}transaction/`;
   private transactionsUrl = `${this.baseURI}transactions/`;
   private accountUrl = `${this.baseURI}account`;
 
   getLatestTransactionsByUser(userId: number): Observable<Transaction[]> {
     const url = `${this.transactionUrl}${userId}`;
-    console.log(url);
+    // console.log(url);
     return this.http.get<Transaction[]>(url);
   }
 
   getTransactionsByUser(userId: number): Observable<TransactionAccount[]> {
     const url = `${this.transactionUrl}${userId}`;
-    console.log(url);
+    // console.log(url);
     return this.http.get<TransactionAccount[]>(url);
   }
 
   getTransactionsAndAccountInfo(userId: number): Observable<Checkbook[]> {
     const url = `${this.transactionsUrl}${userId}`;
-    console.log(url);
+    // console.log(url);
     return this.http.get<Checkbook[]>(url);
   }
 
@@ -48,7 +49,7 @@ export class TransactionService {
 
 
   addTransaction(transaction: Transaction) {
-    console.log(transaction);
+    // console.log(transaction);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
   }
 

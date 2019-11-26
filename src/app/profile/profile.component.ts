@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
     let temp = JSON.parse(this.profileJson);
     let timedOutCount = 0;
 
-    this.showAccount = true;
+    this.showAccount = false;
     this.showBudget = true;
     this.showTranscation = false;
     this.showCheckbook = false;
@@ -56,12 +56,8 @@ export class ProfileComponent implements OnInit {
   }
 
   getAuthorizedUser() {
-    // let temp2 = JSON.parse(this.profileJson);
-    // let str = '';
     this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser[]) => {
      this.authorizedUsers = user;
-    //  str = JSON.stringify(user, null, 2);
-    //  temp2 = JSON.parse(str);
     });
   }
 
