@@ -67,15 +67,17 @@ export class BudgetMatrixComponent implements OnInit {
   }
 
   populateMatrix(): void {
-    this.budgetMatrixService.getFutureOutputBudgetByUserID(2)
+    this.budgetMatrixService.getFutureOutputBudgetByUserID(this.user)
       .subscribe(budgetRow => {
         this.budgetOutRows = budgetRow;
+        // console.log(budgetRow);
       }
       );
 
     this.budgetMatrixService.getFutureInputBudgetByUserID(this.user)
       .subscribe(budgetRow => {
         this.budgetInRows = budgetRow;
+        // console.log(budgetRow);
       }
       );
 
@@ -83,8 +85,8 @@ export class BudgetMatrixComponent implements OnInit {
       .subscribe(budgetRow => {
         this.budgetSumRows = budgetRow;
         this.incomingSum = this.budgetSumRows.filter(incoming => incoming.direction === 'I');
-        this.outgoingSum = this.budgetSumRows.filter(incoming => incoming.direction === 'O');
-        this.differenceSum = this.budgetSumRows.filter(incoming => incoming.direction === 'D');
+        this.outgoingSum = this.budgetSumRows.filter(outgoing => outgoing.direction === 'O');
+        this.differenceSum = this.budgetSumRows.filter(diff => diff.direction === 'D');
 
         this.getOutgoingSums();
         this.getIncomingSums();
