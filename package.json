@@ -1,5 +1,5 @@
 {
-  "name": "dmt-budget",
+  "name": "budget",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build --prod --aot"
   },
   "private": true,
   "dependencies": {
