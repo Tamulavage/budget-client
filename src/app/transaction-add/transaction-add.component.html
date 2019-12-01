@@ -5,7 +5,7 @@
 
         <div class="form">
             <mat-form-field color="accent">
-                <input matInput #input class="form-control" placeholder="Memo" [(ngModel)]="transaction.Memo"
+                <input matInput #input class="form-control" placeholder="Memo" [(ngModel)]="transaction.memo"
                     name="Memo" required>
             </mat-form-field>
         </div>
@@ -13,7 +13,7 @@
         <div class="form">
             <mat-form-field color="accent">
                 <input matInput #input class="form-control" type="number" placeholder="Amount"
-                    [(ngModel)]="transaction.Amount" name="Amount" required>
+                    [(ngModel)]="transaction.amount" name="Amount" required>
             </mat-form-field>
         </div>
 
@@ -46,7 +46,7 @@
 
         <div mat-dialog-actions>
             <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
-                (click)="confirmAdd(transaction.Memo,transaction.Amount)">Save</button>
+                (click)="confirmAdd(transaction.memo,transaction.amount)">Save</button>
             <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
         </div>
     </form>

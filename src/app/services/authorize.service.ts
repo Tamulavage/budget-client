@@ -18,10 +18,12 @@ export class AuthorizeService {
 
   constructor(private http: HttpClient) { }
 
-  getAuthorizeUser(username: string): Observable<AuthorizedUser[]> {
+
+  getAuthorizeUser(username: string): Observable<AuthorizedUser> {
     const url = `${this.userUrl}/find/${username}`;
-    return this.http.get<AuthorizedUser[]>(url)
+    return this.http.get<AuthorizedUser>(url)
       .pipe(
+        // tap(_ => console.log(_))
        )
       ;
   }

@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthorizeService } from '../services/authorize.service';
 import { AuthorizedUser } from '../models/authorizedUser';
 import { Authenticate } from '../models/authenticate';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +12,11 @@ import { Authenticate } from '../models/authenticate';
 })
 export class ProfileComponent implements OnInit {
 
-  authorizedUsers: AuthorizedUser[] = [];
+  authorizedUsers = new BehaviorSubject<AuthorizedUser> (null);
   nickname: string;
   authenticate: Authenticate[] = [];
   profileJson: string = null;
-  id: number[];
+  userId: number;
 
   showAccount: boolean;
   showBudget: boolean;
@@ -54,8 +55,9 @@ export class ProfileComponent implements OnInit {
   }
 
   getAuthorizedUser() {
-    this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser[]) => {
-     this.authorizedUsers = user;
+    this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser) => {
+     this.authorizedUsers.next(user);
+     this.userId = user.id;
     });
   }
 
