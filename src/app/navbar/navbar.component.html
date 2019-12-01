@@ -1,4 +1,14 @@
 <header>
-  <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button> 
-  <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+  <div *ngIf="!auth.loggedIn">
+    <p></p>
+    <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+  </div>
+  <button (click)="auth.logout()" *ngIf="auth.loggedIn  else dummyUserOption">Log Out</button>
+
+  <ng-template #dummyUserOption>
+    <p></p>
+    <div> If you would like a demo, please request a demo user </div>
+    <p></p>
+    <div> As this is ALPHA Phase, I am limiting users </div>
+  </ng-template>
 </header>

@@ -1,41 +1,43 @@
-<div *ngIf="auth.userProfile$ | async as profile">
-    <div *ngIf="authorizedUsers | async as authorizedUsers else loading">  
-        <h3>
-        Welcome: {{ authorizedUsers.userName }}
-        </h3>
-        <button (click)="toggleAccount()" *ngIf="!showAccount">Show Account Info</button>
-        <button (click)="toggleAccount()" *ngIf="showAccount">Hide Account Info</button>
-        <button (click)="toggleBudget()" *ngIf="!showBudget">Show budget Info</button>
-        <button (click)="toggleBudget()" *ngIf="showBudget">Hide budget Info</button>        
-        <button (click)="toggleCheckbook()" *ngIf="!showCheckbook">Show Checkbook Info</button> 
-        <button (click)="toggleCheckbook()" *ngIf="showCheckbook">Hide Checkbook Info</button> 
-        <button (click)="toggleTransction()" *ngIf="!showTranscation">Show Transactions</button> 
-        <button (click)="toggleTransction()" *ngIf="showTranscation">Hide Transactions</button> 
-    </div>
-    <p></p>
-    <div class="table"  *ngIf="authorizedUsers | async">
-        <div class="row">
-            <div class="col accountWidth" *ngIf="showAccount">
-                    <app-accounts  *ngIf="authorizedUsers | async" [user]="userId"></app-accounts>
-            </div>
-            <div class="col" *ngIf="showCheckbook">
-                    <app-tansaction-history [user]="userId"></app-tansaction-history>
-            </div>
-            <div class="col" *ngIf="authorizedUsers && showBudget &&!showCheckbook">
-                    <app-budget-matrix [user]="userId"></app-budget-matrix>
-            </div>
-            <div class="col transactionWidth" *ngIf="showTranscation">
-                    <app-transaction [user]="userId"></app-transaction>
-            </div>
-         
+<div *ngIf="auth.loggedIn">
+    <div *ngIf="auth.userProfile$ | async as profile">
+        <div *ngIf="authorizedUsers | async as authorizedUsers else loading">
+            <h3>
+                Welcome: {{ authorizedUsers.userName }}
+            </h3>
+            <button (click)="toggleAccount()" *ngIf="!showAccount">Show Account Info</button>
+            <button (click)="toggleAccount()" *ngIf="showAccount">Hide Account Info</button>
+            <button (click)="toggleBudget()" *ngIf="!showBudget">Show budget Info</button>
+            <button (click)="toggleBudget()" *ngIf="showBudget">Hide budget Info</button>
+            <button (click)="toggleCheckbook()" *ngIf="!showCheckbook">Show Checkbook Info</button>
+            <button (click)="toggleCheckbook()" *ngIf="showCheckbook">Hide Checkbook Info</button>
+            <!-- <button (click)="toggleTransction()" *ngIf="!showTranscation">Show Transactions</button>
+            <button (click)="toggleTransction()" *ngIf="showTranscation">Hide Transactions</button> -->
         </div>
-            
-    </div>
-    <div *ngIf="authorizedUsers && showBudget &&showCheckbook">
-      <app-budget-matrix [user]="userId"></app-budget-matrix>
-    </div>
+        <p></p>
+        <div class="table" *ngIf="authorizedUsers | async">
+            <div class="row">
+                <div class="col accountWidth" *ngIf="showAccount">
+                    <app-accounts *ngIf="authorizedUsers | async" [user]="userId"></app-accounts>
+                </div>
+                <div class="col" *ngIf="showCheckbook">
+                    <app-tansaction-history [user]="userId"></app-tansaction-history>
+                </div>
+                <div class="col" *ngIf="authorizedUsers && showBudget &&!showCheckbook">
+                    <app-budget-matrix [user]="userId"></app-budget-matrix>
+                </div>
+                <div class="col transactionWidth" *ngIf="showTranscation">
+                    <app-transaction [user]="userId"></app-transaction>
+                </div>
 
-    <ng-template #loading>
-        <div> LOADING ...</div>
-    </ng-template>
+            </div>
+
+        </div>
+        <div *ngIf="authorizedUsers && showBudget &&showCheckbook">
+            <app-budget-matrix [user]="userId"></app-budget-matrix>
+        </div>
+
+        <ng-template #loading>
+            <div> LOADING ...</div>
+        </ng-template>
+    </div>
 </div>
