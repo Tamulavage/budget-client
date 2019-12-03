@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import { AuthorizedUser } from '../models/authorizedUser';
 
 const   httpOptions = {
-  headers: new HttpHeaders({'Content-type': 'application/jspn' })
+  headers: new HttpHeaders({'Content-type': 'application/json' })
 };
 
 @Injectable({
@@ -13,18 +13,31 @@ const   httpOptions = {
 })
 export class AuthorizeService {
 
-  // private userUrl = 'http://localhost:8080/budget/profile';
-  private userUrl = 'https://budgetappserver.herokuapp.com/budget/profile';
+  private userUrl = 'http://localhost:8080/budget/profile';
+  // private userUrl = 'https://budgetappserver.herokuapp.com/budget/profile';
+
+  dialogData: any;
 
   constructor(private http: HttpClient) { }
 
 
-  getAuthorizeUser(username: string): Observable<AuthorizedUser> {
+  getAuthorizeUser(username: string): Observable<HttpResponse<AuthorizedUser>> {
     const url = `${this.userUrl}/find/${username}`;
-    return this.http.get<AuthorizedUser>(url)
-      .pipe(
-        // tap(_ => console.log(_))
-       )
-      ;
+    return this.http.get<AuthorizedUser>(url, { observe: 'response' });  }
+
+  addAuthorizeUser(authorizedUser: AuthorizedUser): Observable<AuthorizedUser> {
+    // console.log(authorizedUser);
+    this.dialogData = authorizedUser;
+    const url = `${this.userUrl}/`;
+    const temp = this.http.post<AuthorizedUser>(url, authorizedUser, httpOptions);
+    temp.subscribe(data => this.dialogData.id = data.id);
+
+    return temp;
+
   }
+
+  getDialogData() {
+      return this.dialogData;
+  }
+
 }
