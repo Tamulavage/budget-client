@@ -4,6 +4,8 @@ import { AuthorizeService } from '../services/authorize.service';
 import { AuthorizedUser } from '../models/authorizedUser';
 import { Authenticate } from '../models/authenticate';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +13,9 @@ import { BehaviorSubject, Subject, Observable } from 'rxjs';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  serverDown: boolean;
+  showNewUserWindow: boolean;
 
   authorizedUsers = new BehaviorSubject<AuthorizedUser> (null);
   nickname: string;
@@ -25,40 +30,58 @@ export class ProfileComponent implements OnInit {
 
   constructor(
       public auth: AuthService,
-      public authorize: AuthorizeService) { }
+      public authorize: AuthorizeService,
+      public dialog: MatDialog) { }
 
   ngOnInit() {
 
     let temp = JSON.parse(this.profileJson);
-    let timedOutCount = 0;
 
     this.showAccount = false;
     this.showBudget = true;
     this.showTranscation = false;
     this.showCheckbook = false;
+
+    this.serverDown = false;
+    this.showNewUserWindow = false;
+
     this.auth.userProfile$.subscribe((user: any[]) => {
       this.profileJson = JSON.stringify(user, null, 2);
       temp = JSON.parse(this.profileJson);
     }
    );
 
-   // TODO: revist this section
-    while (timedOutCount < 500) {
-      if (temp) {
-        timedOutCount = 1001;
-        this.nickname = temp.nickname;
-        this.getAuthorizedUser();
-      } else {
-        timedOutCount++;
-      }
-    }
+    this.nickname = temp.nickname;
+    this.getAuthorizedUser();
   }
 
   getAuthorizedUser() {
-    this.authorize.getAuthorizeUser(this.nickname).subscribe((user: AuthorizedUser) => {
-     this.authorizedUsers.next(user);
-     this.userId = user.id;
+    this.authorize.getAuthorizeUser(this.nickname).subscribe((data) => {
+      if (data.status === 200) {
+        const user = data.body;
+        this.authorizedUsers.next(user);
+        this.userId = user.id;
+      } else if (data.status === 204 ) {
+        this.showNewUserWindow  = true;
+      }
+     });
+  }
+
+  newUserAccount() {
+    const userName = this.nickname;
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      data: { userName }
     });
+
+    dialogRef.afterClosed().subscribe(  x => {
+      if (x === 1) {
+        this.authorizedUsers.next(this.authorize.getDialogData());
+        const temp = this.authorize.getDialogData()
+        this.userId = temp.id;
+        this.authorizedUsers.complete();
+      }
+    }
+    )
   }
 
   toggleAccount() {

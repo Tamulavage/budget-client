@@ -1,8 +1,9 @@
 <div *ngIf="auth.loggedIn">
     <div *ngIf="auth.userProfile$ | async as profile">
+        <div *ngIf="serverDown"> server Down</div>
         <div *ngIf="authorizedUsers | async as authorizedUsers else loading">
             <h3>
-                Welcome: {{ authorizedUsers.userName }}
+                Welcome: {{ authorizedUsers.firstName }} {{ authorizedUsers.lastName }}
             </h3>
             <button (click)="toggleAccount()" *ngIf="!showAccount">Show Account Info</button>
             <button (click)="toggleAccount()" *ngIf="showAccount">Hide Account Info</button>
@@ -10,14 +11,12 @@
             <button (click)="toggleBudget()" *ngIf="showBudget">Hide budget Info</button>
             <button (click)="toggleCheckbook()" *ngIf="!showCheckbook">Show Checkbook Info</button>
             <button (click)="toggleCheckbook()" *ngIf="showCheckbook">Hide Checkbook Info</button>
-            <!-- <button (click)="toggleTransction()" *ngIf="!showTranscation">Show Transactions</button>
-            <button (click)="toggleTransction()" *ngIf="showTranscation">Hide Transactions</button> -->
         </div>
         <p></p>
         <div class="table" *ngIf="authorizedUsers | async">
             <div class="row">
                 <div class="col accountWidth" *ngIf="showAccount">
-                    <app-accounts *ngIf="authorizedUsers | async" [user]="userId"></app-accounts>
+                    <app-accounts [user]="userId"></app-accounts>
                 </div>
                 <div class="col" *ngIf="showCheckbook">
                     <app-tansaction-history [user]="userId"></app-tansaction-history>
@@ -37,7 +36,15 @@
         </div>
 
         <ng-template #loading>
-            <div> LOADING ...</div>
+            <div *ngIf="showNewUserWindow">
+                <p></p>
+                You have been authenticated, but not authorized. Would you like to create a new account for username: 
+                <b> {{ nickname }} </b>
+                <p></p>
+                <button (click)="newUserAccount()">Add new Account</button>
+            </div>
+            <div *ngIf="!showNewUserWindow"> LOADING ...
+            </div>
         </ng-template>
     </div>
 </div>
