@@ -17,6 +17,9 @@ export class EditUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit() {
+  }
+
   public confirmAdd(): void {
     this.authorizeService.addAuthorizeUser(this.data).subscribe();
   }
