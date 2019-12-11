@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -23,6 +23,9 @@ import { BudgetMatrixComponent } from './budget-matrix/budget-matrix.component';
 import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintenance.component';
 import { TransactionAddComponent } from './transaction-add/transaction-add.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TransactionService } from './services/transaction.service';
 
 
 
@@ -49,15 +52,18 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatTableModule,
     MatDialogModule,
     MatIconModule,
+    MatSortModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     MatrixMaintenanceComponent,
     TransactionAddComponent,
     EditUserComponent
   ],
-  providers: [],
+  providers: [TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

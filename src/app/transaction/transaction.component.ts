@@ -105,15 +105,15 @@ export class TransactionComponent implements OnInit {
       return;
     }
     const transactionDt = new Date().toJSON();
-    this.transactionService.addTransaction({
-      amount,
-      memo,
-      fromAccountId,
-      toAccountId,
-      // transactionType,
-      transactionDt
-    } as unknown as Transaction)
-      .subscribe(transaction => this.transaction = transaction);
+    // this.transactionService.addTransaction({
+    //   amount,
+    //   memo,
+    //   fromAccountId,
+    //   toAccountId,
+    //   // transactionType,
+    //   transactionDt
+    // } as unknown as Transaction)
+    //   .subscribe(transaction => this.transaction = transaction);
 
     this.clearFields();
     this.showInitialBUttons();

@@ -14,7 +14,7 @@ const resetToForm = 'Select To :';
   templateUrl: './transaction-add.component.html',
   styleUrls: ['./transaction-add.component.css']
 })
-export class TransactionAddComponent  implements OnInit {
+export class TransactionAddComponent implements OnInit {
 
   selectFromAccount: Account;
   accountsFrom: Account[];
@@ -53,31 +53,42 @@ export class TransactionAddComponent  implements OnInit {
     this.dialogRef.close();
   }
 
-  public confirmAdd( memo: string, amount: number): void {
+  public confirmAdd(memo: string, amount: number): void {
     const transactionDt = new Date().toJSON();
     const fromAccountId = this.fromAccountId;
     const toAccountId = this.toAccountId;
+    let fromAccountName = this.fromAccountName;
+    let toAccountName = this.toAccountName;
 
+    if (fromAccountName === resetFromForm) {
+      fromAccountName = null;
+    }
+    if (toAccountName === resetToForm) {
+      toAccountName = null;
+    }
+    if (fromAccountId === toAccountId) {
+      console.log('Cannot transfer to same account');
+    }
     this.transactionService.addTransaction({
       amount,
       memo,
       fromAccountId,
       toAccountId,
       transactionDt
-    } as unknown as Transaction)
-      .subscribe(transaction => this.transaction = transaction);
+    } as unknown as Transaction, fromAccountName, toAccountName)
+      .subscribe();
   }
 
   onSelectFromAccount(account: Account) {
     this.selectFromAccount = account;
     this.fromAccountName = account.nickname;
     this.fromAccountId = account.id;
- }
+  }
 
- onSelectToAccount(account: Account) {
-  this.selectToAccount = account;
-  this.toAccountName = account.nickname;
-  this.toAccountId = account.id;
-}
+  onSelectToAccount(account: Account) {
+    this.selectToAccount = account;
+    this.toAccountName = account.nickname;
+    this.toAccountId = account.id;
+  }
 
 }

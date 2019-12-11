@@ -13,8 +13,8 @@ const   httpOptions = {
 })
 export class AuthorizeService {
 
-  private userUrl = 'http://localhost:8080/budget/profile';
-  // private userUrl = 'https://budgetappserver.herokuapp.com/budget/profile';
+  // private userUrl = 'http://localhost:8080/budget/profile';
+  private userUrl = 'https://budgetappserver.herokuapp.com/budget/profile';
 
   dialogData: any;
 
