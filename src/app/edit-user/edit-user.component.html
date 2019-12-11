@@ -1,25 +1,27 @@
-<form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+<div class="container">
+        <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
-        <div class="form">
-                <mat-form-field color="accent">
-                        <input matInput #input class="form-control" [(ngModel)]="data.userName"
-                                name="userName"  readonly>
-                </mat-form-field>
-                <div>
+                <div class="form">
                         <mat-form-field color="accent">
-                                <input matInput #input class="form-control" placeholder="First Name"
-                                        [(ngModel)]="data.firstName" name="first name" required>
+                                <input matInput #input class="form-control" [(ngModel)]="data.userName" name="userName"
+                                        readonly>
                         </mat-form-field>
-                        <mat-form-field color="accent">
-                                <input matInput #input class="form-control" placeholder="Last Name"
-                                        [(ngModel)]="data.lastName" name="last name" required>
-                        </mat-form-field>
+                        <div>
+                                <mat-form-field color="accent">
+                                        <input matInput #input class="form-control" placeholder="First Name"
+                                                [(ngModel)]="data.firstName" name="first name" required>
+                                </mat-form-field>
+                                <mat-form-field color="accent">
+                                        <input matInput #input class="form-control" placeholder="Last Name"
+                                                [(ngModel)]="data.lastName" name="last name" required>
+                                </mat-form-field>
+                        </div>
                 </div>
-        </div>
 
-        <div mat-dialog-actions>
-                <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
-                        (click)="confirmAdd()">Save</button>
-                <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-        </div>
-</form>
+                <div mat-dialog-actions>
+                        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+                                (click)="confirmAdd()">Save</button>
+                        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+                </div>
+        </form>
+</div>
