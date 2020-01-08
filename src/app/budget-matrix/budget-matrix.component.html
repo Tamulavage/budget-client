@@ -8,13 +8,18 @@
         <p></p>
     </div>
 
-
     <table mat-table [(dataSource)]="budgetInRows">
 
         <ng-container matColumnDef="orgName">
             <th mat-header-cell *matHeaderCellDef> Incoming </th>
             <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.orgName}} </td>
             <td mat-footer-cell *matFooterCellDef> Total: </td>
+        </ng-container>
+
+        <ng-container matColumnDef="currentAmount">
+            <th mat-header-cell *matHeaderCellDef> Current </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.currentAmount | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ curIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="januaryAmount">
@@ -124,6 +129,12 @@
             <td mat-footer-cell *matFooterCellDef> Total: </td>
         </ng-container>
 
+        <ng-container matColumnDef="currentAmount">
+            <th mat-header-cell *matHeaderCellDef> Current </th>
+            <td mat-cell *matCellDef="let budgetRow"> {{ budgetRow.currentAmount | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ curOutgoingAmount | currency}} </td>
+        </ng-container>        
+
         <ng-container matColumnDef="januaryAmount">
             <th mat-header-cell *matHeaderCellDef> January </th>
             <td mat-cell *matCellDef="let budgetRow"> {{ budgetRow.januaryAmount | currency}} </td>
@@ -231,73 +242,190 @@
             <td mat-cell class="bold" *matCellDef="let budgetRow"> Difference: </td>
         </ng-container>
 
+        <ng-container matColumnDef="currentAmount">
+            <th mat-header-cell *matHeaderCellDef> Current </th>
+                <td mat-cell  *matCellDef="let budgetRow"> 
+                     <div *ngIf="budgetRow.currentAmount > 0; else redCurr">
+                         {{ budgetRow.currentAmount | currency}}
+                    </div>
+                    <ng-template #redCurr>
+                        <div  class="red" >
+                            {{ budgetRow.currentAmount | currency}}
+                        </div>
+                    </ng-template>
+                 </td>
+        </ng-container>         
+
         <ng-container matColumnDef="januaryAmount">
             <th mat-header-cell *matHeaderCellDef> January </th>
-            <td mat-cell bold *matCellDef="let budgetRow"> {{budgetRow.januaryAmount | currency}} </td>
-            <td mat-cell bold *matCellDef="let budgetRow"> {{budgetRow.januaryAmount | currency}} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.januaryAmount > 0; else redJan">
+                    {{ budgetRow.januaryAmount | currency}}
+               </div>
+               <ng-template #redJan>
+                   <div  class="red" >
+                       {{ budgetRow.januaryAmount | currency}}
+                   </div>
+               </ng-template>
+            </td>            
         </ng-container>
 
         <ng-container matColumnDef="februaryAmount">
             <th mat-header-cell *matHeaderCellDef> February </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.februaryAmount > 0; else redFeb">
+                    {{ budgetRow.februaryAmount | currency}}
+               </div>
+               <ng-template #redFeb>
+                   <div  class="red" >
+                       {{ budgetRow.februaryAmount | currency}}
+                   </div>
+               </ng-template>
+            </td>                        
         </ng-container>
 
         <ng-container matColumnDef="marchAmount">
             <th mat-header-cell *matHeaderCellDef> March </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.marchAmount > 0; else redMar">
+                    {{ budgetRow.marchAmount | currency}}
+               </div>
+               <ng-template #redMar>
+                   <div  class="red" >
+                       {{ budgetRow.marchAmount | currency}}
+                   </div>
+               </ng-template>
+            </td>                      
         </ng-container>
 
         <ng-container matColumnDef="aprilAmount">
             <th mat-header-cell *matHeaderCellDef> April </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.aprilAmount > 0; else redApr">
+                    {{ budgetRow.aprilAmount | currency}}
+               </div>
+               <ng-template #redApr>
+                   <div  class="red" >
+                       {{ budgetRow.aprilAmount | currency}}
+                   </div>
+               </ng-template>
+            </td>                    
         </ng-container>
 
         <ng-container matColumnDef="mayAmount">
             <th mat-header-cell *matHeaderCellDef> May </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.mayAmount > 0; else redMay">
+                    {{ budgetRow.mayAmount | currency}}
+               </div>
+               <ng-template #redMay>
+                   <div  class="red" >
+                       {{ budgetRow.mayAmount | currency}}
+                   </div>
+               </ng-template>
+            </td>                   
         </ng-container>
 
         <ng-container matColumnDef="juneAmount">
             <th mat-header-cell *matHeaderCellDef> June </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.juneAmount > 0; else redJune">
+                    {{ budgetRow.juneAmount | currency}}
+               </div>
+                <ng-template #redJune>
+                    <div  class="red" >
+                        {{ budgetRow.juneAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>                 
         </ng-container>
 
         <ng-container matColumnDef="julyAmount">
             <th mat-header-cell *matHeaderCellDef> July </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.julyAmount > 0; else redJuly">
+                    {{ budgetRow.julyAmount | currency}}
+               </div>
+                <ng-template #redJuly>
+                    <div  class="red" >
+                        {{ budgetRow.julyAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="augustAmount">
             <th mat-header-cell *matHeaderCellDef> August </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.augustAmount > 0; else redAug">
+                    {{ budgetRow.augustAmount | currency}}
+               </div>
+                <ng-template #redAug>
+                    <div  class="red" >
+                        {{ budgetRow.augustAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>            
         </ng-container>
 
         <ng-container matColumnDef="septemberAmount">
             <th mat-header-cell *matHeaderCellDef> September </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.septemberAmount > 0; else redSep">
+                    {{ budgetRow.septemberAmount | currency}}
+               </div>
+                <ng-template #redSep>
+                    <div  class="red" >
+                        {{ budgetRow.septemberAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>               
         </ng-container>
 
         <ng-container matColumnDef="octoberAmount">
             <th mat-header-cell *matHeaderCellDef> October </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.octoberAmount > 0; else redOct">
+                    {{ budgetRow.octoberAmount | currency}}
+               </div>
+                <ng-template #redOct>
+                    <div  class="red" >
+                        {{ budgetRow.octoberAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>                      
         </ng-container>
 
         <ng-container matColumnDef="novemberAmount">
             <th mat-header-cell *matHeaderCellDef> November </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.novemberAmount > 0; else redNov">
+                    {{ budgetRow.novemberAmount | currency}}
+               </div>
+                <ng-template #redNov>
+                    <div  class="red" >
+                        {{ budgetRow.novemberAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>                         
         </ng-container>
 
         <ng-container matColumnDef="decemberAmount">
             <th mat-header-cell *matHeaderCellDef> December </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+            <td mat-cell  *matCellDef="let budgetRow"> 
+                <div *ngIf="budgetRow.decemberAmount > 0; else redDec">
+                    {{ budgetRow.decemberAmount | currency}}
+               </div>
+                <ng-template #redDec>
+                    <div  class="red" >
+                        {{ budgetRow.decemberAmount | currency}}
+                    </div>
+                </ng-template>
+            </td>                 
         </ng-container>
 
-        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumnsX"></tr> -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <p></p>
-
-
-
 
 </div>

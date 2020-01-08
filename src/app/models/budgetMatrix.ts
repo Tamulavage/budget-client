@@ -3,6 +3,7 @@ export class BudgetMatrix {
     orgName: string;
     frequencyPerMonth: number;
     direction: string;
+    currentAmount: number;
     januaryAmount: number;
     februaryAmount: number;
     marchAmount: number;
