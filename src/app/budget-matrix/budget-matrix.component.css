@@ -33,6 +33,11 @@
 	font-weight: bold;
 } 
 
+.red   {
+	font-weight: bold;
+	color: crimson;
+} 
+
 .algin-right {
 	float: right;
 }

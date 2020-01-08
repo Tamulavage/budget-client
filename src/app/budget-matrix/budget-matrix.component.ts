@@ -16,10 +16,11 @@ export class BudgetMatrixComponent implements OnInit {
 
   showMaintenceColumn = false;
 
-  displayedColumns: string[] = ['orgName', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount', 'mayAmount', 'juneAmount'
-    , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount', 'decemberAmount'];
+  displayedColumns: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
+     'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount', 
+     'decemberAmount'];
 
-  displayedColumnsWithActions: string[] = ['orgName', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
+  displayedColumnsWithActions: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
     'mayAmount', 'juneAmount', 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
     'decemberAmount'];
 
@@ -35,6 +36,7 @@ export class BudgetMatrixComponent implements OnInit {
   outgoingSum: BudgetMatrix[] = [];
   differenceSum: BudgetMatrix[] = [];
 
+  curOutgoingAmount: number;
   janOutgoingAmount: number;
   febOutgoingAmount: number;
   marOutgoingAmount: number;
@@ -48,6 +50,7 @@ export class BudgetMatrixComponent implements OnInit {
   novOutgoingAmount: number;
   decOutgoingAmount: number;
 
+  curIncomingAmount: number;
   janIncomingAmount: number;
   febIncomingAmount: number;
   marIncomingAmount: number;
@@ -108,6 +111,7 @@ export class BudgetMatrixComponent implements OnInit {
     this.octOutgoingAmount = this.outgoingSum.map(t => t.octoberAmount).reduce((acc, value) => acc + value);
     this.novOutgoingAmount = this.outgoingSum.map(t => t.novemberAmount).reduce((acc, value) => acc + value);
     this.decOutgoingAmount = this.outgoingSum.map(t => t.decemberAmount).reduce((acc, value) => acc + value);
+    this.curOutgoingAmount = this.outgoingSum.map(t => t.currentAmount).reduce((acc, value) => acc + value);
   }
 
   getIncomingSums() {
@@ -123,6 +127,7 @@ export class BudgetMatrixComponent implements OnInit {
     this.octIncomingAmount = this.incomingSum.map(t => t.octoberAmount).reduce((acc, value) => acc + value);
     this.novIncomingAmount = this.incomingSum.map(t => t.novemberAmount).reduce((acc, value) => acc + value);
     this.decIncomingAmount = this.incomingSum.map(t => t.decemberAmount).reduce((acc, value) => acc + value);
+    this.curIncomingAmount = this.incomingSum.map(t => t.currentAmount).reduce((acc, value) => acc + value);
   }
 
   showMaintenanceColumn() {
