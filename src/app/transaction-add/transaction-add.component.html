@@ -25,7 +25,7 @@
             </button>
             <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
                 <a *ngFor="let account of accountsFrom" class="dropdown-item" (click)="onSelectFromAccount(account)"
-                    [class.selected]="account === selectFromAccount">
+                [class.selected]="fromAccountId === selectFromAccount.id">
                     {{account.institutionName}} / {{account.nickname}}</a>
             </div>
         </div>
@@ -34,14 +34,15 @@
         <div class="dropdown" role="group">
             <button class="dropbtn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" value="{{toAccountId}}">
-                {{toAccountName}}
+                {{toAccountName}} 
             </button>
             <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
                 <a *ngFor="let account of accountsTo" class="dropdown-item" (click)="onSelectToAccount(account)"
-                    [class.selected]="account === selectToAccount">
+                    [class.selected]="toAccountId === selectToAccount.id">
                     {{account.institutionName}} / {{account.nickname}}</a>
             </div>
         </div>
+        <button mat-button (click)="clearFields()">Reset</button>
 
 
         <div mat-dialog-actions>
@@ -50,4 +51,5 @@
             <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
         </div>
     </form>
+
 </div>

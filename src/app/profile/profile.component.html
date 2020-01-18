@@ -24,10 +24,6 @@
                 <div class="col" *ngIf="authorizedUsers && showBudget &&!showCheckbook">
                     <app-budget-matrix [user]="userId"></app-budget-matrix>
                 </div>
-                <div class="col transactionWidth" *ngIf="showTranscation">
-                    <app-transaction [user]="userId"></app-transaction>
-                </div>
-
             </div>
 
         </div>
@@ -44,6 +40,7 @@
                 <button (click)="newUserAccount()">Add new Account</button>
             </div>
             <div *ngIf="!showNewUserWindow"> LOADING ...
+                <p>This is a known bug, takes approx 1 min to load on inital login</p>
             </div>
         </ng-template>
     </div>

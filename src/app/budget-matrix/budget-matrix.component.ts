@@ -73,29 +73,30 @@ export class BudgetMatrixComponent implements OnInit {
     this.budgetMatrixService.getFutureOutputBudgetByUserID(this.user)
       .subscribe(budgetRow => {
         this.budgetOutRows = budgetRow;
-        // console.log(budgetRow);
       }
       );
 
     this.budgetMatrixService.getFutureInputBudgetByUserID(this.user)
       .subscribe(budgetRow => {
         this.budgetInRows = budgetRow;
-        // console.log(budgetRow);
       }
       );
 
-    this.budgetMatrixService.getFutureSumsBudgetByUserID(this.user)
-      .subscribe(budgetRow => {
-        this.budgetSumRows = budgetRow;
-        this.incomingSum = this.budgetSumRows.filter(incoming => incoming.direction === 'I');
-        this.outgoingSum = this.budgetSumRows.filter(outgoing => outgoing.direction === 'O');
-        this.differenceSum = this.budgetSumRows.filter(diff => diff.direction === 'D');
+    this.getAllSums();
+  }
 
-        this.getOutgoingSums();
-        this.getIncomingSums();
-      }
+  getAllSums() {
+        this.budgetMatrixService.getFutureSumsBudgetByUserID(this.user)
+        .subscribe(budgetRow => {
+          this.budgetSumRows = budgetRow;
+          this.incomingSum = this.budgetSumRows.filter(incoming => incoming.direction === 'I');
+          this.outgoingSum = this.budgetSumRows.filter(outgoing => outgoing.direction === 'O');
+          this.differenceSum = this.budgetSumRows.filter(diff => diff.direction === 'D');
+
+          this.getOutgoingSums();
+          this.getIncomingSums();
+        }
       );
-
   }
 
   getOutgoingSums() {
@@ -161,7 +162,8 @@ export class BudgetMatrixComponent implements OnInit {
     );
   }
 
-  editRow(orgName: string, direction: string, januaryAmount: number, februaryAmount: number, marchAmount: number,
+  editRow(orgName: string, direction: string, currentAmount: number,  januaryAmount: number, februaryAmount: number,
+          marchAmount: number,
           aprilAmount: number, mayAmount: number, juneAmount: number, julyAmount: number, augustAmount: number,
           septemberAmount: number, octoberAmount: number, novemberAmount: number, decemberAmount: number) {
 
@@ -169,7 +171,8 @@ export class BudgetMatrixComponent implements OnInit {
     const frequencyPerMonth = 1;
     const dialogRef = this.dialog.open(MatrixMaintenanceComponent, {
       data: {
-        orgName, direction, frequencyPerMonth, userId, januaryAmount, februaryAmount, marchAmount,
+        orgName, direction, frequencyPerMonth, userId, currentAmount,
+        januaryAmount, februaryAmount, marchAmount,
         aprilAmount, mayAmount, juneAmount, julyAmount, augustAmount,
         septemberAmount, octoberAmount, novemberAmount, decemberAmount
       }
@@ -185,6 +188,7 @@ export class BudgetMatrixComponent implements OnInit {
             const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
             this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
           }
+          this.getAllSums();
           this.hideMaintenanceColumn();
         }
       }

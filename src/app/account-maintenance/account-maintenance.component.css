@@ -1,6 +1,6 @@
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: block;
 }
 
 .dropdown-content  {
@@ -30,7 +30,6 @@
 .table{
     display: table;
     align-content: center;
-	/* width: 35%; */
 }
 .row {
 	display: table-row;

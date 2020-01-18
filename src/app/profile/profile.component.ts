@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
 
   showAccount: boolean;
   showBudget: boolean;
-  showTranscation: boolean;
   showCheckbook: boolean;
 
   constructor(
@@ -39,7 +38,6 @@ export class ProfileComponent implements OnInit {
 
     this.showAccount = false;
     this.showBudget = true;
-    this.showTranscation = false;
     this.showCheckbook = false;
 
     this.serverDown = false;
@@ -97,14 +95,6 @@ export class ProfileComponent implements OnInit {
       this.showBudget = false;
     } else {
       this.showBudget = true;
-    }
-  }
-
-  toggleTransction() {
-    if ( this.showTranscation) {
-      this.showTranscation = false;
-    } else {
-      this.showTranscation = true;
     }
   }
 

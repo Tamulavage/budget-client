@@ -19,7 +19,6 @@ import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { TansactionHistoryComponent } from './tansaction-history/tansaction-history.component';
-import { TransactionComponent } from './transaction/transaction.component';
 import { AccountMaintenanceComponent } from './account-maintenance/account-maintenance.component';
 import { BudgetMatrixComponent } from './budget-matrix/budget-matrix.component';
 import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintenance.component';
@@ -39,7 +38,6 @@ import { TransactionService } from './services/transaction.service';
     ProfileComponent,
     AccountsComponent,
     TansactionHistoryComponent,
-    TransactionComponent,
     AccountMaintenanceComponent,
     BudgetMatrixComponent,
     MatrixMaintenanceComponent,
