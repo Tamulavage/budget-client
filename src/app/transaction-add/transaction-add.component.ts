@@ -40,13 +40,30 @@ export class TransactionAddComponent implements OnInit {
   ]);
 
   ngOnInit() {
-    this.fromAccountName = resetFromForm;
-    this.toAccountName = resetToForm;
+    this.clearFields();
+
     this.transactionService.getAccountByUserID(this.profileId).subscribe(account => this.accountsFrom = account);
     this.transactionService.getAccountByUserID(this.profileId).subscribe(account => this.accountsTo = account);
   }
 
+  public clearOutToAccount(): void  {
+    this.selectToAccount = new Account();
+    this.selectToAccount.id = 0;
+  }
+
+  public clearOutFromAccount(): void {
+    this.selectFromAccount = new Account();
+    this.selectFromAccount.id = 0;
+  }
+
   submit() {
+  }
+
+  clearFields(): void {
+    this.fromAccountName = resetFromForm;
+    this.toAccountName = resetToForm;
+    this.clearOutToAccount();
+    this.clearOutFromAccount();
   }
 
   onNoClick(): void {

@@ -99,12 +99,9 @@ export class TansactionHistoryComponent implements OnInit {
       x => {
         if (x === 1) {
           const checkbookRow: Checkbook = this.transactionService.getDialogData();
-          const accountTemp = new Account();
           checkbookRow.transactionDt = checkbookRow.transactionDt.substring(0, 10);
 
-          // TODO: update from actual data
-          accountTemp.balance = 0;
-          const accounts: Account[]  = [accountTemp, accountTemp, accountTemp, accountTemp];
+          const accounts: Account[]  = this.updateRunningTransactionValues(checkbookRow);
 
           checkbookRow.accounts = accounts;
           this.tranasctionServiceLocal.dataChange.value.unshift(checkbookRow);
@@ -112,9 +109,27 @@ export class TansactionHistoryComponent implements OnInit {
         }
       }
     );
-
   }
 
+  updateRunningTransactionValues(checkbookRow: Checkbook): Account[] {
+
+    const accountsTemp: Account[] = [];
+
+    console.log(this.dataSource.renderedData[0].accounts.forEach(v => {
+         const accountTemp = new Account();
+         if (v.id === checkbookRow.fromAccountId) {
+          accountTemp.balance = v.balance - checkbookRow.amount;
+         } else if (v.id === checkbookRow.toAccountId) {
+          accountTemp.balance = v.balance + checkbookRow.amount;
+         } else {
+          accountTemp.balance = v.balance;
+         }
+         accountsTemp.push(accountTemp);
+       }
+       ));
+
+    return accountsTemp;
+  }
 }
 
 export class MainCheckbookTable extends DataSource<Checkbook> {
@@ -188,7 +203,6 @@ export class MainCheckbookTable extends DataSource<Checkbook> {
 
       switch (this._sort.active) {
         case 'date': [propertyA, propertyB] = [a.transactionDt, b.transactionDt]; break;
-        // case 'amouunt': [propertyA, propertyB] = [a.amount, b.amount]; break;
       }
 
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

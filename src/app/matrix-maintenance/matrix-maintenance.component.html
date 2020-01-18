@@ -33,10 +33,19 @@
 
       <div class="form">
         <mat-form-field color="accent">
+          <input matInput #input class="form-control" type="number" placeholder="Current Amount"
+            [(ngModel)]="data.currentAmount" name="currentAmount">
+        </mat-form-field>
+      </div>      
+      
+
+      <div class="form">
+        <mat-form-field color="accent">
           <input matInput #input class="form-control" type="number" placeholder="January Amount"
             [(ngModel)]="data.januaryAmount" name="januaryAmount">
         </mat-form-field>
       </div>
+      
 
       <div class="form">
         <mat-form-field color="accent">

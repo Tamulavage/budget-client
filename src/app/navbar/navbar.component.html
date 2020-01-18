@@ -1,14 +1,11 @@
-<header>
-  <div *ngIf="!auth.loggedIn">
-    <p></p>
-    <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
-  </div>
-  <button (click)="auth.logout()" *ngIf="auth.loggedIn  else dummyUserOption">Log Out</button>
+<div class="topnav">
+  <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+  <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+</div>
 
-  <ng-template #dummyUserOption>
+<div class="info" *ngIf="!auth.loggedIn" >
     <p></p>
     <div> If you would like a demo, please request send a request to <a href="mailto:dmt.demo.user@gmail.com">dmt.demo.user@gmail.com</a> for a demo user and password </div>
     <p></p>
     <div> As this is ALPHA application, I am limiting users </div>
-  </ng-template>
-</header>
+</div>  
