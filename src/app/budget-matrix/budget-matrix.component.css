@@ -42,6 +42,10 @@
 	float: right;
 }
 
+.algin-left {
+	float: left;
+}
+
 .spacer {
 	flex: 1 1 auto;
   }

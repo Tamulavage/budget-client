@@ -66,6 +66,7 @@ export class BudgetMatrixService {
     this.dialogData = lineItem;
     const url = `${this.futureUrl}/lineitem/${userId}`;
     // console.log(url);
+    // console.log(lineItem);
     return this.http.post<BudgetMatrix[]>(url, lineItem, httpOptions);
   }
 

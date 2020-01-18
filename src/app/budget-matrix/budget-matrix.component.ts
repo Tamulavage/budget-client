@@ -17,7 +17,7 @@ export class BudgetMatrixComponent implements OnInit {
   showMaintenceColumn = false;
 
   displayedColumns: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
-     'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount', 
+     'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
      'decemberAmount'];
 
   displayedColumnsWithActions: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
@@ -85,6 +85,21 @@ export class BudgetMatrixComponent implements OnInit {
     this.getAllSums();
   }
 
+  setCurrentMonth() {
+    // TODO: Call API endpoint to setCurrentMonth
+    this.hideMaintenanceColumn();
+  }
+
+  completeCurrentMonth() {
+    // TODO: Call API endpoint to setCurrentMonth
+    this.hideMaintenanceColumn();
+  }
+
+  forceCompleteCurrentMonth() {
+    // TODO: Call API endpoint to setCurrentMonth with forceComplete flag set to Yes
+    this.hideMaintenanceColumn();
+  }
+
   getAllSums() {
         this.budgetMatrixService.getFutureSumsBudgetByUserID(this.user)
         .subscribe(budgetRow => {
@@ -97,6 +112,60 @@ export class BudgetMatrixComponent implements OnInit {
           this.getIncomingSums();
         }
       );
+  }
+
+  calculateAllSums() {
+    this.calculateIncomingSums();
+    this.calculateOutGoingSums();
+    this.calculateDifference();
+  }
+
+  private calculateIncomingSums() {
+    this.curIncomingAmount = this.budgetInRows.map(t => t.currentAmount).reduce((acc, value) => acc + value);
+    this.janIncomingAmount = this.budgetInRows.map(t => t.januaryAmount).reduce((acc, value) => acc + value);
+    this.febIncomingAmount = this.budgetInRows.map(t => t.februaryAmount).reduce((acc, value) => acc + value);
+    this.marIncomingAmount = this.budgetInRows.map(t => t.marchAmount).reduce((acc, value) => acc + value);
+    this.aprIncomingAmount = this.budgetInRows.map(t => t.aprilAmount).reduce((acc, value) => acc + value);
+    this.mayIncomingAmount = this.budgetInRows.map(t => t.mayAmount).reduce((acc, value) => acc + value);
+    this.junIncomingAmount = this.budgetInRows.map(t => t.juneAmount).reduce((acc, value) => acc + value);
+    this.julIncomingAmount = this.budgetInRows.map(t => t.julyAmount).reduce((acc, value) => acc + value);
+    this.augIncomingAmount = this.budgetInRows.map(t => t.augustAmount).reduce((acc, value) => acc + value);
+    this.sepIncomingAmount = this.budgetInRows.map(t => t.septemberAmount).reduce((acc, value) => acc + value);
+    this.octIncomingAmount = this.budgetInRows.map(t => t.octoberAmount).reduce((acc, value) => acc + value);
+    this.novIncomingAmount = this.budgetInRows.map(t => t.novemberAmount).reduce((acc, value) => acc + value);
+    this.decIncomingAmount = this.budgetInRows.map(t => t.decemberAmount).reduce((acc, value) => acc + value);
+  }
+
+  private calculateOutGoingSums() {
+    this.curOutgoingAmount = this.budgetOutRows.map(t => t.currentAmount).reduce((acc, value) => acc + value);
+    this.janOutgoingAmount = this.budgetOutRows.map(t => t.januaryAmount).reduce((acc, value) => acc + value);
+    this.febOutgoingAmount = this.budgetOutRows.map(t => t.februaryAmount).reduce((acc, value) => acc + value);
+    this.marOutgoingAmount = this.budgetOutRows.map(t => t.marchAmount).reduce((acc, value) => acc + value);
+    this.aprOutgoingAmount = this.budgetOutRows.map(t => t.aprilAmount).reduce((acc, value) => acc + value);
+    this.mayOutgoingAmount = this.budgetOutRows.map(t => t.mayAmount).reduce((acc, value) => acc + value);
+    this.junOutgoingAmount = this.budgetOutRows.map(t => t.juneAmount).reduce((acc, value) => acc + value);
+    this.julOutgoingAmount = this.budgetOutRows.map(t => t.julyAmount).reduce((acc, value) => acc + value);
+    this.augOutgoingAmount = this.budgetOutRows.map(t => t.augustAmount).reduce((acc, value) => acc + value);
+    this.sepOutgoingAmount = this.budgetOutRows.map(t => t.septemberAmount).reduce((acc, value) => acc + value);
+    this.octOutgoingAmount = this.budgetOutRows.map(t => t.octoberAmount).reduce((acc, value) => acc + value);
+    this.novOutgoingAmount = this.budgetOutRows.map(t => t.novemberAmount).reduce((acc, value) => acc + value);
+    this.decOutgoingAmount = this.budgetOutRows.map(t => t.decemberAmount).reduce((acc, value) => acc + value);
+  }
+
+  private calculateDifference() {
+    this.differenceSum[0].currentAmount =  this.curIncomingAmount - this.curOutgoingAmount;
+    this.differenceSum[0].januaryAmount =  this.janIncomingAmount - this.janOutgoingAmount;
+    this.differenceSum[0].februaryAmount =  this.febIncomingAmount - this.febOutgoingAmount;
+    this.differenceSum[0].marchAmount =  this.marIncomingAmount - this.marOutgoingAmount;
+    this.differenceSum[0].aprilAmount =  this.aprIncomingAmount - this.aprOutgoingAmount;
+    this.differenceSum[0].mayAmount =  this.mayIncomingAmount - this.mayOutgoingAmount;
+    this.differenceSum[0].juneAmount =  this.junIncomingAmount - this.junOutgoingAmount;
+    this.differenceSum[0].julyAmount =  this.julIncomingAmount - this.julOutgoingAmount;
+    this.differenceSum[0].augustAmount =  this.augIncomingAmount - this.augOutgoingAmount;
+    this.differenceSum[0].septemberAmount =  this.sepIncomingAmount - this.sepOutgoingAmount;
+    this.differenceSum[0].octoberAmount =  this.octIncomingAmount - this.octOutgoingAmount;
+    this.differenceSum[0].novemberAmount =  this.novIncomingAmount - this.novOutgoingAmount;
+    this.differenceSum[0].decemberAmount =  this.decIncomingAmount - this.decOutgoingAmount;
   }
 
   getOutgoingSums() {
@@ -156,6 +225,7 @@ export class BudgetMatrixComponent implements OnInit {
           } else if (direction === 'I') {
             this.budgetInRows.push(this.budgetMatrixService.getDialogData());
           }
+          this.calculateAllSums();
           this.hideMaintenanceColumn();
         }
       }
@@ -186,9 +256,10 @@ export class BudgetMatrixComponent implements OnInit {
             this.budgetOutRows[index] = this.budgetMatrixService.getDialogData();
           } else if (direction === 'I') {
             const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
+            // console.log(this.budgetMatrixService.getDialogData());
             this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
           }
-          this.getAllSums();
+          this.calculateAllSums();
           this.hideMaintenanceColumn();
         }
       }
@@ -214,6 +285,7 @@ export class BudgetMatrixComponent implements OnInit {
             const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
             this.budgetInRows.splice(index, 1);
           }
+          this.calculateAllSums();
           this.hideMaintenanceColumn();
         }
       }
