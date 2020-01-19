@@ -49,11 +49,13 @@ export class TransactionAddComponent implements OnInit {
   public clearOutToAccount(): void  {
     this.selectToAccount = new Account();
     this.selectToAccount.id = 0;
+    this.toAccountId = null;
   }
 
   public clearOutFromAccount(): void {
     this.selectFromAccount = new Account();
     this.selectFromAccount.id = 0;
+    this.fromAccountId = null;
   }
 
   submit() {
@@ -85,15 +87,16 @@ export class TransactionAddComponent implements OnInit {
     }
     if (fromAccountId === toAccountId) {
       console.log('Cannot transfer to same account');
+    } else {
+      this.transactionService.addTransaction({
+        amount,
+        memo,
+        fromAccountId,
+        toAccountId,
+        transactionDt
+      } as unknown as Transaction, fromAccountName, toAccountName)
+        .subscribe();
     }
-    this.transactionService.addTransaction({
-      amount,
-      memo,
-      fromAccountId,
-      toAccountId,
-      transactionDt
-    } as unknown as Transaction, fromAccountName, toAccountName)
-      .subscribe();
   }
 
   onSelectFromAccount(account: Account) {

@@ -39,7 +39,8 @@
                 <p></p>
                 <button (click)="newUserAccount()">Add new Account</button>
             </div>
-            <div *ngIf="!showNewUserWindow"> LOADING ...
+            <div *ngIf="!showNewUserWindow">
+                <p></p> LOADING ...
                 <p>This is a known bug, takes approx 1 min to load on inital login</p>
             </div>
         </ng-template>

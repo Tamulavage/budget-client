@@ -2,6 +2,14 @@
 
     <!-- https://github.com/marinantonio/angular-mat-table-crud/tree/master/src/app -->
     <!-- https://stackblitz.com/edit/inline-edit-mat-table?file=app%2Finline-edit%2Finline-edit.component.scss -->
+    <p></p>
+
+    <div class="algin-left">
+        <button *ngIf="showMaintenceColumn && coded" (click)="setCurrentMonth()"> Set current Month</button>
+        <button *ngIf="showMaintenceColumn" (click)="completeCurrentMonth()"> Close Current Month</button>
+        <button *ngIf="showMaintenceColumn" (click)="forceCompleteCurrentMonth()"> Force Close Current Month</button>
+        <p></p>
+    </div>
 
     <div class="algin-right">
         <button *ngIf="!showMaintenceColumn" (click)="showMaintenanceColumn()">Show Maintenance column</button>
@@ -86,7 +94,7 @@
         <ng-container matColumnDef="novemberAmount">
             <th mat-header-cell *matHeaderCellDef> November </th>
             <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
-            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ novOutgoingAmount | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ novIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="decemberAmount">
