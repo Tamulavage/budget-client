@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BudgetMatrix } from '../models/budgetMatrix';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
+import { BudgetOrg } from '../models/budgetOrg';
+import { tap } from 'rxjs/operators';
 
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+
+const httpFullOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  observe: `response`
 };
 
 @Injectable({
@@ -58,6 +65,11 @@ export class BudgetMatrixService {
     };
   }
 
+  handleUserError(error: HttpErrorResponse) {
+      alert('Your Current Month total > 0 !');
+      return throwError('User\'s sum for current month > 0');
+  }
+
   getDialogData() {
     return this.dialogData;
   }
@@ -79,6 +91,15 @@ export class BudgetMatrixService {
     };
     console.log(url);
     return this.http.delete<BudgetMatrix[]>(url, httpOptionsForDelete);
+  }
+
+  completCurrentMonth(userId: number, forceCompelte: boolean): Observable<HttpResponse<BudgetOrg[]>> {
+    const url = `${this.futureUrl}/completemonth/${userId}?forceComplete=${forceCompelte}`;
+    console.log(url);
+    return this.http.post<BudgetOrg[]>(url, null, {observe: `response`})
+      .pipe(
+          catchError(this.handleUserError)
+        );
   }
 
 }

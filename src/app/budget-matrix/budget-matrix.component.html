@@ -5,9 +5,9 @@
     <p></p>
 
     <div class="algin-left">
-        <button *ngIf="showMaintenceColumn" (click)="setCurrentMonth()"> Set current Month</button>
-        <button *ngIf="showMaintenceColumn" (click)="completeCurrentMonth()"> Complete Current Month</button>
-        <button *ngIf="showMaintenceColumn" (click)="forceCompleteCurrentMonth()"> Force Complete Current Month</button>
+        <button *ngIf="showMaintenceColumn && coded" (click)="setCurrentMonth()"> Set current Month</button>
+        <button *ngIf="showMaintenceColumn" (click)="completeCurrentMonth()"> Close Current Month</button>
+        <button *ngIf="showMaintenceColumn" (click)="forceCompleteCurrentMonth()"> Force Close Current Month</button>
         <p></p>
     </div>
 

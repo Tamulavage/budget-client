@@ -15,6 +15,7 @@ export class BudgetMatrixComponent implements OnInit {
   @Output() userId: number;
 
   showMaintenceColumn = false;
+  coded = false;
 
   displayedColumns: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
      'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
@@ -92,11 +93,14 @@ export class BudgetMatrixComponent implements OnInit {
 
   completeCurrentMonth() {
     // TODO: Call API endpoint to setCurrentMonth
+    this.budgetMatrixService.completCurrentMonth(this.userId, false).subscribe(
+      // TODO: update subscriber with data
+    );
     this.hideMaintenanceColumn();
   }
 
   forceCompleteCurrentMonth() {
-    // TODO: Call API endpoint to setCurrentMonth with forceComplete flag set to Yes
+    this.budgetMatrixService.completCurrentMonth(this.userId, true).subscribe();
     this.hideMaintenanceColumn();
   }
 
