@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {Observable, of, concat, throwError} from 'rxjs';
+import {catchError, tap, retryWhen, delay, take, concatMap} from 'rxjs/operators';
 import { AuthorizedUser } from '../models/authorizedUser';
 
 const   httpOptions = {
@@ -17,13 +17,21 @@ export class AuthorizeService {
   private userUrl = 'https://budgetappserver.herokuapp.com/budget/profile';
 
   dialogData: any;
+  errorLogingIn = false;
 
   constructor(private http: HttpClient) { }
 
 
   getAuthorizeUser(username: string): Observable<HttpResponse<AuthorizedUser>> {
     const url = `${this.userUrl}/find/${username}`;
-    return this.http.get<AuthorizedUser>(url, { observe: 'response' });  }
+    return this.http.get<AuthorizedUser>(url, { observe: 'response' })
+    .pipe(
+      retryWhen(err => err.pipe(
+          delay(1000),
+          take(10)
+          ))
+    );
+   }
 
   addAuthorizeUser(authorizedUser: AuthorizedUser): Observable<AuthorizedUser> {
     // console.log(authorizedUser);
@@ -33,7 +41,6 @@ export class AuthorizeService {
     temp.subscribe(data => this.dialogData.id = data.id);
 
     return temp;
-
   }
 
   getDialogData() {
