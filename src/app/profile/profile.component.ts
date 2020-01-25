@@ -14,7 +14,6 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 })
 export class ProfileComponent implements OnInit {
 
-  serverDown: boolean;
   showNewUserWindow: boolean;
 
   authorizedUsers = new BehaviorSubject<AuthorizedUser> (null);
@@ -40,16 +39,15 @@ export class ProfileComponent implements OnInit {
     this.showBudget = true;
     this.showCheckbook = false;
 
-    this.serverDown = false;
     this.showNewUserWindow = false;
 
     this.auth.userProfile$.subscribe((user: any[]) => {
       this.profileJson = JSON.stringify(user, null, 2);
       temp = JSON.parse(this.profileJson);
+      this.nickname = temp.nickname;
     }
    );
 
-    this.nickname = temp.nickname;
     this.getAuthorizedUser();
   }
 
@@ -74,12 +72,12 @@ export class ProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe(  x => {
       if (x === 1) {
         this.authorizedUsers.next(this.authorize.getDialogData());
-        const temp = this.authorize.getDialogData()
+        const temp = this.authorize.getDialogData();
         this.userId = temp.id;
         this.authorizedUsers.complete();
       }
     }
-    )
+    );
   }
 
   toggleAccount() {

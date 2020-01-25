@@ -1,6 +1,5 @@
 <div *ngIf="auth.loggedIn">
     <div *ngIf="auth.userProfile$ | async as profile">
-        <div *ngIf="serverDown"> server Down</div>
         <div *ngIf="authorizedUsers | async as authorizedUsers else loading">
             <h3>
                 Welcome: {{ authorizedUsers.firstName }} {{ authorizedUsers.lastName }}
@@ -41,7 +40,7 @@
             </div>
             <div *ngIf="!showNewUserWindow">
                 <p></p> LOADING ...
-                <p>This is a known bug, takes approx 1 min to load on inital login</p>
+                <p>This is a known bug, takes approx 1 min to load on initial login</p>
             </div>
         </ng-template>
     </div>
