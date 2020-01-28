@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-
+import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -27,6 +27,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TransactionService } from './services/transaction.service';
+import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.component';
 
 
 
@@ -42,7 +43,8 @@ import { TransactionService } from './services/transaction.service';
     BudgetMatrixComponent,
     MatrixMaintenanceComponent,
     TransactionAddComponent,
-    EditUserComponent
+    EditUserComponent,
+    CheckbookGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { TransactionService } from './services/transaction.service';
     AppRoutingModule,
     MatTableModule,
     MatDialogModule,
+    ChartsModule,
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,

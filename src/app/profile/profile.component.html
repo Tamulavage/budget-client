@@ -4,14 +4,16 @@
             <h3>
                 Welcome: {{ authorizedUsers.firstName }} {{ authorizedUsers.lastName }}
             </h3>
-            <button (click)="toggleAccount()" *ngIf="!showAccount">Show Account Info</button>
-            <button (click)="toggleAccount()" *ngIf="showAccount">Hide Account Info</button>
-            <button (click)="toggleBudget()" *ngIf="!showBudget">Show budget Info</button>
-            <button (click)="toggleBudget()" *ngIf="showBudget">Hide budget Info</button>
-            <button (click)="toggleCheckbook()" *ngIf="!showCheckbook">Show Checkbook Info</button>
-            <button (click)="toggleCheckbook()" *ngIf="showCheckbook">Hide Checkbook Info</button>
+            <button (click)="toggleAccount()">Account on/off</button>
+            <button (click)="toggleBudget()">Budget on/off</button>
+            <button (click)="toggleCheckbook()">Checkbook on/off</button>
+            <button (click)="toggleGraphs()">Graph on/off</button>            
         </div>
         <p></p>
+        <div *ngIf="showGraph && authorizedUsers | async">
+            <app-checkbook-graph  [user]="userId"></app-checkbook-graph>
+        </div>
+
         <div class="table" *ngIf="authorizedUsers | async">
             <div class="row">
                 <div class="col accountWidth" *ngIf="showAccount">

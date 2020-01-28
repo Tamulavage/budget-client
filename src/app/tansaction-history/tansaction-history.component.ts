@@ -79,7 +79,7 @@ export class TansactionHistoryComponent implements OnInit {
   populateRunningAmountHeaders(transactions: Checkbook[]) {
 
     const leng = transactions.map(t => t.accounts.length).reduce((a, b) => a);
-    const accountName = 'account'; // used to add dynanically to matrix
+    const accountName = 'account'; // used to add dynamically to matrix
     const maxShow = 7;
 
     for (let x = 0; x < leng && x < maxShow; x++) {
