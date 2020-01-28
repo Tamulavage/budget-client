@@ -1,37 +1,37 @@
-<button (click)="toggleMaintenaces()" *ngIf="!showMaintenance">Add/Remove Accounts</button>
-<button (click)="toggleMaintenaces()" *ngIf="showMaintenance">Show Accounts</button>
-
 <p></p>
 
 <div *ngIf="!showMaintenance">
-    <div class="table">
-        <div class="row" >
-            <div class="col bold">
-              Bank:
-            </div>
-            <div class="col bold">
-              Nickname:
-            </div>
-            <div class="col bold">
-              Current:
-            </div>
-          </div>
-      <div class="row" *ngFor="let account of accounts">
-        <div class="col">
-          {{account.institutionName}}:
-        </div>
-        <div class="col">
-          {{account.nickname}}
-        </div>
-        <div class="col">
-          {{account.balance.toFixed(2) | currency }}
-        </div>
+  <div class="table">
+    <div class="row">
+      <div class="col bold">
+        Bank:
+      </div>
+      <div class="col bold">
+        Nickname:
+      </div>
+      <div class="col bold">
+        Current:
       </div>
     </div>
+    <div class="row" *ngFor="let account of accounts">
+      <div class="col">
+        {{account.institutionName}}:
+      </div>
+      <div class="col">
+        {{account.nickname}}
+      </div>
+      <div class="col">
+        {{account.balance.toFixed(2) | currency }}
+      </div>
+    </div>
+  </div>
 
-  </div>
-  <p></p>
-  
-  <div *ngIf="showMaintenance">
-    <app-account-maintenance [user]="user"></app-account-maintenance>
-  </div>
+</div>
+<p></p>
+<button (click)="toggleMaintenaces()" *ngIf="!showMaintenance">Add/Remove Accounts</button>
+<button (click)="toggleMaintenaces()" *ngIf="showMaintenance">Show Accounts</button>
+<p></p>
+
+<div *ngIf="showMaintenance">
+  <app-account-maintenance [user]="user"></app-account-maintenance>
+</div>
