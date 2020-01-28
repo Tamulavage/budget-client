@@ -1,0 +1,14 @@
+<div *ngIf="dataReady">
+  <div style="display:inline-block;" class="mid">
+    <canvas baseChart width="1000" height="300"
+      [datasets]="lineChartData" 
+      [options]="lineChartOptions"
+      [colors]="lineChartColors" 
+      [labels]="lineChartLabels" 
+      [legend]="lineChartLegend" 
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins">
+    </canvas>
+  </div>
+</div>
+<!-- https://github.com/valor-software/ng2-charts -->

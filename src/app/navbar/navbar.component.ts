@@ -14,6 +14,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.ping.pingServer().subscribe();
-    // console.log(this.ping.pingServer().subscribe());
   }
 }

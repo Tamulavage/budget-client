@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   showAccount: boolean;
   showBudget: boolean;
   showCheckbook: boolean;
+  showGraph: boolean;
 
   constructor(
       public auth: AuthService,
@@ -36,8 +37,9 @@ export class ProfileComponent implements OnInit {
     let temp = JSON.parse(this.profileJson);
 
     this.showAccount = false;
-    this.showBudget = true;
+    this.showBudget = false;
     this.showCheckbook = false;
+    this.showGraph = true;
 
     this.showNewUserWindow = false;
 
@@ -101,6 +103,14 @@ export class ProfileComponent implements OnInit {
       this.showCheckbook = false;
     } else {
       this.showCheckbook = true;
+    }
+  }
+
+  toggleGraphs() {
+    if(this.showGraph){
+      this.showGraph = false;
+    } else {
+      this.showGraph = true;
     }
   }
 
