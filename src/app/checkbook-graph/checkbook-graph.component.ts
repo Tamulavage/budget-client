@@ -15,13 +15,7 @@ export class CheckbookGraphComponent implements OnInit {
 
   public checkbook: Checkbook[] = [];
 
-  // public lineChartData: ChartDataSets[] = [
-  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-  //   { data: [5, 59, 80, 81, 6, 55, 40], label: 'Series B' },
-  // ];
-
   public lineChartData: ChartDataSets[] = [];
-  // public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July',''];
   public lineChartLabels: Label[] = [];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
@@ -60,7 +54,6 @@ export class CheckbookGraphComponent implements OnInit {
 
     for (let x = 0; x < leng && x < maxShow; x++) {
       label.push(fullCheckbook.map(c => c.accounts[x].nickname));
-      // dataToAdd.push(fullCheckbook.map(c => c.accounts[x].balance));
       dataToAdd.push(fullCheckbook.map(c => c.accounts[x].balance));
     }
 
@@ -82,12 +75,10 @@ export class CheckbookGraphComponent implements OnInit {
     this.dataReady = true;
   }
 
-  private revereseArray(dataToAdd: number[]): number[] {
-
+  private revereseArray(dataToAdd: number[][]): number[][] {
     dataToAdd.forEach(element => {
       element = element.reverse();
     });
-
     return dataToAdd;
   }
 
