@@ -4,18 +4,18 @@
 }
 .row {
 	display: table-row;
+	align-items: top;
+	vertical-align: top;
 }
 
 .col {
-	border: 1px solid #999999;
 	display: table-cell;
 	padding: 3px 10px;
+	align-items: top;
+	margin: 0 auto;
+	vertical-align: top;
 }
 
-.accountWidth {
-	width: 100px;
-}
-
-.transactionWidth {
-	width: 200px;
+.account {
+	width: 10%;
 }

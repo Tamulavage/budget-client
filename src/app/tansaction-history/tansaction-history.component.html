@@ -3,10 +3,10 @@
                 <input matInput #filter placeholder="Filter">
         </mat-form-field>
         <button mat-icon color="primary" (click)="addNewTransaction()">New Transaction</button>
-        <p></p>
 </div>
 
-<table mat-table [(dataSource)]="dataSource" matSort  >
+
+<table mat-table [(dataSource)]="dataSource" matSort >
 
         <ng-container matColumnDef="dateOfTransaction">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>

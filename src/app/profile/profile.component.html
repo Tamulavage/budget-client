@@ -7,16 +7,24 @@
             <button (click)="toggleAccount()">Account on/off</button>
             <button (click)="toggleBudget()">Budget on/off</button>
             <button (click)="toggleCheckbook()">Checkbook on/off</button>
-            <button (click)="toggleGraphs()">Graph on/off</button>            
+            <button (click)="toggleGraphs()">Graph on/off</button>
         </div>
         <p></p>
-        <div *ngIf="showGraph && authorizedUsers | async">
-            <app-checkbook-graph  [user]="userId"></app-checkbook-graph>
-        </div>
 
         <div class="table" *ngIf="authorizedUsers | async">
             <div class="row">
-                <div class="col accountWidth" *ngIf="showAccount">
+                <div class="col account" *ngIf="showAccount && showGraph">
+                    <app-accounts [user]="userId"></app-accounts>
+                </div>
+                <div class="col" *ngIf="showGraph">
+                    <app-checkbook-graph [user]="userId"></app-checkbook-graph>
+                </div>
+            </div>
+        </div>        
+
+        <div class="table" *ngIf="authorizedUsers | async">
+            <div class="row">
+                <div class="col account" *ngIf="showAccount && !showGraph">
                     <app-accounts [user]="userId"></app-accounts>
                 </div>
                 <div class="col" *ngIf="showCheckbook">
@@ -26,8 +34,8 @@
                     <app-budget-matrix [user]="userId"></app-budget-matrix>
                 </div>
             </div>
-
         </div>
+
         <div *ngIf="authorizedUsers && showBudget &&showCheckbook">
             <app-budget-matrix [user]="userId"></app-budget-matrix>
         </div>
@@ -35,7 +43,7 @@
         <ng-template #loading>
             <div *ngIf="showNewUserWindow">
                 <p></p>
-                You have been authenticated, but not authorized. Would you like to create a new account for username: 
+                You have been authenticated, but not authorized. Would you like to create a new account for username:
                 <b> {{ nickname }} </b>
                 <p></p>
                 <button (click)="newUserAccount()">Add new Account</button>

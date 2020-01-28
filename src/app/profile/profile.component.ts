@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
 
     let temp = JSON.parse(this.profileJson);
 
-    this.showAccount = false;
+    this.showAccount = true;
     this.showBudget = false;
     this.showCheckbook = false;
     this.showGraph = true;
