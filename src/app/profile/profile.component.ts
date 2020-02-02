@@ -43,15 +43,18 @@ export class ProfileComponent implements OnInit {
 
     this.showNewUserWindow = false;
 
-    this.auth.userProfile$.subscribe((user: any[]) => {
-      this.profileJson = JSON.stringify(user, null, 2);
-      temp = JSON.parse(this.profileJson);
-      this.nickname = temp.nickname;
-    }
-   );
+    if (this.auth.loggedIn) {
+      this.auth.userProfile$.subscribe((user: any[]) => {
+        this.profileJson = JSON.stringify(user, null, 2);
+        temp = JSON.parse(this.profileJson);
+        this.nickname = temp.nickname;
+        }
+      );
 
-    this.getAuthorizedUser();
+      this.getAuthorizedUser();
+    }
   }
+
 
   getAuthorizedUser() {
     this.authorize.getAuthorizeUser(this.nickname).subscribe((data) => {
@@ -107,7 +110,7 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleGraphs() {
-    if(this.showGraph){
+    if ( this.showGraph){
       this.showGraph = false;
     } else {
       this.showGraph = true;
