@@ -23,6 +23,11 @@ export class AccountMaintenanceComponent implements OnInit {
   accountTypeName: string;
   accountTypeId: number;
 
+  showMainMaintenance: boolean;
+  showAddNewAccount: boolean;
+  showNewAccountActionItems: boolean;
+  showRemoveAccountActionItems: boolean;
+
   constructor(private accountService: AccountService) {
   }
 
@@ -32,14 +37,16 @@ export class AccountMaintenanceComponent implements OnInit {
 
   newAccountButton(): void {
     this.accountService.getAccountTypes().subscribe(accountType => this.accountTypes = accountType);
-    (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = false;
-    (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = true;
-    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = false;
+
+    this.showMainMaintenance = false;
+    this.showAddNewAccount = true;
+    this.showNewAccountActionItems = true;
   }
 
   delete(): void {
-    (document.getElementById('deleteDivButton') as HTMLInputElement).hidden = false;
-    (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = true;
+    this.showRemoveAccountActionItems = true;
+    this.showMainMaintenance = false;
+
     this.accountService.getAccounts(this.user).subscribe(accounts => this.accounts = accounts);
   }
 
@@ -55,12 +62,7 @@ export class AccountMaintenanceComponent implements OnInit {
     this.accountService.addAccount({ balance, accountTypeId, nickname, institutionName } as Account, userId)
       .subscribe(
         // TODO: push new account to parent obeject
-        newAccount => this.accounts = newAccount
       );
-
-    (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
-    (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
-    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = true;
 
     this.resetInitialFields();
   }
@@ -72,6 +74,20 @@ export class AccountMaintenanceComponent implements OnInit {
     this.accountTypeId = null;
     this.selectedAccountType = null;
     this.accounts = [];
+
+    this.showAddNewAccount = false;
+    this.showMainMaintenance = true;
+    this.showRemoveAccountActionItems = false;
+    this.showNewAccountActionItems = false;
+
+    this.resetAccountType();
+  }
+
+  resetAccountType() {
+    this.selectedAccountType = new Accounttype();
+    this.selectedAccountType.id = 0;
+    this.accountTypeName = resetInitialAccountType;
+    this.accountTypeId = null;
   }
 
   onSelectAccountType(accountType: Accounttype) {
@@ -82,11 +98,6 @@ export class AccountMaintenanceComponent implements OnInit {
 
   cancel(): void {
     this.resetInitialFields();
-
-    (document.getElementById('newAccountDiv') as HTMLInputElement).hidden = true;
-    (document.getElementById('mainMaintenance') as HTMLInputElement).hidden = false;
-    (document.getElementById('newButtonDiv') as HTMLInputElement).hidden = true;
-    (document.getElementById('deleteDivButton') as HTMLInputElement).hidden = true;
   }
 
   getAccounts(): void {
