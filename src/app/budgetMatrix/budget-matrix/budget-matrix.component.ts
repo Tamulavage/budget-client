@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
-import { BudgetMatrix } from '../models/budgetMatrix';
-import { BudgetMatrixService } from '../services/budget-matrix.service';
+import { BudgetMatrix } from '../../models/budgetMatrix';
+import { BudgetMatrixService } from '../../services/budget-matrix.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatrixMaintenanceComponent } from '../matrix-maintenance/matrix-maintenance.component';
 
