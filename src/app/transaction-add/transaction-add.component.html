@@ -17,10 +17,10 @@
             </mat-form-field>
         </div>
 
-        <!-- TODO: CHange to button with new Dialog versus dropdown -->
+        <!-- TODO: Change to button with new Dialog versus dropdown-->
         <div class="dropdown" role="group">
             <button class="dropbtn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false" value="{{fromAccountId}}">
+                aria-expanded="false" value="{{fromAccountId}}" (click)="clearFields()">
                 {{fromAccountName}}
             </button>
             <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
@@ -30,10 +30,10 @@
             </div>
         </div>
 
-        <!-- TODO: CHange to button  with new Dialog versus dropdown -->
+        <!-- TODO: Change to button  with new Dialog versus dropdown -->
         <div class="dropdown" role="group">
             <button class="dropbtn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false" value="{{toAccountId}}">
+                aria-expanded="false" value="{{toAccountId}}" (click)="clearFields()">
                 {{toAccountName}} 
             </button>
             <div class="dropdown-menu dropdown-content" id="fromAccountdrp">
@@ -41,15 +41,13 @@
                     [class.selected]="toAccountId === selectToAccount.id">
                     {{account.institutionName}} / {{account.nickname}}</a>
             </div>
-        </div>
-        <button mat-button (click)="clearFields()">Reset</button>
+        </div> 
 
+        <p></p>
 
-        <div mat-dialog-actions>
-            <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
                 (click)="confirmAdd(transaction.memo,transaction.amount)">Save</button>
-            <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-        </div>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
     </form>
 
 </div>
