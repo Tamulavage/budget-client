@@ -28,6 +28,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TransactionService } from './services/transaction.service';
 import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.component';
+import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inline-budget-edit.component';
 
 
 
@@ -44,7 +45,8 @@ import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.compo
     MatrixMaintenanceComponent,
     TransactionAddComponent,
     EditUserComponent,
-    CheckbookGraphComponent
+    CheckbookGraphComponent,
+    InlineBudgetEditComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.compo
   entryComponents: [
     MatrixMaintenanceComponent,
     TransactionAddComponent,
-    EditUserComponent
+    EditUserComponent,
+    InlineBudgetEditComponent
   ],
   providers: [TransactionService],
   bootstrap: [AppComponent]
