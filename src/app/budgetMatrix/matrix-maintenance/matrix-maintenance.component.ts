@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-import { BudgetMatrixService } from '../services/budget-matrix.service';
-import { BudgetMatrix } from '../models/budgetMatrix';
-import { MaintenanceSetting } from '../models/maintenanceSetting';
+import { BudgetMatrixService } from '../../services/budget-matrix.service';
+import { BudgetMatrix } from '../../models/budgetMatrix';
+import { MaintenanceSetting } from '../../models/maintenanceSetting';
 
 @Component({
   selector: 'app-matrix-maintenance',

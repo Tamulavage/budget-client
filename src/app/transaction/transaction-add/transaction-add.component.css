@@ -22,16 +22,13 @@
 .dropdown-content a.selected {background-color: rgb(110, 111, 112);
     display: none;}
 
-.dropdown-content.selected {background-color: rgb(110, 111, 112);
-        display: none;}
-
 .dropdown:hover .dropdown-content {display: block;}
 
 .container {
     display: flex;
     flex-direction: column;
-    min-width: 225px;
-    min-height: 225px;
+    min-width: 250px;
+    min-height: 250px;
   }
   
   .container > * {
@@ -40,12 +37,11 @@
   }
   
   .form {
-    display: flex;
     padding-top: 6px;
     padding-bottom: 6px;
   }
   
   .mat-form-field {
     font-size: 14px;
-    flex-grow: 1;
+    flex-grow: 14;
   }

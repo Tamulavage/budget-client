@@ -16,4 +16,5 @@ export class BudgetMatrix {
     octoberAmount: number;
     novemberAmount: number;
     decemberAmount: number;
+    currentMonth: number;
   }

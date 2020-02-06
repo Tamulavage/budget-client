@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
-import { BudgetMatrix } from '../models/budgetMatrix';
-import { BudgetMatrixService } from '../services/budget-matrix.service';
+import { BudgetMatrix } from '../../models/budgetMatrix';
+import { BudgetMatrixService } from '../../services/budget-matrix.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatrixMaintenanceComponent } from '../matrix-maintenance/matrix-maintenance.component';
+import { InlineBudgetEditComponent } from '../inline-budget-edit/inline-budget-edit.component';
+import { RawData } from 'src/app/models/rawData';
 
 @Component({
   selector: 'app-budget-matrix',
@@ -15,7 +17,6 @@ export class BudgetMatrixComponent implements OnInit {
   @Output() userId: number;
 
   showMaintenceColumn = false;
-  coded = false;
 
   displayedColumns: string[] = ['orgName', 'currentAmount', 'januaryAmount', 'februaryAmount', 'marchAmount', 'aprilAmount',
      'mayAmount', 'juneAmount' , 'julyAmount', 'augustAmount', 'septemberAmount', 'octoberAmount', 'novemberAmount',
@@ -65,6 +66,9 @@ export class BudgetMatrixComponent implements OnInit {
   novIncomingAmount: number;
   decIncomingAmount: number;
 
+  currentMonthValue: RawData;
+  currentMonthString = 'Not Set';
+
   ngOnInit() {
     this.populateMatrix();
     this.userId = this.user;
@@ -84,6 +88,79 @@ export class BudgetMatrixComponent implements OnInit {
       );
 
     this.getAllSums();
+    this.getCurrentMonthInfo();
+  }
+
+  getCurrentMonthInfo() {
+    this.currentMonthValueFromService();
+  }
+
+  private currentMonthValueFromService() {
+    this.budgetMatrixService.getCurrentMonthValue(this.user).subscribe(data => {
+      this.currentMonthValue = data;
+      this.translateCurrentMonth(data.data);
+      // console.log(this.currentMonthValue.data);
+      }
+    );
+  }
+
+  private translateCurrentMonth(rawValue: string) {
+    if (rawValue != null) {
+      switch (rawValue) {
+        case '13': {
+          this.currentMonthString = 'Jan';
+          break;
+        }
+        case '14': {
+          this.currentMonthString = 'Feb';
+          break;
+        }
+        case '15': {
+          this.currentMonthString = 'Mar';
+          break;
+        }
+        case '16': {
+          this.currentMonthString = 'Apr';
+          break;
+        }
+        case '17': {
+          this.currentMonthString = 'May';
+          break;
+        }
+        case '18': {
+          this.currentMonthString = 'Jun';
+          break;
+        }
+        case '19': {
+          this.currentMonthString = 'Jul';
+          break;
+        }
+        case '20': {
+          this.currentMonthString = 'Aug';
+          break;
+        }
+        case '21': {
+          this.currentMonthString = 'Sep';
+          break;
+        }
+        case '22': {
+          this.currentMonthString = 'Oct';
+          break;
+        }
+        case '23': {
+          this.currentMonthString = 'Nov';
+          break;
+        }
+        case '24': {
+          this.currentMonthString = 'Dec';
+          break;
+        }
+        default: {
+          this.currentMonthString = 'Not Set';
+          break;
+        }
+      }
+    }
   }
 
   setCurrentMonth() {
@@ -92,16 +169,21 @@ export class BudgetMatrixComponent implements OnInit {
   }
 
   completeCurrentMonth() {
-    // TODO: Call API endpoint to setCurrentMonth
     this.budgetMatrixService.completCurrentMonth(this.userId, false).subscribe(
       // TODO: update subscriber with data
     );
     this.hideMaintenanceColumn();
+    this.getCurrentMonthInfo();
+    this.budgetOutRows = this.budgetOutRows.concat();
+    this.budgetInRows = this.budgetInRows.concat();
   }
 
   forceCompleteCurrentMonth() {
     this.budgetMatrixService.completCurrentMonth(this.userId, true).subscribe();
     this.hideMaintenanceColumn();
+    this.budgetOutRows = this.budgetOutRows.concat();
+    this.budgetInRows = this.budgetInRows.concat();
+    this.getCurrentMonthInfo(); // Must refresh front end manually
   }
 
   getAllSums() {
@@ -236,16 +318,55 @@ export class BudgetMatrixComponent implements OnInit {
     );
   }
 
-  editRow(orgName: string, direction: string, currentAmount: number,  januaryAmount: number, februaryAmount: number,
-          marchAmount: number,
+  editCell(orgName: string, orgId: number, currentAmount: number,
+           januaryAmount: number, februaryAmount: number,
+           marchAmount: number,  aprilAmount: number, mayAmount: number,
+           juneAmount: number, julyAmount: number, augustAmount: number,
+           septemberAmount: number, octoberAmount: number, novemberAmount: number,
+           decemberAmount: number, direction: string) {
+    const userId = this.userId;
+    const frequencyPerMonth = 1;
+    const currentMonth = 0 + this.currentMonthValue.data;
+    const dialogRef = this.dialog.open(InlineBudgetEditComponent, {
+      data: {orgName, orgId, currentMonth, frequencyPerMonth, userId, currentAmount,
+        januaryAmount, februaryAmount, marchAmount,
+        aprilAmount, mayAmount, juneAmount, julyAmount, augustAmount,
+        septemberAmount, octoberAmount, novemberAmount, decemberAmount, direction
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      x => {
+        if (x === 1) {
+          if (direction === 'I') {
+            const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
+            this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
+            // console.log(this.budgetInRows[index]);
+            this.budgetInRows = this.budgetInRows.concat();
+          } else if (direction === 'O') {
+            const index = this.budgetOutRows.findIndex(item => item.orgName === orgName);
+            this.budgetOutRows[index] = this.budgetMatrixService.getDialogData();
+            // console.log(this.budgetOutRows[index]);
+            this.budgetOutRows = this.budgetOutRows.concat();
+          }
+
+          this.calculateAllSums();
+        }
+      }
+    );
+  }
+
+  editRow(orgName: string,  orgId: number, direction: string, currentAmount: number,  januaryAmount: number,
+          februaryAmount: number, marchAmount: number,
           aprilAmount: number, mayAmount: number, juneAmount: number, julyAmount: number, augustAmount: number,
           septemberAmount: number, octoberAmount: number, novemberAmount: number, decemberAmount: number) {
 
     const userId = this.userId;
     const frequencyPerMonth = 1;
+
     const dialogRef = this.dialog.open(MatrixMaintenanceComponent, {
       data: {
-        orgName, direction, frequencyPerMonth, userId, currentAmount,
+        orgName, orgId,  direction, frequencyPerMonth, userId, currentAmount,
         januaryAmount, februaryAmount, marchAmount,
         aprilAmount, mayAmount, juneAmount, julyAmount, augustAmount,
         septemberAmount, octoberAmount, novemberAmount, decemberAmount
@@ -260,7 +381,7 @@ export class BudgetMatrixComponent implements OnInit {
             this.budgetOutRows[index] = this.budgetMatrixService.getDialogData();
           } else if (direction === 'I') {
             const index = this.budgetInRows.findIndex(item => item.orgName === orgName);
-            // console.log(this.budgetMatrixService.getDialogData());
+            console.log(this.budgetMatrixService.getDialogData());
             this.budgetInRows[index] = this.budgetMatrixService.getDialogData();
           }
           this.calculateAllSums();

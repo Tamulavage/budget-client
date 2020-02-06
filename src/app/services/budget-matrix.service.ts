@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { BudgetOrg } from '../models/budgetOrg';
 import { tap } from 'rxjs/operators';
+import { RawData } from '../models/rawData';
 
 
 const httpOptions = {
@@ -25,9 +26,35 @@ export class BudgetMatrixService {
 
   private baseURI = 'http://localhost:8080/budget/';
   // private baseURI = 'https://budgetappserver.herokuapp.com/budget/';
+
   private futureUrl = `${this.baseURI}future`;
 
   dialogData: any;
+
+  getCurrentMonthValue(userId: number): Observable<RawData> {
+    const url = `${this.futureUrl}/currentMonthValue/${userId}`;
+    console.log(url);
+
+    return  this.http.get<RawData>(url);
+  }
+
+  updateCurrencyAmount(userId: number, data: BudgetMatrix): Observable<BudgetMatrix[]>  {
+    this.dialogData = data;
+    const url = `${this.futureUrl}/specificMonth/${userId}`;
+
+    const budgetOrg = new BudgetOrg();
+    budgetOrg.orgId = data.orgId;
+    budgetOrg.amount = data.currentAmount;
+    budgetOrg.frequencyPerMonth = data.frequencyPerMonth;
+    budgetOrg.month = data.currentMonth;
+
+    console.log(budgetOrg);
+
+    return this.http.post<BudgetMatrix[]>(url, budgetOrg, httpOptions)
+    .pipe(
+      //  tap(_ => console.log('Data', _))
+    );
+  }
 
   getFutureOutputBudgetByUserID(userId: number): Observable<BudgetMatrix[]> {
     const url = `${this.futureUrl}/output/${userId}`;

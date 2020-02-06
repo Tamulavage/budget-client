@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AccountService } from '../services/account.service';
-import { Account } from '../models/account';
-import { Accounttype } from '../models/accounttype';
+import { AccountService } from '../../services/account.service';
+import { Account } from '../../models/account';
+import { Accounttype } from '../../models/accounttype';
 
 const resetInitialBalance = 0.00;
 const resetInitialAccountType = 'Account Type';

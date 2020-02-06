@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
-import { Transaction } from '../models/transaction';
-import { TransactionService } from '../services/transaction.service';
-import { TransactionAccount } from '../models/transactionAccount';
-import { Checkbook } from '../models/checkbook';
+import { Transaction } from '../../models/transaction';
+import { TransactionService } from '../../services/transaction.service';
+import { TransactionAccount } from '../../models/transactionAccount';
+import { Checkbook } from '../../models/checkbook';
 import { TransactionAddComponent } from '../transaction-add/transaction-add.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable, merge, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
 import { HttpClient } from '@angular/common/http';
-import { Account } from '../models/account';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'app-tansaction-history',

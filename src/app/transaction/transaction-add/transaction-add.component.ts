@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Transaction } from '../models/transaction';
-import { TransactionService } from '../services/transaction.service';
+import { Transaction } from '../../models/transaction';
+import { TransactionService } from '../../services/transaction.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Account } from '../models/account';
-import { MaintenanceSetting } from '../models/maintenanceSetting';
+import { Account } from '../../models/account';
+import { MaintenanceSetting } from '../../models/maintenanceSetting';
 
 const resetFromForm = 'Select From :';
 const resetToForm = 'Select To :';

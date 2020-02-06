@@ -5,7 +5,7 @@
     <p></p>
 
     <div class="algin-left">
-        <button *ngIf="showMaintenceColumn && coded" (click)="setCurrentMonth()"> Set current Month</button>
+        <!-- <button *ngIf="showMaintenceColumn" (click)="setCurrentMonth()"> Set current Month</button> -->
         <button *ngIf="showMaintenceColumn" (click)="completeCurrentMonth()"> Close Current Month</button>
         <button *ngIf="showMaintenceColumn" (click)="forceCompleteCurrentMonth()"> Force Close Current Month</button>
         <p></p>
@@ -21,13 +21,20 @@
 
         <ng-container matColumnDef="orgName">
             <th mat-header-cell *matHeaderCellDef> Incoming </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.orgName}} </td>
+            <td mat-cell *matCellDef="let budgetRow" > {{budgetRow.orgName}} </td>
             <td mat-footer-cell *matFooterCellDef> Total: </td>
         </ng-container>
 
         <ng-container matColumnDef="currentAmount">
-            <th mat-header-cell *matHeaderCellDef> Current </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.currentAmount | currency}} </td>
+            <th mat-header-cell *matHeaderCellDef> Current : <br> {{ currentMonthString }} </th>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                    budgetRow.orgId, budgetRow.currentAmount,
+                    budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                    budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                    budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                    budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                    )">
+                {{budgetRow.currentAmount | currency}}</div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ curIncomingAmount | currency}} </td>
         </ng-container>
 
@@ -112,8 +119,8 @@
             </th>
 
             <td mat-cell *matCellDef="let row; let i=index;">
-                <button mat-icon-button color="accent" (click)="editRow(row.orgName, 'I',
-                                         row.currentAmount,
+                <button mat-icon-button color="accent" (click)="editRow(row.orgName, row.orgId, 'I',
+                                         row.currentAmount, 
                                          row.januaryAmount, row.februaryAmount , row.marchAmount ,
                                          row.aprilAmount, row.mayAmount , row.juneAmount, 
                                          row.julyAmount, row.augustAmount , row.septemberAmount,
@@ -142,7 +149,14 @@
 
         <ng-container matColumnDef="currentAmount">
             <th mat-header-cell *matHeaderCellDef> Current </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{ budgetRow.currentAmount | currency}} </td>
+            <td mat-cell *matCellDef="let budgetRow">  <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">
+            {{budgetRow.currentAmount | currency}}</div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ curOutgoingAmount | currency}} </td>
         </ng-container>        
 

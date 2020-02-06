@@ -17,17 +17,18 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AccountsComponent } from './accounts/accounts.component';
-import { TansactionHistoryComponent } from './tansaction-history/tansaction-history.component';
-import { AccountMaintenanceComponent } from './account-maintenance/account-maintenance.component';
-import { BudgetMatrixComponent } from './budget-matrix/budget-matrix.component';
-import { MatrixMaintenanceComponent } from './matrix-maintenance/matrix-maintenance.component';
-import { TransactionAddComponent } from './transaction-add/transaction-add.component';
+import { AccountsComponent } from './account/accounts/accounts.component';
+import { TansactionHistoryComponent } from './transaction/tansaction-history/tansaction-history.component';
+import { AccountMaintenanceComponent } from './account/account-maintenance/account-maintenance.component';
+import { BudgetMatrixComponent } from './budgetMatrix/budget-matrix/budget-matrix.component';
+import { MatrixMaintenanceComponent } from './budgetMatrix/matrix-maintenance/matrix-maintenance.component';
+import { TransactionAddComponent } from './transaction/transaction-add/transaction-add.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TransactionService } from './services/transaction.service';
 import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.component';
+import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inline-budget-edit.component';
 
 
 
@@ -44,7 +45,8 @@ import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.compo
     MatrixMaintenanceComponent,
     TransactionAddComponent,
     EditUserComponent,
-    CheckbookGraphComponent
+    CheckbookGraphComponent,
+    InlineBudgetEditComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.compo
   entryComponents: [
     MatrixMaintenanceComponent,
     TransactionAddComponent,
-    EditUserComponent
+    EditUserComponent,
+    InlineBudgetEditComponent
   ],
   providers: [TransactionService],
   bootstrap: [AppComponent]
