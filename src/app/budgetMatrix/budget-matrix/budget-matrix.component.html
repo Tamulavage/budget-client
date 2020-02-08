@@ -241,7 +241,7 @@
             </th>
 
             <td mat-cell *matCellDef="let row; let i=index;">
-                <button mat-icon-button color="accent" (click)="editRow(row.orgName, 'O', 
+                <button mat-icon-button color="accent" (click)="editRow(row.orgName,row.orgId,  'O', 
                                      row.currentAmount,
                                      row.januaryAmount, row.februaryAmount , row.marchAmount ,
                                      row.aprilAmount, row.mayAmount , row.juneAmount, 
