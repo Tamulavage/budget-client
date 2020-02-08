@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class PingService {
 
-  private url = 'http://localhost:8080/budget';
-  // private url = 'https://budgetappserver.herokuapp.com/budget';
+  // private url = 'http://localhost:8080/budget';
+  private url = 'https://budgetappserver.herokuapp.com/budget';
 
   constructor(private http: HttpClient) { }
 

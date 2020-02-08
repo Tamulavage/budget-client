@@ -14,15 +14,14 @@ const httpOptions = {
 })
 export class AccountService {
 
-  private baseUri = 'http://localhost:8080/budget/';
-  // private baseUri = 'https://budgetappserver.herokuapp.com/budget/';
+  // private baseUri = 'http://localhost:8080/budget/';
+  private baseUri = 'https://budgetappserver.herokuapp.com/budget/';
 
   private accountUrl = `${this.baseUri}account`;
 
   constructor(private http: HttpClient) { }
 
   getAccounts(userId: number): Observable<Account[]> {
-    // Should this stil be the path?
     const url = `${this.accountUrl}/?userId=${userId}`;
     return this.http.get<Account[]>(url)
       .pipe(
