@@ -21,7 +21,9 @@ export class EditUserComponent implements OnInit {
   }
 
   public confirmAdd(): void {
-    this.authorizeService.addAuthorizeUser(this.data).subscribe();
+
+    // NOTE: Subscribe is in service to allow user ID in main profile
+    this.authorizeService.addAuthorizeUser(this.data);
   }
 
   onNoClick(): void {
