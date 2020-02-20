@@ -115,18 +115,24 @@ export class TansactionHistoryComponent implements OnInit {
 
     const accountsTemp: Account[] = [];
 
-    console.log(this.dataSource.renderedData[0].accounts.forEach(v => {
-         const accountTemp = new Account();
-         if (v.id === checkbookRow.fromAccountId) {
-          accountTemp.balance = v.balance - checkbookRow.amount;
-         } else if (v.id === checkbookRow.toAccountId) {
-          accountTemp.balance = v.balance + checkbookRow.amount;
-         } else {
-          accountTemp.balance = v.balance;
-         }
-         accountsTemp.push(accountTemp);
-       }
-       ));
+    const today = new Date();
+    const transactionDate = new Date(checkbookRow.transactionDt);
+    const transactionDatePlus1 = transactionDate.getDate() + 1;
+
+    if (transactionDatePlus1 > today.getDate()) {
+      this.dataSource.renderedData[0].accounts.forEach(v => {
+          const accountTemp = new Account();
+          if (v.id === checkbookRow.fromAccountId) {
+            accountTemp.balance = v.balance - checkbookRow.amount;
+          } else if (v.id === checkbookRow.toAccountId) {
+            accountTemp.balance = v.balance + checkbookRow.amount;
+          } else {
+            accountTemp.balance = v.balance;
+          }
+          accountsTemp.push(accountTemp);
+        }
+      );
+    }
 
     return accountsTemp;
   }

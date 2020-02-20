@@ -5,6 +5,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Account } from '../../models/account';
 import { MaintenanceSetting } from '../../models/maintenanceSetting';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 const resetFromForm = 'Select From :';
 const resetToForm = 'Select To :';
@@ -20,6 +21,8 @@ export class TransactionAddComponent implements OnInit {
   accountsFrom: Account[];
   fromAccountName: string;
   fromAccountId: number;
+  date =  new FormControl(new Date());
+  transactionDate: Date;
 
   selectToAccount: Account;
   accountsTo: Account[];
@@ -33,6 +36,7 @@ export class TransactionAddComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public budgetMaintenanceSetting: MaintenanceSetting,
               private transactionService: TransactionService) {
     this.profileId = budgetMaintenanceSetting.userId;
+
   }
 
   formControl = new FormControl('', [
@@ -73,7 +77,15 @@ export class TransactionAddComponent implements OnInit {
   }
 
   public confirmAdd(memo: string, amount: number): void {
-    const transactionDt = new Date().toJSON();
+
+    let transactionDtTemp: Date;
+    if (this.transactionDate == null) {
+      transactionDtTemp = this.date.value;
+    }  else {
+      transactionDtTemp = this.transactionDate;
+    }
+    const transactionDt = transactionDtTemp.toJSON();
+
     const fromAccountId = this.fromAccountId;
     const toAccountId = this.toAccountId;
     let fromAccountName = this.fromAccountName;
@@ -109,6 +121,10 @@ export class TransactionAddComponent implements OnInit {
     this.selectToAccount = account;
     this.toAccountName = account.nickname;
     this.toAccountId = account.id;
+  }
+
+  updateDate(event: MatDatepickerInputEvent<Date>) {
+     this.transactionDate = event.value;
   }
 
 }

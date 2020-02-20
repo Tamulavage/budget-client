@@ -3,10 +3,20 @@
 
     <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
+        <div>
+            <mat-form-field>
+                <mat-label>Transaction Date</mat-label>
+                <input matInput [matDatepicker]="transactionDate" [value]="date.value"
+                    (dateInput)="updateDate($event)" required>
+                <mat-datepicker-toggle matSuffix [for]="transactionDate"></mat-datepicker-toggle>
+                <mat-datepicker #transactionDate></mat-datepicker> 
+            </mat-form-field>
+        </div>
+
         <div class="form">
             <mat-form-field color="accent">
                 <input matInput #input class="form-control" placeholder="Memo" [(ngModel)]="transaction.memo"
-                    name="Memo" required>
+                    name="Memo" required >
             </mat-form-field>
         </div>
 
