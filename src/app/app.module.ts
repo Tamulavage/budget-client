@@ -6,8 +6,10 @@ import { MatTableModule } from '@angular/material/table';
 import { ChartsModule } from 'ng2-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -29,10 +31,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { TransactionService } from './services/transaction.service';
 import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.component';
 import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inline-budget-edit.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 
 
 @NgModule({
+  exports: [
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -58,6 +65,8 @@ import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inl
     ChartsModule,
     MatIconModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatToolbarModule,
     MatSortModule,
     MatInputModule,
@@ -71,7 +80,8 @@ import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inl
     EditUserComponent,
     InlineBudgetEditComponent
   ],
-  providers: [TransactionService],
+  providers: [TransactionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
