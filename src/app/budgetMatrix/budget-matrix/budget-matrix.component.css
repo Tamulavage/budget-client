@@ -1,36 +1,55 @@
  table {
 	width: 100%;
-    overflow: hidden;
+	overflow: auto;
+	align-self: center;
+	align-items: center;
   }
 
 .mat-header-cell   {
+	
+	overflow: auto;
 	border: 1px solid #999999;
 	text-align: left;
 	max-width: 20px;
-	padding: 3px 10px;
+	padding: 3px 3px;
+	font-weight: bold;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: darkblue;
+	background-color: rgb(203, 231, 247);
 }
   
 .mat-cell   {
+	overflow: auto;
 	border: 1px solid #999999;
 	text-align: left;
-	padding: 3px 10px;
+	height: 20%;
+	padding: 3px 3px;
 	max-width: 20px;
+	min-width: 20px;
 }
 
+.mat-icon-button {
+	text-align: center;
+	justify-content: center;
+	width: auto;
+	max-width: 20px;
+	max-height: 20px;
+}
   
 .mat-footer-cell   {
+	overflow: auto;
 	border: 1px solid #999999;
 	text-align: left;
 	max-width: 20px;
-	padding: 3px 10px;
+	height: 20%;
+	padding: 3px 3px;
 	font-weight: bold;
 }
 
 .bold   {
 	border: 1px solid #999999;
 	text-align: left;
-	padding: 3px 10px;
-	max-width: 20px;
+	padding: 3px 3px;
 	font-weight: bold;
 } 
 
@@ -47,13 +66,17 @@
 	float: left;
 }
 
-.spacer {
-	flex: 1 1 auto;
-  }
+.maintenance {
+	background-color: white;
+	overflow: visible;
+	border: none;
+}
+
+.no-border {
+	border: none;
+}
   
 .form {
-	/* min-height: 56px;
-	max-height: 56px; */
 	display: flex;
 	align-items: center;
 	padding: 8px 24px 0;

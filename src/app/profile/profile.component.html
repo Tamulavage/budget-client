@@ -4,10 +4,34 @@
             <h3>
                 Welcome: {{ authorizedUsers.firstName }} {{ authorizedUsers.lastName }}
             </h3>
-            <button (click)="toggleAccount()">Account on/off</button>
-            <button (click)="toggleBudget()">Budget on/off</button>
-            <button (click)="toggleCheckbook()">Checkbook on/off</button>
-            <button (click)="toggleGraphs()">Graph on/off</button>
+
+            <span *ngIf="showAccount;else accountNotActive" >
+                <button class="activeButton" (click)="toggleAccount()" >Account on/off</button>
+            </span>
+            <ng-template #accountNotActive> 
+                <button  (click)="toggleAccount()" >Account on/off</button>
+            </ng-template>
+
+            <span *ngIf="showBudget;else budgetNotActive" >
+                <button class="activeButton" (click)="toggleBudget()" >Budget on/off</button>
+            </span>
+            <ng-template #budgetNotActive> 
+                <button  (click)="toggleBudget()" >Budget on/off</button>
+            </ng-template>
+
+            <span *ngIf="showCheckbook;else checkbookNotActive" >
+                <button class="activeButton" (click)="toggleCheckbook()" >Checkbook on/off</button>
+            </span>
+            <ng-template #checkbookNotActive> 
+                <button  (click)="toggleCheckbook()">Checkbook on/off</button>
+            </ng-template>
+            
+            <span *ngIf="showGraph;else graphNotActive" >
+                <button class="activeButton" (click)="toggleGraphs()" >Graph on/off</button>
+            </span>
+            <ng-template #graphNotActive> 
+                <button  (click)="toggleGraphs()">Graph on/off</button>
+            </ng-template>            
         </div>
         <p></p>
 
