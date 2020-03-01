@@ -112,22 +112,22 @@
 
         <!-- actions -->
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>
-                <button mat-icon color="primary" (click)="addNew('I')">
-                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <th mat-header-cell *matHeaderCellDef class="maintenance">
+                <button mat-icon-button color="primary" (click)="addNew('I')">
+                    <mat-icon>add</mat-icon>
                 </button>
             </th>
 
-            <td mat-cell *matCellDef="let row; let i=index;">
-                <button mat-icon-button color="accent" (click)="editRow(row.orgName, row.orgId, 'I',
+            <td mat-cell class="maintenance"  *matCellDef="let row; let i=index;" >
+                <button mat-icon-button color="primary" (click)="editRow(row.orgName, row.orgId, 'I',
                                          row.currentAmount, 
                                          row.januaryAmount, row.februaryAmount , row.marchAmount ,
                                          row.aprilAmount, row.mayAmount , row.juneAmount, 
                                          row.julyAmount, row.augustAmount , row.septemberAmount,
                                          row.octoberAmount, row.novemberAmount , row.decemberAmount)">
                     <mat-icon aria-label="Edit">edit</mat-icon>
-                </button>
-                <button mat-icon-button color="accent" (click)="deleteRow(row.orgName, 'I')">
+                </button> 
+                <button mat-icon-button color="primary" (click)="deleteRow(row.orgName, 'I')">
                     <mat-icon aria-label="Delete">delete</mat-icon>
                 </button>
             </td>
@@ -234,14 +234,14 @@
 
         <!-- actions -->
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>
-                <button mat-icon color="primary" (click)="addNew('O')">
-                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            <th mat-header-cell *matHeaderCellDef class="maintenance" >
+                <button mat-icon-button color="primary" (click)="addNew('O')" >
+                    <mat-icon>add</mat-icon>
                 </button>
             </th>
 
-            <td mat-cell *matCellDef="let row; let i=index;">
-                <button mat-icon-button color="accent" (click)="editRow(row.orgName,row.orgId,  'O', 
+            <td mat-cell *matCellDef="let row; let i=index;" class="maintenance" >
+                <button mat-icon-button color="primary" (click)="editRow(row.orgName,row.orgId,  'O', 
                                      row.currentAmount,
                                      row.januaryAmount, row.februaryAmount , row.marchAmount ,
                                      row.aprilAmount, row.mayAmount , row.juneAmount, 
@@ -249,8 +249,8 @@
                                      row.octoberAmount, row.novemberAmount , row.decemberAmount)">
                     <mat-icon aria-label="Edit">edit</mat-icon>
                 </button>
-                <button mat-icon-button color="accent" (click)="deleteRow(row.orgName, 'O')">
-                    <mat-icon aria-label="Delete">delete</mat-icon>
+                <button mat-icon-button color="primary" (click)="deleteRow(row.orgName, 'O')">
+                    <mat-icon>delete</mat-icon>
                 </button>
             </td>
 
@@ -265,7 +265,7 @@
 
     <table mat-table [dataSource]="differenceSum">
         <ng-container matColumnDef="orgName">
-            <th mat-header-cell *matHeaderCellDef> difference </th>
+            <th mat-header-cell *matHeaderCellDef>  </th>
             <td mat-cell class="bold" *matCellDef="let budgetRow"> Difference: </td>
         </ng-container>
 
@@ -438,7 +438,7 @@
         </ng-container>
 
         <ng-container matColumnDef="decemberAmount">
-            <th mat-header-cell *matHeaderCellDef> December </th>
+            <th mat-header-cell *matHeaderCellDef>December</th>
             <td mat-cell  *matCellDef="let budgetRow"> 
                 <div *ngIf="budgetRow.decemberAmount > 0; else redDec">
                     {{ budgetRow.decemberAmount | currency}}
@@ -451,7 +451,18 @@
             </td>                 
         </ng-container>
 
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="maintenance no-border" >
+            </th>
+
+            <td mat-cell *matCellDef="let row; let i=index;" class="maintenance  no-border">
+            </td>
+
+        </ng-container>        
+
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsWithActions"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsWithActions;"></tr>
     </table>
     <p></p>
 

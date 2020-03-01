@@ -19,3 +19,13 @@
 .account {
 	width: 10%;
 }
+
+button:active {
+	color: blue;
+	background-color: rgb(100, 160, 70);
+}
+
+.activeButton {
+	color: blue;
+	background-color: rgb(195, 195, 195);
+}
