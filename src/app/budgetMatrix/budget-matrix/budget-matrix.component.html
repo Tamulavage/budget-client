@@ -28,7 +28,7 @@
         <ng-container matColumnDef="currentAmount">
             <th mat-header-cell *matHeaderCellDef> Current : <br> {{ currentMonthString }} </th>
             <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
-                    budgetRow.orgId, budgetRow.currentAmount,
+                    budgetRow.orgId, budgetRow.currentAmount, 0,
                     budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
                     budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
                     budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
@@ -40,73 +40,146 @@
 
         <ng-container matColumnDef="januaryAmount">
             <th mat-header-cell *matHeaderCellDef> January </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.januaryAmount | currency}} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 1,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">
+                {{budgetRow.januaryAmount | currency}} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ janIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="februaryAmount">
             <th mat-header-cell *matHeaderCellDef> February </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 2,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.februaryAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ febIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="marchAmount">
             <th mat-header-cell *matHeaderCellDef> March </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 3,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )"> {{budgetRow.marchAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ marIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="aprilAmount">
             <th mat-header-cell *matHeaderCellDef> April </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 4,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.aprilAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ aprIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="mayAmount">
             <th mat-header-cell *matHeaderCellDef> May </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 5,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.mayAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ mayIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="juneAmount">
             <th mat-header-cell *matHeaderCellDef> June </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 6,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )"> {{budgetRow.juneAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ junIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="julyAmount">
             <th mat-header-cell *matHeaderCellDef> July </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 7,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.julyAmount | currency }}</div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ julIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="augustAmount">
             <th mat-header-cell *matHeaderCellDef> August </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 8,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.augustAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ augIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="septemberAmount">
             <th mat-header-cell *matHeaderCellDef> September </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 9,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.septemberAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ sepIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="octoberAmount">
             <th mat-header-cell *matHeaderCellDef> October </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 10,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.octoberAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ octIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="novemberAmount">
             <th mat-header-cell *matHeaderCellDef> November </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 11,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.novemberAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ novIncomingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="decemberAmount">
             <th mat-header-cell *matHeaderCellDef> December </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 12,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'I'
+                )">{{budgetRow.decemberAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ decIncomingAmount | currency}} </td>
         </ng-container>
 
@@ -150,7 +223,7 @@
         <ng-container matColumnDef="currentAmount">
             <th mat-header-cell *matHeaderCellDef> Current </th>
             <td mat-cell *matCellDef="let budgetRow">  <div  (click)="editCell(budgetRow.orgName, 
-                budgetRow.orgId, budgetRow.currentAmount,
+                budgetRow.orgId, budgetRow.currentAmount, 0,
                 budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
                 budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
                 budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
@@ -162,73 +235,146 @@
 
         <ng-container matColumnDef="januaryAmount">
             <th mat-header-cell *matHeaderCellDef> January </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{ budgetRow.januaryAmount | currency}} </td>
+            <td mat-cell *matCellDef="let budgetRow">  <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 1,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">
+            {{ budgetRow.januaryAmount | currency}} </div></td>
             <td mat-footer-cell *matFooterCellDef="let budgetRow"> {{ janOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="februaryAmount">
             <th mat-header-cell *matHeaderCellDef> February </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.februaryAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow">  <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 2,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.februaryAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ febOutgoingAmount | currency }} </td>
         </ng-container>
 
         <ng-container matColumnDef="marchAmount">
             <th mat-header-cell *matHeaderCellDef> March </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.marchAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 3,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.marchAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef> {{ marOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="aprilAmount">
             <th mat-header-cell *matHeaderCellDef> April </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.aprilAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 4,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">  {{budgetRow.aprilAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef> {{ aprOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="mayAmount">
             <th mat-header-cell *matHeaderCellDef> May </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.mayAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 5,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">  {{budgetRow.mayAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ mayOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="juneAmount">
             <th mat-header-cell *matHeaderCellDef> June </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.juneAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 6,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">  {{budgetRow.juneAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ junOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="julyAmount">
             <th mat-header-cell *matHeaderCellDef> July </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.julyAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 7,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.julyAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ julOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="augustAmount">
             <th mat-header-cell *matHeaderCellDef> August </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.augustAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 8,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.augustAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef> {{ augOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="septemberAmount">
             <th mat-header-cell *matHeaderCellDef> September </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.septemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 9,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.septemberAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ sepOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="octoberAmount">
             <th mat-header-cell *matHeaderCellDef> October </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.octoberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 10,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.octoberAmount | currency }} </div> </td>
             <td mat-footer-cell *matFooterCellDef> {{ octOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="novemberAmount">
             <th mat-header-cell *matHeaderCellDef> November </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.novemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"><div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 11,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )">  {{budgetRow.novemberAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef> {{ novOutgoingAmount | currency}} </td>
         </ng-container>
 
         <ng-container matColumnDef="decemberAmount">
             <th mat-header-cell *matHeaderCellDef> December </th>
-            <td mat-cell *matCellDef="let budgetRow"> {{budgetRow.decemberAmount | currency }} </td>
+            <td mat-cell *matCellDef="let budgetRow"> <div  (click)="editCell(budgetRow.orgName, 
+                budgetRow.orgId, budgetRow.currentAmount, 12,
+                budgetRow.januaryAmount, budgetRow.februaryAmount , budgetRow.marchAmount ,
+                budgetRow.aprilAmount, budgetRow.mayAmount , budgetRow.juneAmount, 
+                budgetRow.julyAmount, budgetRow.augustAmount , budgetRow.septemberAmount,
+                budgetRow.octoberAmount, budgetRow.novemberAmount , budgetRow.decemberAmount, 'O'
+                )"> {{budgetRow.decemberAmount | currency }} </div></td>
             <td mat-footer-cell *matFooterCellDef> {{ decOutgoingAmount | currency}} </td>
         </ng-container>
 

@@ -318,15 +318,23 @@ export class BudgetMatrixComponent implements OnInit {
     );
   }
 
-  editCell(orgName: string, orgId: number, currentAmount: number,
-           januaryAmount: number, februaryAmount: number,
+  editCell(orgName: string, orgId: number, currentAmount: number, currentMonthvalueFromUI: number,
+           januaryAmount: number, februaryAmount: number, 
            marchAmount: number,  aprilAmount: number, mayAmount: number,
            juneAmount: number, julyAmount: number, augustAmount: number,
            septemberAmount: number, octoberAmount: number, novemberAmount: number,
            decemberAmount: number, direction: string) {
     const userId = this.userId;
     const frequencyPerMonth = 1;
-    const currentMonth = 0 + this.currentMonthValue.data;
+    let currentMonth = 0;
+    if (currentMonthvalueFromUI > 0) {
+      currentMonth = currentMonthvalueFromUI;
+    } else {
+      currentMonth = Number(this.currentMonthValue.data);
+    }
+
+
+    // const currentMonth = 0 + this.currentMonthValue.data;
     const dialogRef = this.dialog.open(InlineBudgetEditComponent, {
       data: {orgName, orgId, currentMonth, frequencyPerMonth, userId, currentAmount,
         januaryAmount, februaryAmount, marchAmount,
