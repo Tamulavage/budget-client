@@ -38,13 +38,15 @@ export class BudgetMatrixService {
     return  this.http.get<RawData>(url);
   }
 
-  updateCurrencyAmount(userId: number, data: BudgetMatrix): Observable<BudgetMatrix[]>  {
+
+  updateCurrenctAmount(userId: number, data: BudgetMatrix, changedAmount: number): Observable<BudgetMatrix[]>  {
+
     this.dialogData = data;
     const url = `${this.futureUrl}/specificMonth/${userId}`;
 
     const budgetOrg = new BudgetOrg();
     budgetOrg.orgId = data.orgId;
-    budgetOrg.amount = data.currentAmount;
+    budgetOrg.amount = changedAmount;
     budgetOrg.frequencyPerMonth = data.frequencyPerMonth;
     budgetOrg.month = data.currentMonth;
 

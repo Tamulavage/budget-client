@@ -12,4 +12,9 @@
     </canvas>
   </div>
 </div>
+<div *ngIf="!dataReady">
+  <h3> No Transactional Graph to display </h3> 
+  <h4> Add Transaction(s) to display in the Checkbook Module <br>
+    Suggestion to add initial accounts with current value </h4> 
+</div>
 <!-- https://github.com/valor-software/ng2-charts -->
