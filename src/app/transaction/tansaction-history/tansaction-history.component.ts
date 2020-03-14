@@ -115,12 +115,9 @@ export class TansactionHistoryComponent implements OnInit {
 
     const accountsTemp: Account[] = [];
 
-    const today = new Date();
-    const transactionDate = new Date(checkbookRow.transactionDt);
-    const transactionDatePlus1 = transactionDate.getDate() + 1;
+    this.dataSource.connect();
 
-    if (transactionDatePlus1 > today.getDate()) {
-      this.dataSource.renderedData[0].accounts.forEach(v => {
+    this.dataSource.renderedData[0].accounts.forEach(v => {
           const accountTemp = new Account();
           if (v.id === checkbookRow.fromAccountId) {
             accountTemp.balance = v.balance - checkbookRow.amount;
@@ -131,8 +128,7 @@ export class TansactionHistoryComponent implements OnInit {
           }
           accountsTemp.push(accountTemp);
         }
-      );
-    }
+     );
 
     return accountsTemp;
   }

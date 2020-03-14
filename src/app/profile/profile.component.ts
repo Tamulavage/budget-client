@@ -64,6 +64,8 @@ export class ProfileComponent implements OnInit {
         this.userId = user.id;
       } else if (data.status === 204 ) {
         this.showNewUserWindow  = true;
+      } else {
+        this.auth.loggedIn = false;
       }
      });
   }
