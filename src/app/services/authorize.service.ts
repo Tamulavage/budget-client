@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Observable, of, concat, throwError} from 'rxjs';
-import {catchError, tap, retryWhen, delay, take, concatMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {retryWhen, delay, take,} from 'rxjs/operators';
 import { AuthorizedUser } from '../models/authorizedUser';
 
 const   httpOptions = {
@@ -28,7 +28,7 @@ export class AuthorizeService {
     .pipe(
       retryWhen(err => err.pipe(
           delay(1000),
-          take(10)
+          take(5)
           ))
     );
    }

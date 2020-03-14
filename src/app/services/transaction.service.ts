@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Transaction} from '../models/transaction';
-import {Observable,  BehaviorSubject} from 'rxjs';
+import {Observable,  BehaviorSubject, of, throwError} from 'rxjs';
 import {Account} from '../models/account';
 import { TransactionAccount } from '../models/transactionAccount';
 import { Checkbook } from '../models/checkbook';
+import { catchError } from 'rxjs/internal/operators/catchError';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -61,10 +62,30 @@ export class TransactionService {
     return this.http.get<Account[]>(url);
   }
 
+  handleUserError(error: string) {
+      alert(error);
+      return throwError('User\'s sum for current month > 0');
+  }
+
+  handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable <T> => {
+      if (error.status === 400) {
+        alert('Data format error - please ensure data is in corret format');
+      } else {
+        alert('Unkown Error saving data - please try again');
+      }
+      console.log(`Error:  ${error.message}`);
+      return of(result as T);
+    };
+  }
+
   addTransaction(transaction: Transaction, fromAccountName: string, toAccountName: string) {
     // console.log(transaction);
     this.cacheTranscationData(transaction, fromAccountName, toAccountName);
-    return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions);
+    return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('Add Transaction'))
+    );
   }
 
   cacheTranscationData(transaction: Transaction, fromAccountName: string, toAccountName: string) {
