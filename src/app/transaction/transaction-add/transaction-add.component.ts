@@ -106,7 +106,7 @@ export class TransactionAddComponent implements OnInit {
         fromAccountId,
         toAccountId,
         transactionDt
-      } as unknown as Transaction, fromAccountName, toAccountName)
+      } as  Transaction, fromAccountName, toAccountName)
         .subscribe();
     }
   }
