@@ -62,15 +62,10 @@ export class TransactionService {
     return this.http.get<Account[]>(url);
   }
 
-  handleUserError(error: string) {
-      alert(error);
-      return throwError('User\'s sum for current month > 0');
-  }
-
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable <T> => {
       if (error.status === 400) {
-        alert('Data format error - please ensure data is in corret format');
+        alert('Data error - please ensure data is correct');
       } else {
         alert('Unkown Error saving data - please try again');
       }
