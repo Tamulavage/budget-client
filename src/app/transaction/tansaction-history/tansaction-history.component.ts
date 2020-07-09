@@ -97,7 +97,7 @@ export class TansactionHistoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       x => {
-        if (x === 1) {
+        // if (x === 1) {
           const checkbookRow: Checkbook = this.transactionService.getDialogData();
           checkbookRow.transactionDt = checkbookRow.transactionDt.substring(0, 10);
 
@@ -106,7 +106,7 @@ export class TansactionHistoryComponent implements OnInit {
           checkbookRow.accounts = accounts;
           this.tranasctionServiceLocal.dataChange.value.unshift(checkbookRow);
           this.paginator._changePageSize(this.paginator.pageSize);
-        }
+        // }
       }
     );
   }

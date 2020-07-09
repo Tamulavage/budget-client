@@ -99,4 +99,12 @@ export class TransactionService {
     return this.dialogData;
   }
 
+  updateTransaction(transaction: Transaction, fromAccountName: string, toAccountName: string){
+    this.cacheTranscationData(transaction, fromAccountName, toAccountName);
+    return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('Update Transaction'))
+    );
+  }
+
 }
