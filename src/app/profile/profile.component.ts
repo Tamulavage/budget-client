@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthorizeService } from '../services/authorize.service';
 import { AuthorizedUser } from '../models/authorizedUser';
 import { Authenticate } from '../models/authenticate';
-import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 
@@ -100,22 +100,31 @@ export class ProfileComponent implements OnInit {
       this.showBudget = false;
     } else {
       this.showBudget = true;
+      this.showAccount = false;
+      this.showGraph = false;
+      this.showCheckbook = false;
     }
   }
 
   toggleCheckbook() {
     if ( this.showCheckbook) {
       this.showCheckbook = false;
+      this.showAccount = true;
+      this.showGraph = true;
     } else {
       this.showCheckbook = true;
+      this.showAccount = false;
+      this.showGraph = false;
+      this.showBudget = false;
     }
   }
 
   toggleGraphs() {
-    if ( this.showGraph){
+    if ( this.showGraph) {
       this.showGraph = false;
     } else {
       this.showGraph = true;
+      this.showCheckbook = false;
     }
   }
 
