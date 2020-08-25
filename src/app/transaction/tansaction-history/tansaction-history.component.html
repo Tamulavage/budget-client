@@ -6,15 +6,18 @@
 </div>
 
 <table mat-table [(dataSource)]="dataSource" matSort >
-
+        
         <ng-container matColumnDef="dateOfTransaction">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                 <td mat-cell *matCellDef="let row"> {{row.transactionDt}} </td>
         </ng-container>
 
         <ng-container matColumnDef="memoTransaction">
-                <th mat-header-cell *matHeaderCellDef > Memo </th>
-                <td mat-cell *matCellDef="let row"> {{row.memo}} </td>
+                <th mat-header-cell *matHeaderCellDef > Memo  </th>
+                <td mat-cell *matCellDef="let row"> 
+                        <div  (click)="editTransactionMemo(row
+                        )">{{row.memo}} </div> 
+                 </td>
         </ng-container>
 
         <ng-container matColumnDef="amountTransaction">

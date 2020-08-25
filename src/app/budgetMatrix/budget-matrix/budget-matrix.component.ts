@@ -319,7 +319,7 @@ export class BudgetMatrixComponent implements OnInit {
   }
 
   editCell(orgName: string, orgId: number, currentAmount: number, currentMonthvalueFromUI: number,
-           januaryAmount: number, februaryAmount: number, 
+           januaryAmount: number, februaryAmount: number,
            marchAmount: number,  aprilAmount: number, mayAmount: number,
            juneAmount: number, julyAmount: number, augustAmount: number,
            septemberAmount: number, octoberAmount: number, novemberAmount: number,
