@@ -32,6 +32,7 @@ import { TransactionService } from './services/transaction.service';
 import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.component';
 import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inline-budget-edit.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { TransactionUpdateMemoComponent } from './transaction/transaction-update-memo/transaction-update-memo.component';
 
 
 
@@ -53,7 +54,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     TransactionAddComponent,
     EditUserComponent,
     CheckbookGraphComponent,
-    InlineBudgetEditComponent
+    InlineBudgetEditComponent,
+    TransactionUpdateMemoComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   entryComponents: [
     MatrixMaintenanceComponent,
     TransactionAddComponent,
+    TransactionUpdateMemoComponent,
     EditUserComponent,
     InlineBudgetEditComponent
   ],

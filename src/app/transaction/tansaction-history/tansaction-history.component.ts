@@ -5,6 +5,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { TransactionAccount } from '../../models/transactionAccount';
 import { Checkbook } from '../../models/checkbook';
 import { TransactionAddComponent } from '../transaction-add/transaction-add.component';
+import { TransactionUpdateMemoComponent} from '../transaction-update-memo/transaction-update-memo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DataSource } from '@angular/cdk/collections';
@@ -97,7 +98,7 @@ export class TansactionHistoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       x => {
-        // if (x === 1) {
+        if (x === 1) {
           const checkbookRow: Checkbook = this.transactionService.getDialogData();
           checkbookRow.transactionDt = checkbookRow.transactionDt.substring(0, 10);
 
@@ -106,9 +107,45 @@ export class TansactionHistoryComponent implements OnInit {
           checkbookRow.accounts = accounts;
           this.tranasctionServiceLocal.dataChange.value.unshift(checkbookRow);
           this.paginator._changePageSize(this.paginator.pageSize);
-        // }
+        }
       }
     );
+  }
+
+  // editTransactionMemo(transactionId: number, memo: string): void {
+  editTransactionMemo(transactionAccount: TransactionAccount): void {
+
+    if (!transactionAccount.transactionId) {
+      alert('Must refresh data before make changes');
+      return;
+    }
+
+    const memo = transactionAccount.memo;
+    const transactionId = transactionAccount.transactionId;
+    const amount = transactionAccount.amount;
+    const fromAccountId = transactionAccount.fromAccountId;
+    const toAccountId = transactionAccount.toAccountId;
+    const transactionDt =  transactionAccount.transactionDt;
+
+    const dialogRef = this.dialog.open(TransactionUpdateMemoComponent, {
+      data: {
+         memo, transactionId, amount,
+         fromAccountId, toAccountId,
+         transactionDt
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(
+      x => {
+        if (x === 1) {
+
+          const index = this.dataSource.renderedData.findIndex(item => item.transactionId === transactionAccount.transactionId);
+          this.dataSource.connect();
+          this.dataSource.renderedData[index] = this.transactionService.getDialogData();
+        }
+      }
+    );
+
   }
 
   updateRunningTransactionValues(checkbookRow: Checkbook): Account[] {

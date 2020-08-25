@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Transaction} from '../models/transaction';
-import {Observable,  BehaviorSubject, of, throwError} from 'rxjs';
+import {Observable,  BehaviorSubject, of} from 'rxjs';
 import {Account} from '../models/account';
 import { TransactionAccount } from '../models/transactionAccount';
 import { Checkbook } from '../models/checkbook';
@@ -99,8 +99,9 @@ export class TransactionService {
     return this.dialogData;
   }
 
-  updateTransaction(transaction: Transaction, fromAccountName: string, toAccountName: string){
+  updateTransaction(transaction: Transaction, fromAccountName: string, toAccountName: string) {
     this.cacheTranscationData(transaction, fromAccountName, toAccountName);
+    // console.log(transaction.memo);
     return this.http.post<Transaction>(this.transactionUrl, transaction, httpOptions)
     .pipe(
       catchError(this.handleError<any>('Update Transaction'))

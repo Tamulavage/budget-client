@@ -1,0 +1,15 @@
+<div class="container">
+    <h3 mat-dialog-title>Edit Memo</h3>
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" 
+            [(ngModel)]="memo" name="Memo">
+        </mat-form-field>
+      </div>
+  
+        <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="confirmUpdate()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </form>
+  </div>
