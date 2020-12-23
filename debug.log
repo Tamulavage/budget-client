@@ -1,0 +1,4 @@
+[1214/195407.196:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1214/195407.583:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\tamul\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\54ae51cb-17f4-40f3-9769-a5d93851f577: The system cannot find the path specified. (0x3)
+[1221/132639.466:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1222/200357.491:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
