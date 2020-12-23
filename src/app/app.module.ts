@@ -33,6 +33,7 @@ import { CheckbookGraphComponent } from './checkbook-graph/checkbook-graph.compo
 import { InlineBudgetEditComponent } from './budgetMatrix/inline-budget-edit/inline-budget-edit.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { TransactionUpdateMemoComponent } from './transaction/transaction-update-memo/transaction-update-memo.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 
 
@@ -55,7 +56,8 @@ import { TransactionUpdateMemoComponent } from './transaction/transaction-update
     EditUserComponent,
     CheckbookGraphComponent,
     InlineBudgetEditComponent,
-    TransactionUpdateMemoComponent
+    TransactionUpdateMemoComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,

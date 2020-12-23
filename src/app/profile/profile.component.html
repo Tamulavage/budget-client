@@ -64,11 +64,15 @@
             <app-budget-matrix [user]="userId"></app-budget-matrix>
         </div>
 
+        <div *ngIf="authorizedUsers | async">
+            <app-maintenance [userId]="userId"></app-maintenance>
+        </div>
+
         <ng-template #loading>
             <div *ngIf="showNewUserWindow">
                 <p></p>
                 You have been authenticated, but not authorized. Would you like to create a new account for username:
-                <b> {{ nickname }} </b>
+                <strong> {{ nickname }} </strong>
                 <p></p>
                 <button (click)="newUserAccount()">Add new Account</button>
             </div>

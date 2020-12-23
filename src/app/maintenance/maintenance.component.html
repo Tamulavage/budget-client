@@ -1,0 +1,12 @@
+
+<p>
+<button *ngIf="showMaintence && !showComplete"  (click)="resetToEmpy()">Reset to empty</button>
+<button *ngIf="showMaintence && !showComplete" (click)="demoReset()">Reset to Demo values</button>
+
+<div *ngIf="showConfirm && !showComplete"> You will lose all saved and current data. This will NOT be recoverable! </div>
+<p></p>
+<button *ngIf="showConfirm && !showComplete" (click)="confirm()">Confirm </button>
+<button *ngIf="showConfirm && !showComplete" (click)="cancel()">Cancel </button>
+
+
+<div *ngIf="showComplete"> <p> <strong> RESET Completed, you will need to log out for it to be visible. </strong></p></div>
