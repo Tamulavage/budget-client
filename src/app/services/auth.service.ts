@@ -79,8 +79,8 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        // redirect_uri: `${window.location.origin}/callback`,
-        redirect_uri: `${window.location.origin}/profile`,
+        redirect_uri: `${window.location.origin}/callback`,
+        // redirect_uri: `${window.location.origin}/profile`,
         appState: { target: redirectPath }
       });
     });
